@@ -1,0 +1,61 @@
+{
+ "models": [
+  "B0",
+  "B1",
+  "B2"
+ ],
+ "folds": "quick",
+ "seed": 0,
+ "horizons_h": [
+  1,
+  3,
+  6,
+  12,
+  24,
+  72
+ ],
+ "alarm_h": 24,
+ "max_fa_per_day": 0.03333333333333333,
+ "n_features": 55,
+ "summary": [
+  {
+   "model": "B0_threshold",
+   "auprc_24h": 0.5402356027655708,
+   "auroc_24h": 0.756211562106509,
+   "auprc_6h": 0.20565061352946418,
+   "hits": 0,
+   "events": 20,
+   "false_alarms": 0,
+   "neg_days": 62.31944444444445,
+   "lead_med_h": NaN,
+   "recall": 0.0,
+   "fa_per_day": 0.0
+  },
+  {
+   "model": "B1_logreg",
+   "auprc_24h": 0.5162607077538102,
+   "auroc_24h": 0.7734345615082884,
+   "auprc_6h": 0.25170946241311454,
+   "hits": 1,
+   "events": 20,
+   "false_alarms": 0,
+   "neg_days": 62.31944444444445,
+   "lead_med_h": 4.483333333333333,
+   "recall": 0.05,
+   "fa_per_day": 0.0
+  },
+  {
+   "model": "B2_gbdt",
+   "auprc_24h": 0.5646005494698473,
+   "auroc_24h": 0.8284572394231405,
+   "auprc_6h": 0.2567790661876363,
+   "hits": 1,
+   "events": 20,
+   "false_alarms": 61,
+   "neg_days": 62.31944444444445,
+   "lead_med_h": 5.466666666666667,
+   "recall": 0.05,
+   "fa_per_day": 0.9788277245375528
+  }
+ ]
+}

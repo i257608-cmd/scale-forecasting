@@ -135,8 +135,27 @@ G3 no unseen-well evaluation · G4 rare events, private data, no uncertainty.
   dropped at/after t_E; columns tau_min, censor_min, k (bin, −1 = censored). Real class-7 windows per
   bin 0..6: 142 / 278 / 412 / 617 / 490 / 887 / 856, censored 5,032. Robust scaling deliberately
   left to training code (fit per fold on train wells). SI (chemistry) feature not built yet.
-- **Next:** baselines B0–B2 (`src/models/`, `src/eval/`): define alarm rule + event metrics first,
-  then B0 threshold on RI*, B1 logistic, B2 LightGBM per horizon on the 6 LOWO folds.
+- **Step 4 (done 2026-11-14): E1 part 1, baselines B0–B2** (`src/eval/metrics.py`,
+  `src/models/baselines.py`, `experiments/e1_baselines.py`; results in
+  `results/tables/e1_baselines_*.csv`, run log in `results/runs/`).
+  - Alarm rule (approved): hit = first alarm before RI* reaches +5 %; alarm horizon 24 h;
+    budget ≤ 1 false alarm per well-month; FA counted only on non-class-7 instances.
+  - Threshold chosen on OUT-OF-FOLD scores over training wells (inner 5-fold by well). The single
+    calibration well (1 event) gave thr 0.9999 → recall 0; calibration wells kept for conformal.
+  - B2 is HistGradientBoosting (sklearn), not LightGBM: LightGBM needs system libomp (absent).
+  - Pooled over 6 folds (24 events, 248 negative well-days):
+
+    | model | AUPRC@24h | AUROC@24h | recall (deployed thr) | FA/day | recall @ ≤1 FA/month (threshold-free) |
+    |---|---|---|---|---|---|
+    | B0 RI* threshold | 0.53 | 0.83 | 0.00 | 0.032 | 0.00 (0.25 @ 1 FA/day) |
+    | B1 logistic | 0.50 | 0.74 | 0.04 | 0.012 | 0.04 |
+    | B2 GBDT | 0.67 | 0.90 | 0.13 | 0.476 | 0.67 |
+
+  - Key finding: ranking is good (B2 recall 0.67 at budget if the threshold were right) but the
+    threshold does not transfer across wells (score scales differ per well) → per-well
+    calibration / conformal is the main gap PI-PatchSurv must close. B2 fails on slow-scaling
+    well 22 (AUPRC 0.15; training dominated by fast well 24) where plain B0 ranks well (0.69).
+- **Next:** sequence baselines B3–B6 + PI-PatchSurv (torch, MPS), then per-well calibration.
 
 ## Class feedback (from 3-minute presentation) — TODO
 that was good. 
