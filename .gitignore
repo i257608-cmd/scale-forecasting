@@ -1,0 +1,16 @@
+# data and large artefacts stay local (3W is several GB)
+data/*
+!data/.gitkeep
+results/checkpoints/
+*.pt
+*.ckpt
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# os / editor
+.DS_Store
+.vscode/
