@@ -54,7 +54,11 @@ def frozen_mask(x: pd.Series, min_len: int = FROZEN_MIN) -> pd.Series:
 def to_minutes(raw: pd.DataFrame) -> pd.DataFrame:
     """1 Hz -> 1-min mean + mask channels + short-gap forward fill.
     WHY 1 min: scaling evolves over hours-days; 1 Hz only adds noise and 60x compute."""
-    vals = raw.reindex(columns=CHANNELS).astype("float64").resample("1min").mean()
+    vals = raw.reindex(columns=CHANNELS).astype("float64")
+    # WHY: 3W has sentinel/garbage readings (e.g. P-PDG = 1.18e42 Pa in WELL-00006). Nothing real in
+    # these channels exceeds 1e9 (Pa: 10,000 bar; °C; 0/0.5/1 states), so mark as missing
+    # BEFORE averaging -> one bad second cannot poison a whole minute.
+    vals = vals.where(vals.abs() < 1e9).resample("1min").mean()
     out = pd.DataFrame(index=vals.index)
     for c in CHANNELS:
         x = vals[c]

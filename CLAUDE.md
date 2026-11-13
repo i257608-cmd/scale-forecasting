@@ -128,7 +128,15 @@ G3 no unseen-well evaluation · G4 rare events, private data, no uncertainty.
     40 % of class 9 instances also cross → a threshold rule (B0) will false-alarm on these; the
     model must use shape (slow monotonic rise, T-JUS-CKP drop). Real class 6: only 3 usable files,
     1 crosses but within minutes (scaling: median 7 h).
-- **Next:** windowing + robust scaling per fold (`src/features/`), baselines B0–B2, then PI-PatchSurv.
+  - Values with |x| > 1e9 are treated as missing (garbage P-PDG = 1.18e42 Pa in WELL-00006).
+- **Step 3 (done 2026-11-14):** `src/features/build.py` → `data/features/<label>/*.parquet`
+  (channels, masks, RI*, rolling mean/std/slope 10/60/360 min on RI*, P-MON-CKP, T-JUS-CKP, P-TPT)
+  + `data/features/windows.parquet`: 109,547 windows, stride 10 min, start after the 60-min baseline,
+  dropped at/after t_E; columns tau_min, censor_min, k (bin, −1 = censored). Real class-7 windows per
+  bin 0..6: 142 / 278 / 412 / 617 / 490 / 887 / 856, censored 5,032. Robust scaling deliberately
+  left to training code (fit per fold on train wells). SI (chemistry) feature not built yet.
+- **Next:** baselines B0–B2 (`src/models/`, `src/eval/`): define alarm rule + event metrics first,
+  then B0 threshold on RI*, B1 logistic, B2 LightGBM per horizon on the 6 LOWO folds.
 
 ## Class feedback (from 3-minute presentation) — TODO
 that was good. 
