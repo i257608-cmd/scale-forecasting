@@ -111,6 +111,25 @@ G3 no unseen-well evaluation · G4 rare events, private data, no uncertainty.
 - Fixed seeds; log every run (config + metrics) to results/.
 - Report honest negative results.
 
+## Progress log
+- **Step 1 (done 2026-11-14):** `src/data/download_3w.py`, `notebooks/01_EDA.ipynb` → target revised (see above).
+- **Step 2 (done 2026-11-14):** `src/data/preprocess.py` → `data/processed/<label>/*.parquet` +
+  `instances.csv`; `src/data/splits.py` (6 LOWO folds, one per scaling well); tests in `tests/`.
+  - Channels kept (≤50 % missing in real instances): P-MON-CKP, T-JUS-CKP, P-TPT, T-TPT, P-ANULAR,
+    P-PDG, P-JUS-CKGL, T-PDG, ESTADO-SDV-P (+ mask channel each).
+  - Feature RI* uses a causal baseline = median of the instance's first 60 min (always pre-onset);
+    label RI* uses the pre-t0 median. RI* ≈ 1.008 just before onset (median) → causal baseline OK.
+  - Events (+5 %): 24/36 real (well 24: 17, 22: 3, 6: 2, 1: 1, 21: 1, 23: 0), 7/10 hand-drawn.
+    τ available before event: median 12 h, max 147 h. Proposed horizon bins (h): 0–1, 1–3, 3–6,
+    6–12, 12–24, 24–72, >72.
+  - Calibration well = next scaling well with ≥1 event, never well 24 (keeps 17 events in train).
+  - False-alarm check (`results/tables/ri_star_false_alarm_check.csv`): raw RI* ≥ 1.05 on normal
+    class 0 = 0.014 / day (1/308 instances) but 78 % of slugging (3), 86 % of hydrate-in-production-line (8),
+    40 % of class 9 instances also cross → a threshold rule (B0) will false-alarm on these; the
+    model must use shape (slow monotonic rise, T-JUS-CKP drop). Real class 6: only 3 usable files,
+    1 crosses but within minutes (scaling: median 7 h).
+- **Next:** windowing + robust scaling per fold (`src/features/`), baselines B0–B2, then PI-PatchSurv.
+
 ## Class feedback (from 3-minute presentation) — TODO
 that was good. 
 
