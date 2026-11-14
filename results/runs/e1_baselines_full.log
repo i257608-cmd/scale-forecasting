@@ -1,0 +1,23 @@
+ B0_threshold WELL-00001: AUPRC24=0.857 recall=0.00 lead=nanh FA/day=0.011
+    B1_logreg WELL-00001: AUPRC24=0.099 recall=0.00 lead=nanh FA/day=0.000
+      B2_gbdt WELL-00001: AUPRC24=0.997 recall=0.00 lead=nanh FA/day=0.000
+ B0_threshold WELL-00006: AUPRC24=0.618 recall=0.00 lead=nanh FA/day=0.041
+    B1_logreg WELL-00006: AUPRC24=0.785 recall=0.00 lead=nanh FA/day=0.000
+      B2_gbdt WELL-00006: AUPRC24=0.918 recall=0.00 lead=nanh FA/day=0.000
+ B0_threshold WELL-00021: AUPRC24=0.111 recall=0.00 lead=nanh FA/day=0.114
+    B1_logreg WELL-00021: AUPRC24=0.022 recall=0.00 lead=nanh FA/day=0.000
+      B2_gbdt WELL-00021: AUPRC24=0.069 recall=0.00 lead=nanh FA/day=1.763
+ B0_threshold WELL-00022: AUPRC24=0.687 recall=0.00 lead=nanh FA/day=0.000
+    B1_logreg WELL-00022: AUPRC24=0.125 recall=0.00 lead=nanh FA/day=0.000
+      B2_gbdt WELL-00022: AUPRC24=0.428 recall=0.00 lead=nanh FA/day=1.963
+ B0_threshold WELL-00023: AUPRC24=nan recall=nan lead=nanh FA/day=0.069
+    B1_logreg WELL-00023: AUPRC24=nan recall=nan lead=nanh FA/day=0.000
+      B2_gbdt WELL-00023: AUPRC24=nan recall=nan lead=nanh FA/day=0.000
+ B0_threshold WELL-00024: AUPRC24=0.393 recall=0.00 lead=nanh FA/day=0.000
+    B1_logreg WELL-00024: AUPRC24=0.372 recall=0.00 lead=nanh FA/day=0.000
+      B2_gbdt WELL-00024: AUPRC24=0.982 recall=0.35 lead=3.7h FA/day=0.000
+              auprc_24h  auroc_24h  auprc_6h  hits  events  false_alarms  neg_days  lead_med_h  recall  recall@fa0.0333  recall@fa0.1  recall@fa1  fa_per_day
+model                                                                                                                                                        
+B0_threshold      0.533      0.828     0.173     0      24             8   247.722         NaN    0.00            0.000         0.000       0.250       0.032
+B1_logreg         0.280      0.406     0.276     0      24             0   247.722         NaN    0.00            0.042         0.042       0.125       0.000
+B2_gbdt           0.679      0.892     0.349     6      24           107   247.722       3.708    0.25            0.625         0.625       0.833       0.432

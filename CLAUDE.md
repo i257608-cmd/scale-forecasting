@@ -155,7 +155,31 @@ G3 no unseen-well evaluation · G4 rare events, private data, no uncertainty.
     threshold does not transfer across wells (score scales differ per well) → per-well
     calibration / conformal is the main gap PI-PatchSurv must close. B2 fails on slow-scaling
     well 22 (AUPRC 0.15; training dominated by fast well 24) where plain B0 ranks well (0.69).
-- **Next:** sequence baselines B3–B6 + PI-PatchSurv (torch, MPS), then per-well calibration.
+- **Step 5 (done 2026-11-14): E1 part 2, B3–B6 + PI-PatchSurv** (`src/models/seq.py`,
+  `src/train/trainer.py`, `experiments/e1_sequence.py`; `results/tables/e1_sequence_main_*.csv`).
+  - Bug fixed first: hand-drawn pressures are in bar, not Pa → ×1e5 in `to_minutes` (B3 had AUROC
+    0.10 on well 24). All data rebuilt; B0–B2 re-run (numbers below supersede step 4).
+  - PIPS speed: masks folded into each value channel's patch token (2P inputs) → ~450 s/fold on M4.
+  - 6 folds, seed 0, 24 events. recall@fa = threshold-free recall at 1/30, 0.1, 1 FA/day:
+
+    | model | AUPRC@24h | AUROC@24h | recall@1FA/mo | @0.1/day | @1/day | params |
+    |---|---|---|---|---|---|---|
+    | B0 | 0.53 | 0.83 | 0.00 | 0.00 | 0.25 | – |
+    | B1 | 0.28 | 0.41 | 0.04 | 0.04 | 0.13 | – |
+    | B2 GBDT | **0.68** | **0.89** | **0.63** | **0.63** | **0.83** | – |
+    | B3 LSTM | 0.54 | 0.71 | 0.04 | 0.08 | 0.13 | 68 k |
+    | B4 GRU | 0.31 | 0.59 | 0.08 | 0.08 | 0.17 | 52 k |
+    | B5 CNN-LSTM | 0.32 | 0.55 | 0.04 | 0.04 | 0.08 | 60 k |
+    | B6 TCN | 0.39 | 0.74 | 0.04 | 0.13 | 0.13 | 100 k |
+    | PIPS | 0.60 | 0.82 | 0.50 | 0.54 | 0.71 | 129 k |
+
+  - PIPS beats every sequence baseline (well 24: 10/17 hits vs ≤1; B3–B6 rank well 24 inverted,
+    AUROC 0.04–0.42) but is still below B2 GBDT (well 24: 14/17). Honest result.
+  - Red flag: PIPS best_epoch = 0 on all folds (val loss on calibration well rises after epoch 1)
+    → early stopping on one calibration well is weak; try OOF-well validation / lower lr.
+  - Gate g ≈ 0.48–0.57 → physics branch used about half.
+- **Next:** fix PIPS validation (best_epoch 0), 5-seed ensemble, E2 ablations, per-well calibration
+  / conformal (threshold transfer), plots.
 
 ## Class feedback (from 3-minute presentation) — TODO
 that was good. 
