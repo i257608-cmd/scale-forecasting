@@ -51,10 +51,16 @@ def frozen_mask(x: pd.Series, min_len: int = FROZEN_MIN) -> pd.Series:
     return (same & (run_len >= min_len - 1)) & x.notna()
 
 
-def to_minutes(raw: pd.DataFrame) -> pd.DataFrame:
+def to_minutes(raw: pd.DataFrame, source: str = "real") -> pd.DataFrame:
     """1 Hz -> 1-min mean + mask channels + short-gap forward fill.
     WHY 1 min: scaling evolves over hours-days; 1 Hz only adds noise and 60x compute."""
     vals = raw.reindex(columns=CHANNELS).astype("float64")
+    if source == "drawn":
+        # WHY: hand-drawn pressures are in bar (P-MON-CKP median 45 vs 3.8e6 Pa real; P-PDG 253 vs
+        # 2.3e7). Unconverted, models learned "low pressure = scaling" and inverted on real wells
+        # (B3 AUROC 0.10 on WELL-00024, found 2026-11-14). Temperatures already match (°C).
+        p = [c for c in CHANNELS if c.startswith("P-")]
+        vals[p] = vals[p] * 1e5
     # WHY: 3W has sentinel/garbage readings (e.g. P-PDG = 1.18e42 Pa in WELL-00006). Nothing real in
     # these channels exceeds 1e9 (Pa: 10,000 bar; °C; 0/0.5/1 states), so mark as missing
     # BEFORE averaging -> one bad second cannot poison a whole minute.
@@ -82,9 +88,9 @@ def ri_star(p_mon: pd.Series, baseline: float) -> pd.Series:
 
 def process_instance(path: Path) -> tuple[pd.DataFrame, dict]:
     raw = pd.read_parquet(path)
-    df = to_minutes(raw)
     label = int(path.parent.name)
     source, well = source_and_well(path)
+    df = to_minutes(raw, source)
     t = df.index
     cls = df["class"]
 

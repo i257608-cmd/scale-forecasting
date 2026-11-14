@@ -31,9 +31,11 @@ TAB = FEAT / "tabular.parquet"
 
 def tabular() -> pd.DataFrame:
     """Feature row at every window end (cached: 2,228 file reads take ~30 s)."""
-    if TAB.exists():
+    win = FEAT / "windows.parquet"
+    # Rebuild if features were rebuilt after the cache was written (stale cache = silent wrong results).
+    if TAB.exists() and TAB.stat().st_mtime > win.stat().st_mtime:
         return pd.read_parquet(TAB)
-    w = pd.read_parquet(FEAT / "windows.parquet")
+    w = pd.read_parquet(win)
     parts = []
     for (label, f), g in w.groupby(["label", "file"], sort=False):
         X = pd.read_parquet(FEAT / str(label) / f).iloc[g.end_pos.to_numpy()].reset_index(drop=True)
