@@ -5,7 +5,11 @@ Data flow per fold:
   2. a window = last L minutes ending at end_pos (left-padded with "missing" for early windows)
   3. loss: "bce" -> per-horizon BCE with unknown labels masked;
            "surv" -> censor-aware discrete-time NLL + λ·L_mono
-  4. early stopping on CALIBRATION wells' loss (never test wells)
+  4. early stopping on CALIBRATION wells' loss (never test wells). Calibration AUPRC@24h is logged
+     too; it was tried as the stopping criterion (2026-11-14) but stayed flat at ~0.05 (one small
+     calibration well, 1-3 events) -> no signal, so the loss rule is kept for ALL sequence models.
+     Finding: calib loss is lowest after epoch 1 on every fold -> models overfit the training
+     wells quickly (cross-well shift), so short training generalises best.
   5. predict test windows -> {horizon_h: P(event within h)} for src/eval/metrics.py
 """
 
@@ -49,6 +53,7 @@ class FoldData:
         raw = {f: pd.read_parquet(FEAT_DIR / str(l) / f, columns=SEQ_COLS) for f, l in files.itertuples(index=False)}
         tr = pd.concat([raw[f][VALUE_COLS] for f in train_files if f in raw])
         med, iqr = tr.median(), (tr.quantile(0.75) - tr.quantile(0.25)).replace(0, 1).fillna(1)
+        self.med, self.iqr = med, iqr   # kept for E3 (noise relative to the signal level)
         self.arr = {}
         for f, d in raw.items():
             v = ((d[VALUE_COLS] - med) / iqr).clip(-20, 20).fillna(0)  # clip: one bad sensor can't blow up a batch
@@ -154,7 +159,9 @@ class Trainer:
                 opt.step()
                 tl += loss.item()
             vl = self.evaluate_loss(wca, Tca, ca_idx)
-            self.log.append(dict(epoch=ep, train=tl / self.steps, val=vl, secs=time.time() - t0))
+            va = M.window_metrics(wca, {M.ALARM_H: self.predict(wca)[M.ALARM_H]})   # all calib windows: positives are few
+            vauprc = va.get(f"auprc_{M.ALARM_H}h", np.nan)
+            self.log.append(dict(epoch=ep, train=tl / self.steps, val=vl, val_auprc=vauprc, secs=time.time() - t0))
             if vl < best:
                 best, best_state = vl, copy.deepcopy(self.m.state_dict())
         self.m.load_state_dict(best_state)

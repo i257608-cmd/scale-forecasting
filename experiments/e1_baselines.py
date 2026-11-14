@@ -75,6 +75,9 @@ def main(models, folds_mode, seed=0):
             # Alarm threshold from out-of-fold scores on TRAINING wells (never test wells).
             tr_real, oof = oof_scores(name, part["train"], feat_cols, seed)
             thr = M.choose_threshold(tr_real, oof)
+            (ROOT / "results" / "preds").mkdir(parents=True, exist_ok=True)
+            np.savez(ROOT / "results" / "preds" / f"{name}_{f['test_well']}_s{seed}.npz", oof_thr=thr,
+                     **{f"{s}_{h}": v for s in sc for h, v in sc[s].items()})
             r = dict(model=m.name, test_well=f["test_well"], seed=seed, secs=round(time.time() - t0, 1),
                      **M.window_metrics(part["test"], sc["test"]),
                      **M.event_metrics(part["test"], sc["test"][M.ALARM_H], thr),

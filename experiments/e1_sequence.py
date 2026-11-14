@@ -30,7 +30,7 @@ from src.eval import metrics as M  # noqa: E402
 from src.train.trainer import DEVICE, FoldData, Trainer  # noqa: E402
 
 
-def main(models, seeds, quick_mode, tag):
+def main(models, seeds, quick_mode, tag, lr=1e-3):
     t = tabular()
     folds = make_folds(pd.read_csv(ROOT / "data" / "processed" / "instances.csv"))
     folds = quick(folds) if quick_mode else folds
@@ -43,7 +43,7 @@ def main(models, seeds, quick_mode, tag):
         for name in models:
             for seed in seeds:
                 t0 = time.time()
-                tr = Trainer(name, data, seed=seed).fit(part["train"], part["calib"])
+                tr = Trainer(name, data, seed=seed, lr=lr).fit(part["train"], part["calib"])
                 sc = {s: tr.predict(part[s]) for s in ("calib", "test")}
                 key = f"{name}_{f['test_well']}_s{seed}"
                 torch.save(tr.m.state_dict(), ROOT / "results" / "checkpoints" / f"{key}.pt")
@@ -57,6 +57,7 @@ def main(models, seeds, quick_mode, tag):
                          **M.hits_at_fa(part["test"], sc["test"][M.ALARM_H]))
                 r["events"] = int(part["test"][part["test"].event].file.nunique())
                 rows.append(r)
+                (ROOT / "results" / "runs" / f"{key}_{tag}_log.json").write_text(json.dumps(tr.log))
                 print(f"{name:>10} {f['test_well']} s{seed}: AUPRC24={r.get('auprc_24h', np.nan):.3f} "
                       f"AUROC24={r.get('auroc_24h', np.nan):.3f} hits@1FA/mo={r['hits@fa0.0333']}/{r['events']} "
                       f"({r['secs']}s, {r['params']:,} params, {DEVICE})", flush=True)
@@ -82,5 +83,6 @@ if __name__ == "__main__":
     ap.add_argument("--models", nargs="+", default=["B3", "B4", "B5", "B6", "PIPS"])
     ap.add_argument("--seeds", nargs="+", type=int, default=[0])
     ap.add_argument("--tag", default="main")
+    ap.add_argument("--lr", type=float, default=1e-3)
     a = ap.parse_args()
-    main(a.models, a.seeds, a.quick, a.tag + ("_quick" if a.quick else ""))
+    main(a.models, a.seeds, a.quick, a.tag + ("_quick" if a.quick else ""), a.lr)
