@@ -1,0 +1,127 @@
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:109: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:119: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+PIPS WELL-00001 clean 0: AUPRC24=0.558
+PIPS WELL-00001 noise 0.01: AUPRC24=0.560
+PIPS WELL-00001 noise 0.03: AUPRC24=0.683
+PIPS WELL-00001 noise 0.05: AUPRC24=0.884
+PIPS WELL-00001 dropout 1: AUPRC24=0.625
+PIPS WELL-00001 dropout 2: AUPRC24=0.762
+PIPS WELL-00001 dropout 3: AUPRC24=0.823
+PIPS WELL-00001 frozen 60: AUPRC24=0.557
+B3 WELL-00001 clean 0: AUPRC24=0.492
+B3 WELL-00001 noise 0.01: AUPRC24=0.486
+B3 WELL-00001 noise 0.03: AUPRC24=0.484
+B3 WELL-00001 noise 0.05: AUPRC24=0.471
+B3 WELL-00001 dropout 1: AUPRC24=0.139
+B3 WELL-00001 dropout 2: AUPRC24=0.119
+B3 WELL-00001 dropout 3: AUPRC24=0.150
+B3 WELL-00001 frozen 60: AUPRC24=0.480
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:109: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS WELL-00006 clean 0: AUPRC24=0.999
+PIPS WELL-00006 noise 0.01: AUPRC24=0.999
+PIPS WELL-00006 noise 0.03: AUPRC24=0.999
+PIPS WELL-00006 noise 0.05: AUPRC24=0.998
+PIPS WELL-00006 dropout 1: AUPRC24=0.996
+PIPS WELL-00006 dropout 2: AUPRC24=0.994
+PIPS WELL-00006 dropout 3: AUPRC24=0.992
+PIPS WELL-00006 frozen 60: AUPRC24=0.999
+B3 WELL-00006 clean 0: AUPRC24=1.000
+B3 WELL-00006 noise 0.01: AUPRC24=1.000
+B3 WELL-00006 noise 0.03: AUPRC24=1.000
+B3 WELL-00006 noise 0.05: AUPRC24=1.000
+B3 WELL-00006 dropout 1: AUPRC24=0.977
+B3 WELL-00006 dropout 2: AUPRC24=0.847
+B3 WELL-00006 dropout 3: AUPRC24=0.686
+B3 WELL-00006 frozen 60: AUPRC24=0.980
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:109: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS WELL-00021 clean 0: AUPRC24=0.716
+PIPS WELL-00021 noise 0.01: AUPRC24=0.734
+PIPS WELL-00021 noise 0.03: AUPRC24=0.779
+PIPS WELL-00021 noise 0.05: AUPRC24=0.792
+PIPS WELL-00021 dropout 1: AUPRC24=0.523
+PIPS WELL-00021 dropout 2: AUPRC24=0.384
+PIPS WELL-00021 dropout 3: AUPRC24=0.263
+PIPS WELL-00021 frozen 60: AUPRC24=0.717
+B3 WELL-00021 clean 0: AUPRC24=0.779
+B3 WELL-00021 noise 0.01: AUPRC24=0.776
+B3 WELL-00021 noise 0.03: AUPRC24=0.780
+B3 WELL-00021 noise 0.05: AUPRC24=0.799
+B3 WELL-00021 dropout 1: AUPRC24=0.601
+B3 WELL-00021 dropout 2: AUPRC24=0.393
+B3 WELL-00021 dropout 3: AUPRC24=0.203
+B3 WELL-00021 frozen 60: AUPRC24=0.777
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:109: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS WELL-00022 clean 0: AUPRC24=0.146
+PIPS WELL-00022 noise 0.01: AUPRC24=0.145
+PIPS WELL-00022 noise 0.03: AUPRC24=0.142
+PIPS WELL-00022 noise 0.05: AUPRC24=0.135
+PIPS WELL-00022 dropout 1: AUPRC24=0.092
+PIPS WELL-00022 dropout 2: AUPRC24=0.093
+PIPS WELL-00022 dropout 3: AUPRC24=0.090
+PIPS WELL-00022 frozen 60: AUPRC24=0.146
+B3 WELL-00022 clean 0: AUPRC24=0.183
+B3 WELL-00022 noise 0.01: AUPRC24=0.183
+B3 WELL-00022 noise 0.03: AUPRC24=0.179
+B3 WELL-00022 noise 0.05: AUPRC24=0.168
+B3 WELL-00022 dropout 1: AUPRC24=0.131
+B3 WELL-00022 dropout 2: AUPRC24=0.119
+B3 WELL-00022 dropout 3: AUPRC24=0.110
+B3 WELL-00022 frozen 60: AUPRC24=0.173
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:109: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS WELL-00023 clean 0: AUPRC24=nan
+PIPS WELL-00023 noise 0.01: AUPRC24=nan
+PIPS WELL-00023 noise 0.03: AUPRC24=nan
+PIPS WELL-00023 noise 0.05: AUPRC24=nan
+PIPS WELL-00023 dropout 1: AUPRC24=nan
+PIPS WELL-00023 dropout 2: AUPRC24=nan
+PIPS WELL-00023 dropout 3: AUPRC24=nan
+PIPS WELL-00023 frozen 60: AUPRC24=nan
+B3 WELL-00023 clean 0: AUPRC24=nan
+B3 WELL-00023 noise 0.01: AUPRC24=nan
+B3 WELL-00023 noise 0.03: AUPRC24=nan
+B3 WELL-00023 noise 0.05: AUPRC24=nan
+B3 WELL-00023 dropout 1: AUPRC24=nan
+B3 WELL-00023 dropout 2: AUPRC24=nan
+B3 WELL-00023 dropout 3: AUPRC24=nan
+B3 WELL-00023 frozen 60: AUPRC24=nan
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:109: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS WELL-00024 clean 0: AUPRC24=0.915
+PIPS WELL-00024 noise 0.01: AUPRC24=0.916
+PIPS WELL-00024 noise 0.03: AUPRC24=0.928
+PIPS WELL-00024 noise 0.05: AUPRC24=0.946
+PIPS WELL-00024 dropout 1: AUPRC24=0.913
+PIPS WELL-00024 dropout 2: AUPRC24=0.906
+PIPS WELL-00024 dropout 3: AUPRC24=0.912
+PIPS WELL-00024 frozen 60: AUPRC24=0.917
+B3 WELL-00024 clean 0: AUPRC24=0.226
+B3 WELL-00024 noise 0.01: AUPRC24=0.226
+B3 WELL-00024 noise 0.03: AUPRC24=0.225
+B3 WELL-00024 noise 0.05: AUPRC24=0.224
+B3 WELL-00024 dropout 1: AUPRC24=0.225
+B3 WELL-00024 dropout 2: AUPRC24=0.234
+B3 WELL-00024 dropout 3: AUPRC24=0.249
+B3 WELL-00024 frozen 60: AUPRC24=0.223
+   model   condition  auprc_24h  auroc_24h  hits
+0   PIPS     clean 0      0.667      0.900    12
+1   PIPS  noise 0.01      0.671      0.900    12
+2   PIPS  noise 0.03      0.706      0.910    12
+3   PIPS  noise 0.05      0.751      0.916    13
+4   PIPS   dropout 1      0.630      0.841    12
+5   PIPS   dropout 2      0.628      0.842    11
+6   PIPS   dropout 3      0.616      0.836    10
+7   PIPS   frozen 60      0.667      0.900    12
+8     B3     clean 0      0.536      0.707     1
+9     B3  noise 0.01      0.534      0.705     1
+10    B3  noise 0.03      0.534      0.702     1
+11    B3  noise 0.05      0.533      0.699     1
+12    B3   dropout 1      0.415      0.634     0
+13    B3   dropout 2      0.342      0.575     0
+14    B3   dropout 3      0.280      0.543     0
+15    B3   frozen 60      0.527      0.701     1

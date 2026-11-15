@@ -235,6 +235,9 @@ def stats_table(res, pooled):
     for m in pooled:
         if m == ref:
             continue
+        # WHY: ablations are single-seed runs -> compare to single-seed PIPS (seed 0), not the ensemble
+        r = "PIPS-single" if m.startswith("PIPS-") and m != "PIPS-single" and "PIPS-single" in pooled else ref
+        yref, sref = (np.concatenate(pooled[r][k]) for k in ("y", "s"))
         y, s, f = (np.concatenate(pooled[m][k]) for k in ("y", "s", "file"))
         if len(y) != len(yref) or not (f == fref).all():
             continue
@@ -245,8 +248,8 @@ def stats_table(res, pooled):
                 diffs.append(average_precision_score(yref[ix], sref[ix]) - average_precision_score(y[ix], s[ix]))
         diffs = np.array(diffs)
         p_boot = min(1.0, 2 * min((diffs <= 0).mean(), (diffs >= 0).mean()))
-        p_w = stats.wilcoxon(piv[ref], piv[m]).pvalue if m in piv and (piv[ref] != piv[m]).any() else np.nan
-        rows.append(dict(model=m, delta_auprc=float(np.mean(diffs)), lo=float(np.percentile(diffs, 2.5)),
+        p_w = stats.wilcoxon(piv[r], piv[m]).pvalue if m in piv and (piv[r] != piv[m]).any() else np.nan
+        rows.append(dict(model=m, reference=r, delta_auprc=float(np.mean(diffs)), lo=float(np.percentile(diffs, 2.5)),
                          hi=float(np.percentile(diffs, 97.5)), p_boot=p_boot, p_wilcoxon_folds=p_w))
     st = pd.DataFrame(rows).sort_values("p_boot")
     n = len(st)
@@ -269,7 +272,7 @@ def plots(res, als, pooled, preds, parts):
     for m in present:
         y, s = np.concatenate(pooled[m]["y"]), np.concatenate(pooled[m]["s"])
         pr, rc, _ = precision_recall_curve(y, s)
-        ax.plot(rc, pr, lw=2 if m == "PIPS" else 1, label=f"{m} (AP {average_precision_score(y, s):.2f})")
+        ax.plot(rc, pr, lw=2.5 if m == "PIPS" else 1, color="k" if m == "PIPS" else None, label=f"{m} (AP {average_precision_score(y, s):.2f})")
     ax.axhline(y.mean(), color="grey", ls=":", label="random")
     ax.set(xlabel="recall", ylabel="precision", title="PR curves, event within 24 h (pooled test wells)")
     ax.legend(fontsize=8)
@@ -310,8 +313,10 @@ def plots(res, als, pooled, preds, parts):
         fig, ax = plt.subplots(figsize=(7, 4))
         x = np.arange(len(abl))
         ax.bar(x - 0.2, a, 0.4, label="AUPRC@24h"); ax.bar(x + 0.2, rec, 0.4, label="recall @ 1 FA/month")
-        ax.set_xticks(x, [m.replace("PIPS-single", "−ensemble").replace("PIPS-", "−") for m in abl])
-        ax.set(title="E2 ablations of PI-PatchSurv"); ax.legend()
+        names = {"PIPS": "PIPS\n5-seed ens.", "PIPS-single": "PIPS seed 0\n(reference)", "PIPS-phys": "−physics",
+                 "PIPS-mono": "−L_mono", "PIPS-surv": "−survival\n(BCE heads)", "PIPS-patch": "patch 8\nno overlap"}
+        ax.set_xticks(x, [names[m] for m in abl], fontsize=8)
+        ax.set(title="E2 ablations (single seed; compare with 'PIPS seed 0')"); ax.legend(fontsize=8)
         fig.tight_layout(); fig.savefig(FIG / "ablation_bars.png", dpi=150); plt.close(fig)
     # 6 example forecasts: one event instance each in wells 24 and 22
     fig, axes = plt.subplots(2, 1, figsize=(9, 6))

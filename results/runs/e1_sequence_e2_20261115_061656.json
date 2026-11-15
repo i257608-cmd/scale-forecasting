@@ -1,0 +1,63 @@
+{
+ "models": [
+  "PIPS-phys",
+  "PIPS-mono",
+  "PIPS-surv",
+  "PIPS-patch"
+ ],
+ "seeds": [
+  0
+ ],
+ "quick": false,
+ "device": "mps",
+ "summary": [
+  {
+   "model": "PIPS-mono",
+   "auprc_24h": 0.5735594889549394,
+   "auroc_24h": 0.7956692103539391,
+   "auprc_6h": 0.3007092772302669,
+   "events": 24.0,
+   "params": 128775.0,
+   "secs": 417.1666666666667,
+   "recall@fa0.0333": 0.5,
+   "recall@fa0.1": 0.5,
+   "recall@fa1": 0.7083333333333334
+  },
+  {
+   "model": "PIPS-patch",
+   "auprc_24h": 0.5856238753475697,
+   "auroc_24h": 0.8435478506983248,
+   "auprc_6h": 0.2916454782101724,
+   "events": 24.0,
+   "params": 127815.0,
+   "secs": 468.5,
+   "recall@fa0.0333": 0.625,
+   "recall@fa0.1": 0.625,
+   "recall@fa1": 0.6666666666666666
+  },
+  {
+   "model": "PIPS-phys",
+   "auprc_24h": 0.5845656952845738,
+   "auroc_24h": 0.7234396310406093,
+   "auprc_6h": 0.24009629198419194,
+   "events": 24.0,
+   "params": 113991.0,
+   "secs": 458.3333333333333,
+   "recall@fa0.0333": 0.375,
+   "recall@fa0.1": 0.375,
+   "recall@fa1": 0.7083333333333334
+  },
+  {
+   "model": "PIPS-surv",
+   "auprc_24h": 0.6443948106046221,
+   "auroc_24h": 0.8853079323292242,
+   "auprc_6h": 0.2588633077337922,
+   "events": 24.0,
+   "params": 128710.0,
+   "secs": 417.1666666666667,
+   "recall@fa0.0333": 0.625,
+   "recall@fa0.1": 0.7083333333333334,
+   "recall@fa1": 0.7083333333333334
+  }
+ ]
+}

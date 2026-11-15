@@ -1,0 +1,17 @@
+model,condition,auprc_24h,auroc_24h,hits
+PIPS,clean 0,0.6669,0.9,12
+PIPS,noise 0.01,0.6707,0.9003,12
+PIPS,noise 0.03,0.7062,0.91,12
+PIPS,noise 0.05,0.7512,0.9157,13
+PIPS,dropout 1,0.6297,0.8406,12
+PIPS,dropout 2,0.6279,0.8424,11
+PIPS,dropout 3,0.6159,0.8361,10
+PIPS,frozen 60,0.6672,0.9004,12
+B3,clean 0,0.5359,0.7068,1
+B3,noise 0.01,0.5342,0.7053,1
+B3,noise 0.03,0.5335,0.702,1
+B3,noise 0.05,0.5325,0.6988,1
+B3,dropout 1,0.4146,0.634,0
+B3,dropout 2,0.3423,0.5749,0
+B3,dropout 3,0.2797,0.5427,0
+B3,frozen 60,0.5266,0.7014,1

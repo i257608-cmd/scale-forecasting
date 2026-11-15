@@ -79,7 +79,7 @@ B9 LSTM-autoencoder detector (detection reference, Lopes 2025 / Aranha 2025).
 Event recall & precision, false alarms per well-day, lead time (median, IQR), ΔT; AUPRC & AUROC per
 horizon; C-index; integrated Brier; ECE + reliability plot; PICP & interval width; skill vs B0.
 
-## Known risk + fallback — RESOLVED 2026-11-14
+## Known risk + fallback — RESOLVED 2026-11-14 (class-6 false-alarm risk closed 2026-11-15: 0 alarms)
 EDA showed little pre-onset data (median 6.5 h) and missing ΔP sensors → fallback adopted:
 survival target = time until RI* (P-MON-CKP proxy) crosses +5 %. See Proposed model §2 and §4.
 Open risk: RI* behaviour on class 0 / class 6 (false alarms) not yet checked.
@@ -178,8 +178,22 @@ G3 no unseen-well evaluation · G4 rare events, private data, no uncertainty.
   - Red flag: PIPS best_epoch = 0 on all folds (val loss on calibration well rises after epoch 1)
     → early stopping on one calibration well is weak; try OOF-well validation / lower lr.
   - Gate g ≈ 0.48–0.57 → physics branch used about half.
-- **Next:** fix PIPS validation (best_epoch 0), 5-seed ensemble, E2 ablations, per-well calibration
-  / conformal (threshold transfer), plots.
+- **Step 6 (done 2026-11-15): PIPS 5-seed ensemble, E2 ablations, E3 robustness, E4 FA by class,
+  calibration / conformal, stats, figures, docs.** Report: `docs/Phase3_Report.md` (all 7
+  deliverables); `experiments/analyze.py` regenerates every table/figure from `results/preds/`.
+  - Early stopping on calib AUPRC tried → flat ~0.05 (no signal) → loss rule kept for all models;
+    best_epoch 0 in 28/30 PIPS runs = fast over-fit to training wells (reported as finding).
+  - PIPS ensemble: AUPRC@24h 0.667 (B2 0.679, n.s. p=0.89), AUROC 0.900, C-index 0.848, Brier 0.133,
+    ECE 0.165 (all best), mean rank 2.8 (best). Friedman p=0.13 (5 folds) → not significant.
+  - Deployed alarms (thr fixed on calib wells, self-referenced score `calib-self`): PIPS 17/24 hits,
+    0.234 FA/well-day, lead median 3.6 h; B2 best 6/24 (oof). Budget 1/month not met.
+  - PIPS false alarms: 0 on 594 class-0 and 0 on class 6; all from class 8 (hydrate, 54 episodes)
+    and 9. Open risk "class 6 false alarms" closed.
+  - Conformal 90 %: PIPS PICP 0.89 (width factor ~84), B2 0.72.
+  - E3: 3 sensors dropped → PIPS −8 % AUPRC, LSTM −48 %. Noise raised AUPRC (unexplained, reported).
+  - Ablations (single seed, vs PIPS seed 0): ensemble +0.057 (sig.); −physics −0.10 AUROC;
+    L_mono and survival head ≈ neutral on AUPRC; patch 8 better pooled, worse deployed.
+  - Not done: B7, B9, SI prior, resampling test, −synthetic ablation, Optuna, v1→v2 test.
 
 ## Class feedback (from 3-minute presentation) — TODO
 that was good. 
