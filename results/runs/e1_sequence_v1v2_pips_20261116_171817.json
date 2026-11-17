@@ -1,0 +1,28 @@
+{
+ "models": [
+  "PIPS"
+ ],
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "quick": false,
+ "device": "mps",
+ "summary": [
+  {
+   "model": "PIPS",
+   "auprc_24h": 0.26661422369235904,
+   "auroc_24h": 0.7979529890418423,
+   "auprc_6h": 0.1175073805177238,
+   "events": 20.0,
+   "params": 128775.0,
+   "secs": 541.0,
+   "recall@fa0.0333": 0.01,
+   "recall@fa0.1": 0.02,
+   "recall@fa1": 1.0
+  }
+ ]
+}

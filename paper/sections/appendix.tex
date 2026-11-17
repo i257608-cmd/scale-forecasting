@@ -1,0 +1,50 @@
+\section{Additional results}\label{app:extra}
+
+Table~\ref{tab:tuned} repeats Table~\ref{tab:main} with Optuna-tuned hyper-parameters. Tuning improved the
+deployed alarms of the GRU and the Transformer--LSTM and reduced those of the LSTM, CNN-LSTM, TCN and
+PatchTST; tuning on a single small calibration well mainly adds variance. Table~\ref{tab:faclass} lists false
+alarms per confounder class, and Figures~\ref{fig:reliab} and~\ref{fig:lead} show calibration and the lead
+times of caught events.
+
+\input{tables/tuned}
+\input{tables/fa_class}
+\input{tables/robustness}
+\input{tables/v1v2}
+
+\begin{figure*}[t]
+\centering
+\begin{minipage}{0.46\textwidth}
+\includegraphics[width=\linewidth]{figures/reliability_24h.pdf}
+\caption{Reliability diagram for an event within 24~h (pooled test wells) with ECE.}
+\label{fig:reliab}
+\end{minipage}\hfill
+\begin{minipage}{0.52\textwidth}
+\includegraphics[width=\linewidth]{figures/lead_time_hist.pdf}
+\caption{Lead time of caught events under the deployed calib-self threshold.}
+\label{fig:lead}
+\end{minipage}
+\end{figure*}
+
+\section{Reproducibility details}\label{app:repro}
+
+\begin{itemize}
+\item \textbf{Data:} 3W v2.0.0, commit \texttt{826fec4}; class-7 onset = first label 107 or 7; event when
+the 60-min rolling median of $\RI$ reaches 1.05; windows of 360~min every 10~min; horizons 1, 3, 6, 12, 24,
+72~h.
+\item \textbf{Splits:} six leave-one-well-out folds (test wells 1, 6, 21, 22, 23, 24); calibration well = next
+scaling well with an event, never well 24; non-scaling wells rotate into test and calibration groups;
+v1$\to$v2: train on wells 1, 6, 21, test on 22--24, calibrate on 6.
+\item \textbf{Fixed hyper-parameters:} $d=64$; AdamW, learning rate $10^{-3}$, weight decay $10^{-4}$; batch 256;
+12 epochs $\times$ 150 steps; dropout 0.1; Transformer: 2 layers, 4 heads, feed-forward 128; patch 16,
+stride 8; $\lambda=0.1$; recurrent baselines: 2 layers.
+\item \textbf{Tuning:} Optuna 5.0, TPE (seed 0), median pruner, 20 trials per fold, 4 epochs per trial;
+search: learning rate $[10^{-4},3\cdot10^{-3}]$ (log), weight decay $[10^{-6},10^{-2}]$ (log), batch
+$\{128,256,512\}$, $\lambda\in[0,0.5]$ (PI-PatchSurv); tuned values per fold in \texttt{results/tuning/}.
+\item \textbf{Seeds:} 0--4 (PI-PatchSurv, \emph{-SI}, tuned), 0--2 (deep baselines; physics, survival-head and
+synthetic-data ablations), 0 (other variants).
+\item \textbf{Environment:} Python 3.14.7, PyTorch 2.15.0, NumPy 2.5, pandas 3.1, scikit-learn 1.9.1, SciPy 1.18,
+Optuna 5.0; Apple M4 (MPS, float32) and Kaggle 2$\times$ NVIDIA T4 (CUDA).
+\item \textbf{Commands:} \texttt{python experiments/analyze.py}, \texttt{python experiments/analyze.py --split
+v1v2} and \texttt{python scripts/paper\_tables.py} regenerate all tables and figures; the full training
+pipeline is \texttt{scripts/phase2\_queue.sh}.
+\end{itemize}

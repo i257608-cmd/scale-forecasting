@@ -1,0 +1,156 @@
+\section{Proposed methodology}\label{sec:method}
+
+\subsection{Problem formulation}\label{sec:formulation}
+
+Let $\mathbf{x}_{1:T}\in\mathbb{R}^{T\times C}$ be the 1-minute sensor series of one instance with $C$
+channels and $\mathbf{m}_{1:T}\in\{0,1\}^{T\times C}$ the corresponding mask, where $m_{t,c}=1$ marks a
+missing or frozen value. Let $p_t$ denote the pressure upstream of the production choke (P-MON-CKP) and
+$t_0$ the onset of scaling, i.e.\ the first minute labelled as transient or steady class~7. Because the
+downstream pressure and the choke opening are missing in the real class-7 instances
+(Section~\ref{sec:data}), the pressure drop across the choke cannot be computed. We therefore define the
+self-referenced restriction index
+\begin{align}
+\RI_t&=\frac{p_t}{\operatorname{median}\{p_s : s<t_0\}},\label{eq:ri}\\
+\widetilde{\RI}_t&=\frac{p_t}{\operatorname{median}\{p_s : s\le 60\}},\nonumber
+\end{align}
+where $\RI_t$ (pre-onset baseline) defines the label and $\widetilde{\RI}_t$ (median of the first hour,
+always before onset and therefore causal) is used as an input feature. The event time $t_E$ is the first
+minute after $t_0$ at which the 60-minute rolling median of $\RI_t$ reaches $1.05$, i.e.\ the restriction
+has grown by $5\,\%$.
+
+A forecast is issued for windows $\mathbf{w}_t=(\mathbf{x},\mathbf{m})_{t-L+1:t}$ of length $L=360$~min,
+every 10~min. For $t<t_E$ the time-to-event is $\tau_t=t_E-t$, discretised into $K=7$ bins by the
+horizons $\mathcal{H}=\{1,3,6,12,24,72\}$~h (the last bin is $>72$~h). Windows of normal instances, of
+other event classes and of class-7 instances that never cross $1.05$ are right-censored at the end of the
+instance; windows after $t_E$ are discarded. The model outputs a cumulative risk
+$F_t(k)=P(\tau_t\le h_k\mid \mathbf{w}_t)$ for each horizon $h_k\in\mathcal{H}$.
+
+\subsection{Architecture}
+
+Figure~\ref{fig:arch} shows PI-PatchSurv. It has a sequence branch, a physics branch, a gated fusion and a
+discrete-time survival head.
+
+\begin{figure*}[t]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+  font=\small, node distance=6mm and 8mm,
+  box/.style={draw, rounded corners=2pt, align=center, minimum height=11mm, minimum width=27mm, fill=blue!5},
+  phy/.style={box, fill=orange!10}, outb/.style={box, fill=red!8},
+  arr/.style={-{Latex[length=2mm]}, thick}]
+% row 1: sequence branch
+\node[box] (in) {Window $\mathbf{w}_t$\\ 360 min $\times$ 10 ch.\\ + 10 masks};
+\node[box, right=of in] (patch) {Channel-indep.\\ patching\\ $P{=}16$, $S{=}8$, $N{=}44$};
+\node[box, right=of patch] (enc) {Transformer\\ encoder (shared)\\ 2 layers, $d{=}64$};
+\node[box, right=of enc] (pool) {Mean over patches\\ + channel emb.,\\ concat $\rightarrow \mathbf{z}_s$};
+% row 2: physics branch, fusion, head
+\node[phy, below=9mm of in] (feat) {Physics features $\boldsymbol{\phi}_t$\\ ($\widetilde{\RI}$, $T_{\mathrm{JUS}}$, $p_{\mathrm{TPT}}$;\\ level/SD/slope)};
+\node[phy, right=of feat] (mlp) {MLP\\ $2\times 64$, GELU\\ $\rightarrow \mathbf{z}_p$};
+\node[box, right=of mlp] (gate) {Gated fusion\\ $\mathbf{g}=\sigma(W_g[\mathbf{z}_s;\mathbf{z}_p])$\\ $\mathbf{z}=\mathbf{g}\odot\mathbf{z}_s{+}(1{-}\mathbf{g})\odot\mathbf{z}_p$};
+\node[outb, right=of gate] (head) {Survival head\\ $h_k=\sigma(\mathbf{w}_k^{\top}\mathbf{z}+b_k)$\\ $F(k)=1-\prod_{j\le k}(1-h_j)$};
+\node[outb, below=6mm of head] (unc) {5-seed ensemble +\\ split-conformal\\ interval on $\log\hat\tau$};
+\node[outb, below=6mm of gate] (alarm) {Self-referenced\\ alarm threshold\\ (calibration wells)};
+\draw[arr] (in) -- (patch); \draw[arr] (patch) -- (enc); \draw[arr] (enc) -- (pool);
+\draw[arr] (in) -- (feat); \draw[arr] (feat) -- (mlp); \draw[arr] (mlp) -- (gate);
+\draw[arr] (pool.south) -- ++(0,-3mm) -| (gate.north);
+\draw[arr] (gate) -- (head); \draw[arr] (head) -- (unc); \draw[arr] (unc) -- (alarm);
+\end{tikzpicture}}
+\caption{PI-PatchSurv. Each sensor channel is cut into overlapping patches; a channel-independent Transformer
+encodes the patches (each mask is folded into its value token). Engineered physics features pass through an
+MLP. A learned gate fuses both representations, and a discrete-time survival head outputs a risk curve that
+is monotone in the horizon. Uncertainty comes from a deep ensemble and split-conformal intervals.}
+\label{fig:arch}
+\end{figure*}
+
+\textbf{Sequence branch.} Following PatchTST~\cite{nie2023}, every channel $c$ of the window is split into
+$N=\lfloor (L-P)/S\rfloor+1=44$ overlapping patches of length $P=16$ with stride $S=8$. The value patch and
+its mask patch are concatenated into a $2P$-dimensional token, linearly embedded to $d=64$ and given a
+learned positional embedding. A two-layer Transformer encoder~\cite{vaswani2017} with four heads, shared
+across channels, encodes the tokens; the patch outputs of each channel are averaged, a learned channel
+embedding is added, and the channel vectors are concatenated and projected to $\mathbf{z}_s\in\mathbb{R}^d$.
+Channel independence shares parameters across sensors, which matters with few events, and folding masks
+into tokens lets the model discount imputed segments.
+
+\textbf{Physics branch.} The feature vector $\boldsymbol{\phi}_t\in\mathbb{R}^{36}$ contains the rolling
+mean, standard deviation and least-squares slope over 10, 60 and 360~min of $\widetilde{\RI}$, of the
+upstream choke pressure, of the upstream choke temperature $T_{\mathrm{JUS}}$ (Joule--Thomson cooling grows as
+the throat narrows) and of the production-tubing pressure $p_{\mathrm{TPT}}$ (a system-wide rise moves it
+too, a choke restriction does not). A two-layer MLP with GELU and dropout 0.1 maps $\boldsymbol{\phi}_t$ to
+$\mathbf{z}_p\in\mathbb{R}^d$. In the \emph{-SI} variant, two saturation indices (calcite, barite) computed by
+PHREEQC~\cite{parkhurst2013} at the window's temperature and pressure for public Gulf-of-Mexico brines
+\cite{blondes2023} are appended to $\boldsymbol{\phi}_t$.
+
+\textbf{Gated fusion and survival head.} The gate
+$\mathbf{g}=\sigma(W_g[\mathbf{z}_s;\mathbf{z}_p]+\mathbf{b}_g)$ forms
+$\mathbf{z}=\mathbf{g}\odot\mathbf{z}_s+(1-\mathbf{g})\odot\mathbf{z}_p$, where $\sigma$ is the logistic
+function and $\odot$ the element-wise product. The head~\cite{gensheimer2019,kvamme2021} gives a hazard per
+bin, $h_k=\sigma(\mathbf{w}_k^{\top}\mathbf{z}+b_k)$, and the cumulative risk
+\begin{equation}
+F(k)=1-\prod_{j=1}^{k}(1-h_j),\qquad k=1,\dots,K,
+\label{eq:cdf}
+\end{equation}
+which is non-decreasing in $k$ by construction.
+
+\subsection{Training objective}
+
+For window $i$ with bin index $k_i$ (the event bin if an event is observed, $\delta_i=1$, otherwise the bin
+in which observation ends, $\delta_i=0$), the censor-aware log-likelihood is
+\begin{align}
+\ell_i&=\sum_{j<k_i}\log(1-h_{ij})+\delta_i\log h_{ik_i},\nonumber\\
+\mathcal{L}_{\mathrm{surv}}&=-\frac{\sum_i \omega_i\,\ell_i}{\sum_i \omega_i},
+\label{eq:nll}
+\end{align}
+so a censored window is only credited with surviving the bins before $k_i$. The weight $\omega_i$ equals the
+ratio of censored to event windows (clipped to $[1,100]$) for event windows and 1 otherwise, which
+compensates the rarity of events. Scale does not shrink without an intervention, so on consecutive windows
+$(t-10,t)$ of the same class-7 instance a monotonicity term penalises drops of the forecast risk:
+\begin{align}
+\mathcal{L}_{\mathrm{mono}}&=\frac{1}{|\mathcal{P}|K}\sum_{(t-10,t)\in\mathcal{P}}\sum_{k=1}^{K}\nonumber\\
+&\qquad\max\{0,\,F_{t-10}(k)-F_t(k)\},\nonumber\\
+\mathcal{L}&=\mathcal{L}_{\mathrm{surv}}+\lambda\,\mathcal{L}_{\mathrm{mono}},
+\label{eq:loss}
+\end{align}
+with $\lambda=0.1$. Algorithm~\ref{alg:train} summarises training and inference.
+
+\begin{algorithm*}[t]
+\caption{Training and deployment of PI-PatchSurv for one leave-one-well-out fold}\label{alg:train}
+\footnotesize
+\begin{algorithmic}[1]
+\Require training wells $\mathcal{D}_{\mathrm{tr}}$ (real + synthetic), calibration wells $\mathcal{D}_{\mathrm{ca}}$ (real), test wells $\mathcal{D}_{\mathrm{te}}$ (real)
+\State fit robust scaling (median, IQR) on $\mathcal{D}_{\mathrm{tr}}$ only
+\For{seed $r=1,\dots,R$}
+  \For{epoch $=1,\dots,12$}
+    \For{step $=1,\dots,150$}
+      \State sample a batch of 256 windows from $\mathcal{D}_{\mathrm{tr}}$; compute $\mathcal{L}$ (Eq.~\ref{eq:loss}); AdamW update
+    \EndFor
+    \State keep the weights with the lowest $\mathcal{L}_{\mathrm{surv}}$ on $\mathcal{D}_{\mathrm{ca}}$ \Comment{early stopping}
+  \EndFor
+\EndFor
+\State ensemble: $\bar F(k)=\frac{1}{R}\sum_r F^{(r)}(k)$
+\State threshold $\theta$ on $\mathcal{D}_{\mathrm{ca}}$: largest recall with $\le 1$ false alarm per well-month,
+\Statex \hspace{\algorithmicindent} on the score $\bar F_t(h_{24})-\operatorname{median}_{s\le 60}\bar F_s(h_{24})$
+\State conformal quantile $q$ of $|\log\tau-\log\hat\tau|$ on event windows of $\mathcal{D}_{\mathrm{ca}}$ at level 90\,\%
+\State on $\mathcal{D}_{\mathrm{te}}$: alarm when the self-referenced score exceeds $\theta$; interval $[\hat\tau e^{-q},\hat\tau e^{q}]$
+\end{algorithmic}
+\end{algorithm*}
+
+\subsection{Uncertainty and deployment}
+
+Five seeds are averaged as a deep ensemble~\cite{lakshminarayanan2017}. The predicted median time-to-event
+$\hat\tau$ is the horizon at which $\bar F$ reaches $0.5$ (log-interpolated), and a split-conformal
+interval~\cite{angelopoulos2023} is calibrated on the event windows of the calibration wells. Alarm
+thresholds are set on the calibration wells for at most one false alarm per well-month. Because absolute
+score levels differ between wells, the deployed alarm uses the score minus its median over the instance's
+first hour (\emph{calib-self}), the score-space analogue of $\widetilde{\RI}$; the raw score
+(\emph{calib}) is reported for comparison.
+
+\subsection{Changes after the Phase~2 review}
+
+The design was reviewed before implementation; the review raised no objections, and the following changes
+were forced by the data or by compute. (i) The target changed from the onset of scaling to its severity
+($+5\,\%$), because real instances contain a median of only 6.5~h of normal operation before onset.
+(ii) The planned restriction index based on the pressure drop across the choke was replaced by $\RI$
+(Eq.~\ref{eq:ri}), since the downstream pressure is missing in all real class-7 instances. (iii) The
+generalisation test was corrected from 21 to 18 wells in 3W v1.1.1. (iv) The produced-water database
+version 2.3 could not be downloaded, and version 3.0~\cite{blondes2023} was used. (v) The ``no patching''
+ablation uses gradient accumulation to fit in memory (Section~\ref{sec:ablation}).

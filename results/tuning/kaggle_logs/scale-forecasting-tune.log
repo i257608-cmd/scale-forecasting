@@ -1,0 +1,68 @@
+[{"stream_name":"stdout","time":90.709155658,"data":"torch 2.11.0+cu130 cuda True Tesla T4\n"}
+,{"stream_name":"stdout","time":10539.266746482,"data":"exit codes [0, 0]\n"}
+,{"stream_name":"stdout","time":10539.267334573,"data":"s True\n"}
+,{"stream_name":"stdout","time":10539.267352473,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267358798,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267363892,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267369635,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267375289,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267380354,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267385897,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267391461,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.26739816,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267418855,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267427357,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267432632,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267438719,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267444266,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267450078,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267454992,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267460174,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267465783,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267471651,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267477758,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267482841,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267488178,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267511225,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267516298,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.2675209,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267525151,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267529849,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267533555,"data":"B7 WELL-00024: best 0.2862 {'lr': 0.0014773176334293555, 'wd': 0.000130490735503624, 'bs': 256} (391s)\n"}
+,{"stream_name":"stdout","time":10539.267537849,"data":"\n"}
+,{"stream_name":"stdout","time":10539.267557554,"data":"nc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267562242,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267566715,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267570828,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267576141,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267580592,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267585086,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267589288,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267593719,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267597978,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267602446,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267606655,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267611213,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267615718,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267620349,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267624944,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267629322,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267639289,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267644079,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267648781,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267653469,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267657772,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267662666,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267666783,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.26767145,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.267675621,"data":"/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":10539.267680369,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":10539.26768457,"data":"B8i WELL-00024: best 0.0840 {'lr': 0.00017758612814889097, 'wd': 6.30799327280279e-05, 'bs': 256} (269s)\n"}
+,{"stream_name":"stdout","time":10539.267688801,"data":"\n"}
+,{"stream_name":"stderr","time":10542.384024104,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":10542.38404358,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":10542.80749584,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":10542.807523923,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":10543.785460252,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":10545.093294533,"data":"[NbConvertApp] Writing 284078 bytes to __results__.html\n"}
+]

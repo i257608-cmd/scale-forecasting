@@ -1,0 +1,56 @@
+\section{Introduction}\label{sec:intro}
+
+Inorganic scale such as calcium carbonate and barium sulphate precipitates when produced water becomes
+supersaturated, for example when pressure falls and CO$_2$ leaves solution or when injected and formation
+waters mix~\cite{kamal2018,olajire2015}. Inside a production choke the deposit narrows the throat,
+raises the upstream pressure and forces the operator to choke the well back; left untreated it ends in an
+unplanned cleaning or acid job and deferred production. Scale grows gradually, over hours to weeks, so a
+forecast of \emph{when} the restriction will become critical would let a job be planned instead of
+improvised. In practice the restriction is still tracked manually from trend charts.
+
+Public data for this problem became available with the 3W dataset released by Petrobras
+\cite{vargas2019,vargas2026}, which contains labelled multivariate sensor series of real, simulated and
+hand-drawn undesirable events in offshore wells, including \emph{scaling in the production choke} (class~7).
+The machine-learning work on 3W has, however, treated the task almost exclusively as \emph{detection}: a
+model classifies whether an event is under way, usually after it has started
+\cite{aranha2024,lopes2025,lopes2026}. Detection answers ``is the well scaling now?'', not ``how long until
+the restriction becomes critical?''. Three further limitations recur. First, evaluations commonly split
+windows or instances at random, so windows of the same well appear in training and test; a recent
+community proposal for 3W shows that macro-F1 falls from 0.99 under a random split to 0.30 when whole
+wells are held out~\cite{issue231}. Second, the data-driven scale studies that do estimate magnitude rely on
+simulated well histories or water chemistry and do not use production-sensor streams of real wells
+\cite{cheng2022,askar2025,su2024,molina2025}. Third, few studies attach calibrated uncertainty to their
+outputs, although an alarm that is right on average but uncalibrated on a new well is of little use to an
+operator.
+
+\textbf{Research gap.} No published study forecasts the time to a critical level of choke scaling from
+production sensors, evaluates such a forecast on wells never seen in training, or reports its uncertainty.
+We address this gap with a time-to-event formulation and a strict field-style evaluation on 3W v2.0.0.
+
+\textbf{Contributions.}
+\begin{itemize}
+\item \emph{Problem formulation.} We cast choke-scale forecasting as discrete-time survival analysis: for
+every window the model outputs the probability that the restriction reaches a critical level ($+5\,\%$)
+within 1, 3, 6, 12, 24 and 72~h, with right-censoring for instances that never reach it. To our knowledge
+this is the first time-to-event formulation of a 3W event.
+\item \emph{Self-referenced restriction proxy.} Because the pressure downstream of the choke is missing in all
+real class-7 instances, we define a restriction index $\RI$ normalised by each instance's own early baseline,
+which serves as label and causal feature and makes wells of different pressure comparable.
+\item \emph{Model.} We propose PI-PatchSurv, a channel-independent patch Transformer with a physics-feature
+branch, gated fusion, a monotone survival head, a monotonicity loss, a deep ensemble and split-conformal
+intervals.
+\item \emph{Benchmark and evidence.} We compare twelve models (a physics threshold rule, two classical
+learners, eight deep sequence models including re-implementations of the base-paper architectures, and
+PI-PatchSurv), each with fixed and Optuna-tuned hyper-parameters under an equal budget, on leave-one-well-out
+folds with thresholds fixed before the test well is seen; we add ablations, robustness and resampling
+tests, a v1$\to$v2 generalisation test, and a chemistry prior from PHREEQC saturation indices.
+\item \emph{Data findings.} We report two pitfalls of 3W v2.0.0 that silently change results (repeated
+instance file names across class folders and a unit mismatch of hand-drawn pressures), together with the
+fixes.
+\end{itemize}
+
+The remainder of the paper is organised as follows. Section~\ref{sec:related} reviews related work,
+Section~\ref{sec:method} presents the method and Section~\ref{sec:setup} the experimental setup.
+Section~\ref{sec:results} reports the results, Section~\ref{sec:comparison} compares them with the base
+papers, Section~\ref{sec:ablation} presents the ablations, Section~\ref{sec:discussion} discusses
+implications and limitations, and Section~\ref{sec:conclusion} concludes.

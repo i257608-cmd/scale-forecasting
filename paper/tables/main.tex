@@ -1,0 +1,23 @@
+\begin{table*}[t]
+\caption{Forecast quality on unseen wells (six leave-one-well-out folds, 24 events), fixed hyper-parameters.}\label{tab:main}
+\scriptsize\setlength{\tabcolsep}{3pt}
+\resizebox{\textwidth}{!}{\begin{tabular}{lcccccccccc}
+\toprule
+Model & Seeds & AUPRC@24h & AUROC@24h & C-index & IBS & ECE & BSS & Rec.@1/mo & Hits/24 & PICP \\
+\midrule
+{B0 $\widetilde{\mathrm{RI}}^*$ rule} & 1 & 0.533 & 0.828 & 0.819 & 0.728 & 0.658 & 0.00 & 0.00 & 0 & -- \\
+{B1 Logistic regression} & 1 & 0.281 & 0.406 & 0.434 & 0.366 & 0.529 & 0.26 & 0.04 & 0 & 0.94 \\
+{B2 GBDT} & 1 & 0.679 & 0.892 & 0.811 & 0.088 & 0.226 & 0.67 & 0.62 & 4 & 0.72 \\
+{B3 LSTM} & 3 & 0.736$\pm$0.066 & 0.910$\pm$0.038 & 0.869 & 0.078 & 0.177 & 0.80 & 0.62 & 4.7$\pm$3.1 & 0.54 \\
+{B4 GRU} & 3 & 0.712$\pm$0.123 & 0.905$\pm$0.061 & 0.889 & 0.094 & 0.204 & 0.78 & 0.67 & 14.7$\pm$1.5 & 0.43 \\
+{B5 CNN-LSTM} & 3 & 0.708$\pm$0.122 & 0.893$\pm$0.095 & 0.863 & 0.121 & 0.258 & 0.70 & 0.71 & 6.3$\pm$4.2 & 0.29 \\
+{B6 TCN} & 3 & 0.687$\pm$0.060 & 0.919$\pm$0.028 & 0.847 & 0.089 & 0.179 & 0.78 & 0.67 & 4.3$\pm$5.8 & 0.61 \\
+{B7 Transformer-LSTM$^\dagger$} & 3 & 0.711$\pm$0.031 & 0.903$\pm$0.058 & 0.889 & 0.087 & 0.174 & 0.82 & 0.67 & 13.7$\pm$0.6 & 0.33 \\
+{B8 PatchTST$^\dagger$} & 3 & 0.569$\pm$0.041 & 0.807$\pm$0.032 & 0.792 & 0.101 & 0.137 & 0.81 & 0.79 & 2.0$\pm$1.0 & 0.52 \\
+{B8i iTransformer} & 3 & 0.633$\pm$0.047 & 0.855$\pm$0.074 & 0.782 & 0.083 & 0.132 & 0.75 & 0.21 & 6.0$\pm$7.0 & 0.88 \\
+{B9 LSTM-AE detector$^\dagger$} & 1 & 0.262 & 0.365 & 0.478 & 0.749 & 0.849 & -0.96 & 0.00 & 0 & 0.81 \\
+\textbf{PI-PatchSurv (ours)} & 5 & 0.644$\pm$0.055 & 0.794$\pm$0.018 & 0.802 & 0.103 & 0.234 & 0.69 & 0.25 & 5.8$\pm$2.9 & 0.87 \\
+\bottomrule
+\end{tabular}}
+\footnotetext{AUPRC/AUROC and hits: mean$\pm$SD over single-seed runs where several seeds exist; other columns: ensemble of the available seeds. BSS: Brier skill score at 24~h relative to B0. Rec.@1/mo: threshold-free recall at one false alarm per well-month. Hits: events caught out of 24 with the deployed calib-self threshold. PICP: coverage of the 90\,\% conformal interval. $^\dagger$Re-implementation of a base-paper architecture.}
+\end{table*}

@@ -1,0 +1,74 @@
+{
+ "WELL-00001": {
+  "params": {
+   "learning_rate": 0.02245251919366436,
+   "max_leaf_nodes": 31,
+   "l2_regularization": 9.297546061864109,
+   "max_iter": 100
+  },
+  "value": 0.18976962565197888,
+  "n_trials": 20,
+  "n_pruned": 0,
+  "secs": 1471
+ },
+ "WELL-00006": {
+  "params": {
+   "learning_rate": 0.18769442336782888,
+   "max_leaf_nodes": 8,
+   "l2_regularization": 0.0025072963145156995,
+   "max_iter": 200
+  },
+  "value": 0.0855536815945014,
+  "n_trials": 20,
+  "n_pruned": 0,
+  "secs": 1456
+ },
+ "WELL-00021": {
+  "params": {
+   "learning_rate": 0.013611489588577073,
+   "max_leaf_nodes": 37,
+   "l2_regularization": 0.055594463917164307,
+   "max_iter": 150
+  },
+  "value": 0.7991861353465693,
+  "n_trials": 20,
+  "n_pruned": 0,
+  "secs": 1645
+ },
+ "WELL-00022": {
+  "params": {
+   "learning_rate": 0.06903521707993515,
+   "max_leaf_nodes": 54,
+   "l2_regularization": 0.0019237305096546497,
+   "max_iter": 100
+  },
+  "value": 0.13753980320719117,
+  "n_trials": 20,
+  "n_pruned": 0,
+  "secs": 1895
+ },
+ "WELL-00023": {
+  "params": {
+   "learning_rate": 0.01697366726515533,
+   "max_leaf_nodes": 50,
+   "l2_regularization": 4.497723655574156,
+   "max_iter": 500
+  },
+  "value": 0.10312186637848157,
+  "n_trials": 20,
+  "n_pruned": 0,
+  "secs": 1945
+ },
+ "WELL-00024": {
+  "params": {
+   "learning_rate": 0.2651225974297431,
+   "max_leaf_nodes": 17,
+   "l2_regularization": 1.4685885989200862,
+   "max_iter": 350
+  },
+  "value": 0.032122630784841406,
+  "n_trials": 20,
+  "n_pruned": 0,
+  "secs": 1431
+ }
+}

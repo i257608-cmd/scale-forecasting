@@ -1,0 +1,2 @@
+model,auprc_24h,auroc_24h,auprc_6h,events,params,secs,recall@fa0.0333,recall@fa0.1,recall@fa1
+PIPS,0.2666,0.798,0.1175,20.0,128775.0,541.0,0.01,0.02,1.0

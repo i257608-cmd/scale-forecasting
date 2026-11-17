@@ -1,0 +1,19 @@
+Mineral scale that narrows the production choke of an oil well grows over hours to weeks, yet it is still
+tracked manually and found late. Machine-learning studies on the public Petrobras 3W dataset detect such
+events after they begin, usually split wells randomly between training and test, and rarely quantify
+uncertainty; none forecasts when the restriction will become critical. We formulate choke-scale
+forecasting as discrete-time survival analysis: for every 6-h window of 1-minute sensor data, a model
+outputs the probability that a self-referenced restriction index reaches $+5\,\%$ within 1 to 72~h, with
+right-censoring. We propose PI-PatchSurv, a channel-independent patch Transformer fused through a learned
+gate with a physics-feature branch and trained with a censor-aware survival loss, a monotonicity penalty,
+a deep ensemble and split-conformal intervals. Twelve models are benchmarked on 3W v2.0.0 with
+leave-one-well-out folds (24 real events in six wells), thresholds fixed on calibration wells, and fixed
+and Optuna-tuned hyper-parameters. Deep sequence forecasters raise AUPRC@24h from 0.53 for a physics
+threshold rule (no event caught) to 0.71--0.74; a GRU catches $14.7\pm1.5$ of 24 events at 0.054 false
+alarms per well-day (best run 17/24, median lead 2.9~h). PI-PatchSurv ranks lower (AUPRC
+$0.644\pm0.055$) but gives the best-calibrated uncertainty (90\,\% interval coverage 0.87 versus
+0.33--0.54 for recurrent models), the smallest time-to-event error (6.8~h), and no loss when three of nine
+sensors fail, where an LSTM loses 30\,\%; its physics branch adds 0.08 AUROC. A re-implemented
+autoencoder detector from the base literature reaches only 0.26. No pair of deep models differs
+significantly. Time-to-restriction forecasting is feasible on unseen wells; its lead time is bounded by the
+short 3W recordings.

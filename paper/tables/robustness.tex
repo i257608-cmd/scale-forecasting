@@ -1,0 +1,22 @@
+\begin{table}[t]
+\caption{Robustness (E3): AUPRC@24h under corruptions of the test inputs.}\label{tab:robust}
+\scriptsize
+\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}lcc}
+\toprule
+Condition & PI-PatchSurv & B3 LSTM \\
+\midrule
+clean & 0.697 & 0.811 \\
+Gaussian noise 1\,\% & 0.696 & 0.808 \\
+Gaussian noise 3\,\% & 0.683 & 0.793 \\
+Gaussian noise 5\,\% & 0.674 & 0.773 \\
+1 sensor dropped & 0.714 & 0.682 \\
+2 sensors dropped & 0.725 & 0.613 \\
+3 sensors dropped & 0.700 & 0.564 \\
+1 sensor frozen 60 min & 0.699 & 0.796 \\
+resampled to 30 s & 0.653 & 0.824 \\
+resampled to 60 s & 0.635 & 0.814 \\
+resampled to 120 s & 0.611 & 0.787 \\
+resampled to 300 s & 0.581 & 0.765 \\
+\bottomrule
+\end{tabular*}
+\end{table}

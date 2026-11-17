@@ -1,0 +1,11 @@
+rate 30s: 44,386 windows
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  PIPS WELL-00001 30s: AUPRC24=0.548
+  B3 WELL-00001 30s: AUPRC24=0.505
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  PIPS WELL-00006 30s: AUPRC24=0.999
+  B3 WELL-00006 30s: AUPRC24=1.000
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)

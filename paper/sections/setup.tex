@@ -1,0 +1,81 @@
+\section{Experimental setup}\label{sec:setup}
+
+\subsection{Dataset}\label{sec:data}
+
+We use 3W v2.0.0~\cite{vargas2026} pinned to repository commit \texttt{826fec4}~\cite{petrobras3w}: 2,228
+instances sampled at 1~Hz, of which 1,119 are real (40 wells), 1,089 simulated and 20 hand-drawn. Class~7
+(\emph{scaling in the production choke}) has 36 real instances from six wells (well~24: 19, 22: 8,
+23: 4, 21: 2, 6: 2, 1: 1) and 10 hand-drawn ones; there are no simulated class-7 instances. In 31 of the
+36 real instances the label never leaves the transient state, so onset is defined by the first transient
+or steady label. The pressure downstream of the choke and the downstream temperature are missing in all
+real class-7 instances and the choke opening in 78\,\%, which rules out a pressure-drop restriction
+index. Under the $+5\,\%$ criterion, 24 of the 36 real instances reach the event (well~24: 17, 22: 3,
+6: 2, 1: 1, 21: 1, 23: 0); the median time from a window to the event is 12~h (maximum 147~h).
+
+\subsection{Preprocessing and features}
+
+Signals are averaged to one-minute resolution. Values constant for more than 30~min while the well is
+open (frozen sensors) and missing values become mask channels; gaps of up to 10~min are forward-filled;
+values with $|x|>10^9$ (sentinel readings) are treated as missing. Variables missing in more than half of
+the real instances are dropped, leaving nine channels (upstream choke pressure and temperature, tubing
+pressure and temperature, annulus pressure, downhole pressure and temperature, gas-lift line pressure and
+the safety-valve state) plus $\widetilde{\RI}$. Robust scaling (median, inter-quartile range) is fitted on
+the training files of each fold only. Two data issues of 3W were corrected: (i) 225 file names, covering
+885 synthetic instances, repeat across class folders, so instances are keyed by class and file name; and
+(ii) hand-drawn pressures are about $10^5$ times smaller than real ones (bar instead of Pa) and are
+converted. Windows are formed every 10~min after the first hour, giving 109,547 windows (44,386 real).
+
+\subsection{Splits}
+
+We use six leave-one-well-out folds, one per well with real scaling. In each fold the \emph{test} set
+contains all real instances of the held-out scaling well plus a rotating group of wells without scaling,
+so every real instance is tested exactly once (24 events, about 248 negative well-days in total). The
+\emph{calibration} set contains the next scaling well that has an event (never well~24, which holds 17 of
+the 24 events) plus another group of non-scaling wells; it is used for early stopping, hyper-parameter
+tuning, alarm thresholds and conformal calibration. The \emph{training} set contains the remaining real
+wells and all simulated and hand-drawn instances; synthetic data never enters calibration or test. For the
+generalisation test (E4) we train on the wells present in 3W v1.1.1 (18 real wells; 4 training events)
+and test on wells added in v2.0.0 (wells 22--24, 20 events).
+
+\subsection{Baselines}
+
+All baselines receive the same windows. B0 is a physics rule that thresholds the 60-minute mean of
+$\widetilde{\RI}$. B1 (logistic regression) and B2 (gradient-boosted trees~\cite{friedman2001}, scikit-learn
+\cite{pedregosa2011}) use 63 tabular features at the window end. The deep baselines use per-horizon
+binary cross-entropy heads and the same training budget and early stopping as PI-PatchSurv: B3 LSTM
+\cite{hochreiter1997}, B4 GRU~\cite{cho2014}, B5 CNN-LSTM, B6 TCN~\cite{bai2018}, B7 the hybrid
+Transformer--LSTM of~\cite{lai2026}, B8 PatchTST~\cite{nie2023} (our patch encoder without the physics
+branch), B8i iTransformer~\cite{liu2024itrans}, and B9 an LSTM-autoencoder anomaly detector in the style
+of~\cite{aranha2024,malhotra2016}, trained on normal windows and scored by reconstruction error. B7, B8 and
+B9 are our re-implementations of the base-paper architectures under the present protocol.
+
+\subsection{Evaluation metrics}
+
+Positives are rare (about 14\,\% of labelled 24-h windows), so accuracy is not reported. Window-level
+metrics per horizon are the area under the precision--recall curve (AUPRC)~\cite{saito2015} and under the
+ROC curve (AUROC); survival quality is measured by Harrell's C-index~\cite{harrell1982}, the Brier score at
+24~h and the integrated Brier score over all horizons (IBS)~\cite{graf1999}, and calibration by the expected
+calibration error (ECE)~\cite{guo2017}. Event-level metrics follow deployment: with a threshold fixed on the
+calibration wells, an event is \emph{caught} if an alarm fires before $\RI$ reaches $+5\,\%$; we report events
+caught out of 24, false alarms per negative well-day, event precision (true over all alarm episodes) and
+the lead time. We also report threshold-free recall at budgets of 1 false alarm per well-month and per
+well-day. Uncertainty intervals are scored by coverage (PICP) at the 90\,\% target, and $\Delta T$ is the
+median absolute error of the predicted time-to-event. Window metrics are averaged over the five folds with
+events; pooled AUPRC carries an instance-level bootstrap 95\,\% confidence interval. Significance is assessed
+with a Friedman test over folds with the Nemenyi critical difference~\cite{demsar2006}, and with a paired
+instance-level bootstrap and Wilcoxon signed-rank tests with Holm correction~\cite{holm1979}.
+
+\subsection{Implementation details}
+
+All models are implemented in PyTorch~\cite{paszke2019} 2.15 (Python 3.14, scikit-learn 1.9, Optuna 5.0,
+PHREEQC via phreeqpython). Deep models use $d=64$, AdamW with learning rate $10^{-3}$ and weight decay
+$10^{-4}$, batch size 256, 12 epochs of 150 steps and early stopping on the calibration loss; Transformer
+layers use four heads, feed-forward width 128 and dropout 0.1. PI-PatchSurv has 128,775 parameters (all
+models have fewer than 0.2~M). Every model is run with fixed hyper-parameters and with hyper-parameters
+tuned by Optuna~\cite{akiba2019} (TPE sampler, seed 0, median pruning, 20 trials per fold) under an equal
+budget; tuning is nested in each fold and scored on the calibration-well loss, never on the test well.
+Seeds are fixed: PI-PatchSurv and its tuned and \emph{-SI} variants use seeds 0--4, the deep baselines and
+the main ablations seeds 0--2, the remaining ablations seed 0. Training ran on a MacBook Air M4 (PyTorch MPS,
+float32); seeds 1--2 of the baselines and part of the tuning ran on Kaggle (two NVIDIA T4 GPUs). The
+no-patching ablation uses gradient accumulation (micro-batches of 32, effective batch 256) to fit in memory.
+Code, configuration and all predictions are available (Section~\ref{sec:declarations}).

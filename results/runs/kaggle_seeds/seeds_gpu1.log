@@ -1,0 +1,187 @@
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00001 s1: AUPRC24=0.086 AUROC24=0.104 hits@1FA/mo=0/1 (197s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00001 s2: AUPRC24=0.314 AUROC24=0.538 hits@1FA/mo=0/1 (194s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00001 s1: AUPRC24=0.075 AUROC24=0.220 hits@1FA/mo=0/1 (39s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00001 s2: AUPRC24=0.335 AUROC24=0.718 hits@1FA/mo=0/1 (39s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00001 s1: AUPRC24=0.113 AUROC24=0.127 hits@1FA/mo=0/1 (222s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00001 s2: AUPRC24=0.052 AUROC24=0.020 hits@1FA/mo=0/1 (222s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00001 s1: AUPRC24=0.086 AUROC24=0.098 hits@1FA/mo=0/1 (196s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00001 s2: AUPRC24=0.498 AUROC24=0.685 hits@1FA/mo=0/1 (195s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00001 s1: AUPRC24=0.911 AUROC24=0.987 hits@1FA/mo=0/1 (262s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00001 s2: AUPRC24=0.855 AUROC24=0.976 hits@1FA/mo=0/1 (262s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00006 s1: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/2 (186s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00006 s2: AUPRC24=0.990 AUROC24=0.994 hits@1FA/mo=1/2 (187s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00006 s1: AUPRC24=0.793 AUROC24=0.917 hits@1FA/mo=0/2 (40s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00006 s2: AUPRC24=0.759 AUROC24=0.916 hits@1FA/mo=0/2 (38s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00006 s1: AUPRC24=0.944 AUROC24=0.975 hits@1FA/mo=1/2 (213s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00006 s2: AUPRC24=0.976 AUROC24=0.986 hits@1FA/mo=2/2 (215s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00006 s1: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=0/2 (189s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00006 s2: AUPRC24=0.999 AUROC24=0.999 hits@1FA/mo=0/2 (190s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00006 s1: AUPRC24=0.952 AUROC24=0.977 hits@1FA/mo=0/2 (244s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00006 s2: AUPRC24=0.926 AUROC24=0.974 hits@1FA/mo=0/2 (244s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00021 s1: AUPRC24=0.458 AUROC24=0.906 hits@1FA/mo=1/1 (196s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00021 s2: AUPRC24=0.106 AUROC24=0.800 hits@1FA/mo=0/1 (197s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00021 s1: AUPRC24=0.937 AUROC24=0.997 hits@1FA/mo=1/1 (46s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00021 s2: AUPRC24=0.655 AUROC24=0.928 hits@1FA/mo=1/1 (46s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00021 s1: AUPRC24=0.638 AUROC24=0.947 hits@1FA/mo=1/1 (218s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00021 s2: AUPRC24=0.532 AUROC24=0.962 hits@1FA/mo=0/1 (218s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00021 s1: AUPRC24=0.843 AUROC24=0.990 hits@1FA/mo=1/1 (198s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00021 s2: AUPRC24=0.804 AUROC24=0.986 hits@1FA/mo=1/1 (198s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00021 s1: AUPRC24=0.245 AUROC24=0.921 hits@1FA/mo=0/1 (230s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00021 s2: AUPRC24=0.619 AUROC24=0.953 hits@1FA/mo=1/1 (230s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00022 s1: AUPRC24=0.270 AUROC24=0.856 hits@1FA/mo=0/3 (191s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00022 s2: AUPRC24=0.311 AUROC24=0.881 hits@1FA/mo=0/3 (191s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00022 s1: AUPRC24=0.235 AUROC24=0.822 hits@1FA/mo=0/3 (41s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00022 s2: AUPRC24=0.523 AUROC24=0.939 hits@1FA/mo=0/3 (40s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00022 s1: AUPRC24=0.548 AUROC24=0.938 hits@1FA/mo=0/3 (212s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00022 s2: AUPRC24=0.575 AUROC24=0.947 hits@1FA/mo=0/3 (211s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00022 s1: AUPRC24=0.318 AUROC24=0.887 hits@1FA/mo=0/3 (191s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00022 s2: AUPRC24=0.185 AUROC24=0.755 hits@1FA/mo=0/3 (192s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00022 s1: AUPRC24=0.326 AUROC24=0.867 hits@1FA/mo=0/3 (226s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00022 s2: AUPRC24=0.167 AUROC24=0.724 hits@1FA/mo=0/3 (227s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (201s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (201s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (49s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (49s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (226s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (226s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (202s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (203s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (246s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (245s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00024 s1: AUPRC24=0.992 AUROC24=0.996 hits@1FA/mo=16/17 (206s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00024 s2: AUPRC24=0.947 AUROC24=0.967 hits@1FA/mo=14/17 (207s, 113,926 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00024 s1: AUPRC24=0.882 AUROC24=0.895 hits@1FA/mo=6/17 (50s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00024 s2: AUPRC24=0.915 AUROC24=0.936 hits@1FA/mo=1/17 (51s, 155,142 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00024 s1: AUPRC24=0.600 AUROC24=0.614 hits@1FA/mo=0/17 (236s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00024 s2: AUPRC24=0.630 AUROC24=0.670 hits@1FA/mo=8/17 (235s, 113,991 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00024 s1: AUPRC24=0.993 AUROC24=0.997 hits@1FA/mo=14/17 (209s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00024 s2: AUPRC24=0.989 AUROC24=0.995 hits@1FA/mo=17/17 (209s, 128,710 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00024 s1: AUPRC24=0.765 AUROC24=0.805 hits@1FA/mo=6/17 (270s, 128,775 params, cuda)
+/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00024 s2: AUPRC24=0.887 AUROC24=0.929 hits@1FA/mo=0/17 (271s, 128,775 params, cuda)
+            auprc_24h  auroc_24h  auprc_6h  events    params     secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                           
+B8              0.547      0.804     0.409    24.0  113926.0  196.167            0.688         0.729       0.833
+B8i             0.611      0.829     0.554    24.0  155142.0   44.000            0.188         0.250       0.646
+PIPS-nosyn      0.665      0.911     0.438    24.0  128775.0  246.417            0.146         0.271       0.667
+PIPS-phys       0.561      0.719     0.397    24.0  113991.0  221.167            0.250         0.250       0.854
+PIPS-surv       0.672      0.839     0.398    24.0  128710.0  197.667            0.688         0.708       0.854

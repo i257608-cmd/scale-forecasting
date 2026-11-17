@@ -1,0 +1,84 @@
+\section{Comparison with base papers and the state of the art}\label{sec:comparison}
+
+The base papers of this work are the 3W dataset papers~\cite{vargas2019,vargas2026}, which define the data
+and the event classes; the deep-learning detection system of Aranha et al.~\cite{aranha2024}, whose
+LSTM-autoencoder is the reference anomaly detector on oil-well sensors; the hybrid Transformer--LSTM of Lai
+et al.~\cite{lai2026}, the closest forecasting study of a well event with a lead time; PatchTST~\cite{nie2023},
+on which our sequence branch is built; and the open-world detection line of Lopes et al.~\cite{lopes2025,
+lopes2026}, which reports class-7 results on 3W. Table~\ref{tab:basepapers} summarises them.
+
+\begin{table*}[t]
+\caption{Base papers: problem, method, data, metrics, reported results and key limitations.}
+\label{tab:basepapers}
+\scriptsize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{1.75cm}p{1.85cm}p{1.9cm}p{1.6cm}p{2.2cm}p{2.2cm}}
+\toprule
+Paper & Problem & Method & Data & Reported result & Key limitation \\
+\midrule
+Vargas et al.\ 2019, 2026~\cite{vargas2019,vargas2026} & Undesirable-event detection & Dataset and benchmarks & 3W v1 / v2 & benchmark definitions & no forecasting task \\
+Aranha et al.\ 2024~\cite{aranha2024} & Anomaly detection & LSTM-AE + decision diagram & field wells, sim.\ + real & TPR $>$90\,\% in early stages$^*$ & detection only; split not stated \\
+Lopes et al.\ 2025, 2026~\cite{lopes2025,lopes2026} & Open-world detection, explanation & AE, classifiers, clustering, LLM agent & completions; 3W & class-7 novelty detection 94.9\,\% [90.5, 97.3]$^*$ & detection after onset; not split by well \\
+Lai et al.\ 2026~\cite{lai2026} & Water-breakthrough timing & Transformer--LSTM & 9 gas wells, daily & breakthrough 2--6 days ahead$^*$ & other event and field \\
+Nie et al.\ 2023~\cite{nie2023} & Long-term forecasting & PatchTST & public benchmarks & SOTA MSE/MAE$^*$ & no censoring, no physics \\
+Cheng et al.\ 2022~\cite{cheng2022} & Scale detection, magnitude & CNN-LSTM-MLP & simulated histories & $>$95\,\% detection accuracy$^*$ & simulated data, no timing \\
+\botrule
+\end{tabular*}
+\footnotetext{$^*$Reported in the original paper (different task, data or split); not reproduced here.}
+\end{table*}
+
+\textbf{Quantitative comparison.} The published numbers are not comparable with ours, because the
+papers address detection or a different event and use different data or splits. To obtain a comparison on
+the same data, metrics and protocol, we re-implemented the base architectures (B7 Transformer--LSTM, B8
+PatchTST and B9 LSTM-autoencoder detector) and evaluated them exactly as PI-PatchSurv
+(Table~\ref{tab:quant}).
+
+\begin{table*}[t]
+\caption{Same-protocol comparison with re-implemented base-paper architectures (leave-one-well-out, 24
+events; mean$\pm$SD over seeds where several exist). Best GRU added for reference.}
+\label{tab:quant}
+\footnotesize
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}lccccc}
+\toprule
+Model & AUPRC@24h & AUROC@24h & Hits/24 & PICP@90\,\% & $\Delta T$ (h) \\
+\midrule
+B9 LSTM-AE detector (Aranha et al.~\cite{aranha2024}, re-impl.) & 0.262 & 0.365 & 0 & 0.81 & 58.7 \\
+B8 PatchTST (Nie et al.~\cite{nie2023}, re-impl.) & $0.569\pm0.041$ & $0.807\pm0.032$ & $2.0\pm1.0$ & 0.52 & 8.8 \\
+B7 Transformer--LSTM (Lai et al.~\cite{lai2026}, re-impl.) & $0.711\pm0.031$ & $0.903\pm0.058$ & $13.7\pm0.6$ & 0.33 & 19.6 \\
+B4 GRU (best deployed baseline) & $0.712\pm0.123$ & $0.905\pm0.061$ & $14.7\pm1.5$ & 0.43 & 24.2 \\
+\textbf{PI-PatchSurv (ours)} & $\mathbf{0.644\pm0.055}$ & $\mathbf{0.794\pm0.018}$ & $\mathbf{5.8\pm2.9}$ & \textbf{0.87} & \textbf{6.8} \\
+\midrule
+Lopes et al.~\cite{lopes2026}, class-7 novelty detection & \multicolumn{5}{l}{94.9\,\% detection$^*$ (detection after onset, not split by well)} \\
+Aranha et al.~\cite{aranha2024}, anomaly detection & \multicolumn{5}{l}{true-positive rate $>$90\,\% in early stages$^*$ (field data)} \\
+\botrule
+\end{tabular*}
+\footnotetext{$^*$Taken from the original paper; different task and split, shown for context only.}
+\end{table*}
+
+\textbf{Methodological comparison.} The base detectors model what normal operation looks like and flag
+deviations; they answer whether an event is present, not when it becomes critical, and B9 confirms that a
+reconstruction score carries almost no information about time to the critical level (AUROC 0.37). PatchTST
+and the Transformer--LSTM forecast continuous series but neither handles censoring nor uses process
+physics. PI-PatchSurv differs in its objective (a censor-aware survival likelihood with a monotone risk
+curve), its features (a self-referenced restriction proxy and physics trends fused through a gate), its
+training strategy (synthetic instances, monotonicity loss, deep ensemble) and its deployment
+(self-referenced thresholds and conformal intervals calibrated on separate wells).
+
+\textbf{Improvement analysis.} Against the re-implemented autoencoder detector, PI-PatchSurv improves
+AUPRC@24h by $+0.382$ ($+146\,\%$ relative) and AUROC by $+0.429$, and the gain comes from the change of
+objective from reconstruction to time-to-event. Against PatchTST it improves AUPRC by $+0.075$ ($+13\,\%$),
+catches 3.8 more events and raises interval coverage from 0.52 to 0.87; the gain comes from the physics
+branch and the survival head (Section~\ref{sec:ablation}). Against the Transformer--LSTM it is lower on
+AUPRC ($-0.067$, $-9\,\%$), AUROC ($-0.109$) and events caught ($-7.9$), but it reduces the time-to-event
+error from 19.6 to 6.8~h ($-65\,\%$) and raises coverage from 0.33 to 0.87. None of these differences among
+the deep forecasters is statistically significant (Section~\ref{sec:results}).
+
+\textbf{Fairness and limitations of the comparison.} (i) The published numbers come from detection tasks,
+other events (water breakthrough) or other data (completion faults, simulated scale histories), and most
+use random or sample-level splits; a held-out-well protocol on 3W lowers macro-F1 from 0.99 to
+0.30~\cite{issue231}. (ii) The base architectures were re-implemented with our inputs, budget and early
+stopping rather than their original hyper-parameters; Optuna tuning under an equal budget partly offsets
+this (Appendix~\ref{app:extra}). (iii) Several publisher pages were not accessible, so only results stated
+in accessible abstracts or preprints are quoted. (iv) Seeds 0 and 1--2 were trained on different hardware
+(Apple M4 and NVIDIA T4), which adds a small amount of variance. (v) PI-PatchSurv does not outperform the
+best recurrent baselines on ranking or deployed recall; its advantages are uncertainty quality, time-to-event
+accuracy and robustness to missing sensors.

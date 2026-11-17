@@ -1,0 +1,23 @@
+[{"stream_name":"stdout","time":148.648164245,"data":"torch 2.11.0+cu130 cuda True Tesla T4\n"}
+,{"stream_name":"stdout","time":5112.386344293,"data":"exit codes [0, 0]\n"}
+,{"stream_name":"stdout","time":5112.38673095,"data":"B5 WELL-00001: best 0.5410 {'lr': 0.00012537392983691997, 'wd': 2.9540276179044937e-06, 'bs': 512} (290s)\n"}
+,{"stream_name":"stdout","time":5112.386745216,"data":"B5 WELL-00006: best 0.0707 {'lr': 0.0015433839678886771, 'wd': 3.406504593924548e-05, 'bs': 512} (222s)\n"}
+,{"stream_name":"stdout","time":5112.386750925,"data":"B5 WELL-00021: best 0.4427 {'lr': 0.000978618567468893, 'wd': 6.942729492430145e-06, 'bs': 512} (258s)\n"}
+,{"stream_name":"stdout","time":5112.386755933,"data":"B5 WELL-00022: best 0.0766 {'lr': 0.0006466422717414558, 'wd': 0.0007257005721594283, 'bs': 128} (192s)\n"}
+,{"stream_name":"stdout","time":5112.386760508,"data":"B5 WELL-00023: best 0.0770 {'lr': 0.0007468508416833133, 'wd': 0.0008098868874066274, 'bs': 256} (191s)\n"}
+,{"stream_name":"stdout","time":5112.386765651,"data":"B5 WELL-00024: best 0.0677 {'lr': 0.0014773176334293555, 'wd': 0.000130490735503624, 'bs': 256} (165s)\n"}
+,{"stream_name":"stdout","time":5112.386770768,"data":"\n"}
+,{"stream_name":"stdout","time":5112.386778726,"data":"B6 WELL-00001: best 0.3302 {'lr': 0.00030548878212858035, 'wd': 2.503866945237211e-05, 'bs': 512} (1211s)\n"}
+,{"stream_name":"stdout","time":5112.386783163,"data":"B6 WELL-00006: best 0.0366 {'lr': 0.0026056885529401846, 'wd': 0.00039109857148603464, 'bs': 512} (676s)\n"}
+,{"stream_name":"stdout","time":5112.38678779,"data":"B6 WELL-00021: best 0.5919 {'lr': 0.0012680223763738045, 'wd': 1.3513160049595781e-06, 'bs': 128} (730s)\n"}
+,{"stream_name":"stdout","time":5112.386795701,"data":"B6 WELL-00022: best 0.0657 {'lr': 0.0001955797447075329, 'wd': 0.0001532062619823723, 'bs': 128} (631s)\n"}
+,{"stream_name":"stdout","time":5112.386798842,"data":"B6 WELL-00023: best 0.0731 {'lr': 0.000978618567468893, 'wd': 6.942729492430145e-06, 'bs': 512} (1055s)\n"}
+,{"stream_name":"stdout","time":5112.386801805,"data":"B6 WELL-00024: best 0.1033 {'lr': 0.00088153780513692, 'wd': 3.7446665357415703e-06, 'bs': 128} (654s)\n"}
+,{"stream_name":"stdout","time":5112.386805011,"data":"\n"}
+,{"stream_name":"stderr","time":5115.079677299,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":5115.079708893,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":5115.37711252,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":5115.377137869,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":5116.235342802,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":5117.245503396,"data":"[NbConvertApp] Writing 283916 bytes to __results__.html\n"}
+]

@@ -1,0 +1,4 @@
+2026-11-15 19:19:34 START python experiments/e1_baselines.py --split v1v2
+2026-11-15 19:21:37 END(0) python experiments/e1_baselines.py --split v1v2
+2026-11-15 19:28:10 START python experiments/e1_baselines.py --models B2-SI
+2026-11-15 19:28:19 END(0) python experiments/e1_baselines.py --models B2-SI

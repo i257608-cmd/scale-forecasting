@@ -1,0 +1,60 @@
+[{"stream_name":"stdout","time":129.356662992,"data":"torch 2.11.0+cu130 cuda True\n"}
+,{"stream_name":"stdout","time":11545.75750717,"data":"exit codes [0, 0]\n"}
+,{"stream_name":"stdout","time":11545.758074812,"data":"a)\n"}
+,{"stream_name":"stdout","time":11545.758093281,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758097545,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758101483,"data":"        B7 WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (75s, 107,654 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758123745,"data":"        B3 WELL-00024 s1: AUPRC24=0.840 AUROC24=0.870 hits@1FA/mo=13/17 (62s, 68,230 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758129708,"data":"        B3 WELL-00024 s2: AUPRC24=0.802 AUROC24=0.765 hits@1FA/mo=14/17 (63s, 68,230 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758135364,"data":"        B4 WELL-00024 s1: AUPRC24=0.954 AUROC24=0.979 hits@1FA/mo=14/17 (63s, 51,590 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758141511,"data":"        B4 WELL-00024 s2: AUPRC24=0.967 AUROC24=0.984 hits@1FA/mo=5/17 (64s, 51,590 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758147294,"data":"        B5 WELL-00024 s1: AUPRC24=0.403 AUROC24=0.379 hits@1FA/mo=0/17 (45s, 60,358 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.75815238,"data":"        B5 WELL-00024 s2: AUPRC24=0.935 AUROC24=0.959 hits@1FA/mo=15/17 (46s, 60,358 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758158598,"data":"        B6 WELL-00024 s1: AUPRC24=0.799 AUROC24=0.938 hits@1FA/mo=1/17 (139s, 100,486 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758164498,"data":"        B6 WELL-00024 s2: AUPRC24=0.907 AUROC24=0.956 hits@1FA/mo=14/17 (137s, 100,486 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758170273,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.7581761,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758181157,"data":"        B7 WELL-00024 s1: AUPRC24=0.975 AUROC24=0.989 hits@1FA/mo=14/17 (78s, 107,654 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758186634,"data":"/kaggle/working/sf/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758192277,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758197249,"data":"        B7 WELL-00024 s2: AUPRC24=0.897 AUROC24=0.880 hits@1FA/mo=15/17 (77s, 107,654 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758203482,"data":"       auprc_24h  auroc_24h  auprc_6h  events    params     secs  recall@fa0.0333  recall@fa0.1  recall@fa1\n"}
+,{"stream_name":"stdout","time":11545.758209996,"data":"model                                                                                                      \n"}
+,{"stream_name":"stdout","time":11545.758217405,"data":"B3         0.698      0.892     0.381    24.0   68230.0   58.500            0.604         0.625       0.812\n"}
+,{"stream_name":"stdout","time":11545.758223835,"data":"B4         0.722      0.926     0.501    24.0   51590.0   58.333            0.500         0.729       0.833\n"}
+,{"stream_name":"stdout","time":11545.758229705,"data":"B5         0.669      0.868     0.424    24.0   60358.0   38.000            0.396         0.438       0.438\n"}
+,{"stream_name":"stdout","time":11545.758235539,"data":"B6         0.659      0.904     0.448    24.0  100486.0  129.250            0.396         0.438       0.625\n"}
+,{"stream_name":"stdout","time":11545.758257657,"data":"B7         0.699      0.877     0.412    24.0  107654.0   71.833            0.729         0.750       0.792\n"}
+,{"stream_name":"stdout","time":11545.758261982,"data":"\n"}
+,{"stream_name":"stdout","time":11545.758265714,"data":"m_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758270217,"data":" PIPS-phys WELL-00024 s1: AUPRC24=0.600 AUROC24=0.614 hits@1FA/mo=0/17 (236s, 113,991 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758274948,"data":"/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758279468,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758284398,"data":" PIPS-phys WELL-00024 s2: AUPRC24=0.630 AUROC24=0.670 hits@1FA/mo=8/17 (235s, 113,991 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758288615,"data":"/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758292854,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.75829661,"data":" PIPS-surv WELL-00024 s1: AUPRC24=0.993 AUROC24=0.997 hits@1FA/mo=14/17 (209s, 128,710 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758300682,"data":"/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758304843,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758308643,"data":" PIPS-surv WELL-00024 s2: AUPRC24=0.989 AUROC24=0.995 hits@1FA/mo=17/17 (209s, 128,710 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758312712,"data":"/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758316957,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758320768,"data":"PIPS-nosyn WELL-00024 s1: AUPRC24=0.765 AUROC24=0.805 hits@1FA/mo=6/17 (270s, 128,775 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758324779,"data":"/kaggle/working/sf/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True\n"}
+,{"stream_name":"stdout","time":11545.758329622,"data":"  self.enc = nn.TransformerEncoder(layer, num_layers=2)\n"}
+,{"stream_name":"stdout","time":11545.758333505,"data":"PIPS-nosyn WELL-00024 s2: AUPRC24=0.887 AUROC24=0.929 hits@1FA/mo=0/17 (271s, 128,775 params, cuda)\n"}
+,{"stream_name":"stdout","time":11545.758337577,"data":"            auprc_24h  auroc_24h  auprc_6h  events    params     secs  recall@fa0.0333  recall@fa0.1  recall@fa1\n"}
+,{"stream_name":"stdout","time":11545.758341788,"data":"model                                                                                                           \n"}
+,{"stream_name":"stdout","time":11545.758353918,"data":"B8              0.547      0.804     0.409    24.0  113926.0  196.167            0.688         0.729       0.833\n"}
+,{"stream_name":"stdout","time":11545.758374297,"data":"B8i             0.611      0.829     0.554    24.0  155142.0   44.000            0.188         0.250       0.646\n"}
+,{"stream_name":"stdout","time":11545.758379397,"data":"PIPS-nosyn      0.665      0.911     0.438    24.0  128775.0  246.417            0.146         0.271       0.667\n"}
+,{"stream_name":"stdout","time":11545.758390466,"data":"PIPS-phys       0.561      0.719     0.397    24.0  113991.0  221.167            0.250         0.250       0.854\n"}
+,{"stream_name":"stdout","time":11545.758402471,"data":"PIPS-surv       0.672      0.839     0.398    24.0  128710.0  197.667            0.688         0.708       0.854\n"}
+,{"stream_name":"stdout","time":11545.758406731,"data":"\n"}
+,{"stream_name":"stderr","time":11549.337922832,"data":"/usr/local/lib/python3.13/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":11549.337963494,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":11549.719073811,"data":"/usr/local/lib/python3.13/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":11549.719134234,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":11550.811931523,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":11552.120093006,"data":"[NbConvertApp] Writing 282645 bytes to __results__.html\n"}
+]

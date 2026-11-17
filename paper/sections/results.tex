@@ -1,0 +1,111 @@
+\section{Results and analysis}\label{sec:results}
+
+\subsection{Forecast quality}
+
+Table~\ref{tab:main} reports forecast quality on the unseen wells with fixed hyper-parameters; the tuned
+counterparts are in Appendix~\ref{app:extra} (Table~\ref{tab:tuned}). Three groups emerge. The physics
+rule B0 ranks windows reasonably (AUROC 0.83) but is badly calibrated (ECE 0.66) and catches no event under
+a deployed threshold; logistic regression and the autoencoder detector B9 perform below chance level on
+AUROC, which shows that an anomaly score is not a forecast of time to a critical state. The recurrent and
+convolutional forecasters form the strongest group: the LSTM reaches the highest AUPRC@24h ($0.736\pm0.066$
+over three seeds), and the GRU, CNN-LSTM, TCN and Transformer--LSTM lie within one standard deviation of it
+(0.69--0.71). PI-PatchSurv reaches $0.644\pm0.055$ over five seeds and AUROC $0.794\pm0.018$, below the
+recurrent group on ranking but with the lowest seed-to-seed spread in AUROC.
+
+The precision--recall curves in Figure~\ref{fig:pr} explain part of the difference between mean-of-folds
+and pooled AUPRC. When the test wells are pooled, PI-PatchSurv keeps higher precision at low recall than
+the recurrent models (pooled AUPRC 0.54 versus 0.45 for the LSTM), because its scores are more comparable
+across wells; the per-fold mean, which averages within-well rankings, favours the recurrent models. All
+deep models clearly exceed the prevalence of 0.14.
+
+\input{tables/main}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/pr_curves_24h.pdf}
+\caption{Precision--recall curves for an event within 24~h, pooled over the six test wells (ensemble of the
+available seeds). (a) Physics rule, classical learners and the autoencoder detector; (b) deep forecasters.
+The dotted line is the event prevalence.}
+\label{fig:pr}
+\end{figure*}
+
+\subsection{Deployed alarms}
+
+Ranking does not guarantee a useful alarm, because the threshold has to be fixed before the test well is
+seen. Table~\ref{tab:alarms} reports alarms with thresholds chosen on the calibration wells for at most one
+false alarm per well-month. With the raw score (\emph{calib}) most models either miss events or raise many
+false alarms on the new well, since absolute score levels differ between wells. Subtracting each
+instance's own first-hour score (\emph{calib-self}) corrects much of this shift for the recurrent models:
+the GRU ensemble improves from 8 to 15 events caught, and the Transformer--LSTM keeps 13--15 events while
+its false-alarm rate falls from 0.24 to 0.044 per well-day. For PI-PatchSurv the correction hurts (15 events at
+0.26 false alarms per well-day with the raw score, 9 at 0.19 with calib-self). Over seeds, the GRU catches
+$14.7\pm1.5$ events at $0.054\pm0.006$ false alarms per well-day and the Transformer--LSTM $13.7\pm0.6$ at
+$0.040\pm0.012$; the best single run (tuned GRU) catches 17 of 24 events at 0.052 per well-day with an event
+precision of 0.57 and a median lead of 2.9~h. These rates correspond to about 1.2--1.6 false alarms per
+well-month, close to but above the target of one. PI-PatchSurv catches $5.8\pm2.9$ events: its score drifts
+within the long well-24 instances, which the self-referenced threshold converts into false alarms
+(Appendix~\ref{app:extra}). No model false-alarms on the class-6 look-alike (quick restriction of the
+choke); hydrate events (classes 8 and 9) are the main confounder, because a downstream plug also raises the
+upstream pressure slowly (Table~\ref{tab:faclass}).
+
+\input{tables/alarms}
+
+\subsection{Calibration, uncertainty and horizon}
+
+PI-PatchSurv provides the most reliable uncertainty. Its 90\,\% conformal intervals cover 87\,\% of the
+test event windows and its median time-to-event error is $\Delta T=6.8$~h, whereas the recurrent models
+under-cover (LSTM 0.54, GRU 0.43, Transformer--LSTM 0.33) with $\Delta T$ of 9--24~h; only the
+iTransformer reaches similar coverage (0.88) with a larger error (10.0~h). The reliability diagram
+(Appendix, Figure~\ref{fig:reliab}) shows that all models over-estimate risk above 0.6, which is expected
+when the calibration well holds only one to three events. Figure~\ref{fig:horizon} shows that AUPRC rises
+with the horizon for every model, from 0.02--0.33 at 1~h to 0.78--0.93 at 72~h: most windows lie within
+a few days of their event, so long horizons are easier, and the short pre-onset records of 3W (median
+6.5~h of normal data) cap the useful lead at a few hours.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/horizon_auprc.pdf}
+\caption{Horizon sensitivity (E5): AUPRC (mean over folds) against the forecast horizon.}
+\label{fig:horizon}
+\end{figure}
+
+\subsection{Robustness and generalisation}
+
+Corruptions applied to the test inputs (Appendix~\ref{app:extra}, Table~\ref{tab:robust}) show a clear contrast. PI-PatchSurv is insensitive to sensor loss:
+with three of nine sensors replaced by their median and flagged as missing its AUPRC is unchanged
+(0.70), whereas the LSTM falls from 0.81 to 0.56 ($-30\,\%$). This follows from the channel-independent,
+mask-aware design and is relevant because sensor failure is common in the field. Gaussian noise of up to
+5\,\% and an undetected frozen sensor change neither model much. The LSTM is more robust to a change of the
+sampling rate (30~s to 5~min, models not retrained) than PI-PatchSurv, whose patch length is tied to the
+1-minute grid. In the v1$\to$v2 generalisation test (Appendix~\ref{app:extra}, Table~\ref{tab:v1v2}), where only four events are
+available for training, the patch encoder without physics (PatchTST) transfers best (AUPRC 0.61, AUROC
+0.92) and PI-PatchSurv reaches 0.28 (AUROC 0.84); the GRU catches 9 of 20 events at 0.05 false alarms per
+well-day.
+
+
+\subsection{Statistical significance}
+
+A Friedman test over the five folds with events is borderline for both the fixed models
+($\chi^2=18.2$, $p=0.08$) and the tuned models ($p=0.06$); the Nemenyi critical difference for twelve
+models and five folds is 7.45 ranks, and no pair of models differs. Paired instance-level bootstraps with
+Holm correction confirm only that PI-PatchSurv outperforms the physics rule, logistic regression and the
+autoencoder detector (all $p<0.001$); no difference among the deep forecasters survives correction. With 24
+events, 17 of them in one well, the deep models cannot be ranked with confidence, and we do not claim a
+winner among them.
+
+\subsection{Qualitative examples}
+
+Figure~\ref{fig:examples} shows two test instances. On the fast-scaling well 24 both PI-PatchSurv and the
+GRU follow $\RI$, drop when the restriction temporarily falls after half a day, and rise again before $t_E$.
+On the slow-scaling well 22, $\RI$ oscillates for six days; the risk of PI-PatchSurv climbs steadily from
+about 0.2 to 0.75, tracking the slow growth, while the GRU switches abruptly from low to high risk about
+three days before the event.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/example_forecasts.pdf}
+\caption{Qualitative examples on two unseen test wells: the restriction $\RI-1$ (grey, left axis), the
+critical level $+5\,\%$ (dotted) and the forecast risk of an event within 24~h (right axis) of the tuned GRU
+and of PI-PatchSurv; the dashed red line marks $t_E$.}
+\label{fig:examples}
+\end{figure*}

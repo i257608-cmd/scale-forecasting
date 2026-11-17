@@ -1,0 +1,56 @@
+%% Springer Nature LaTeX template (sn-jnl, v3.1), numbered references (sn-mathphys-num).
+%% Build: tectonic -X compile main.tex   (or pdflatex + bibtex on Overleaf).
+\documentclass[pdflatex,sn-mathphys-num,iicol]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm}
+\usepackage[title]{appendix}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
+\usepackage{siunitx}
+\usepackage{url}
+
+\newcommand{\RI}{\mathrm{RI}^{*}}
+\raggedbottom
+
+\begin{document}
+
+\title[Forecasting time to choke restriction from mineral scale]{Forecasting Time to Choke Restriction from Mineral Scale with Production Sensors: A Physics-Informed Survival Model and an Unseen-Well Benchmark on the 3W Dataset}
+
+\author*[1]{\fnm{Muhammad} \sur{Haseeb}}\email{EMAIL-HASEEB@nu.edu.pk}
+\author[1]{\fnm{Muavia} \sur{Shakeel}}\email{EMAIL-MUAVIA@nu.edu.pk}
+\affil*[1]{\orgname{National University of Computer and Emerging Sciences (FAST-NUCES)}, \orgaddress{\city{Islamabad}, \country{Pakistan}}}
+
+\abstract{\input{sections/abstract}}
+
+\keywords{mineral scale, production choke, time-to-event forecasting, discrete-time survival analysis, physics-informed deep learning, 3W dataset}
+
+\maketitle
+
+\input{sections/introduction}
+\input{sections/related}
+\input{sections/method}
+\input{sections/setup}
+\input{sections/results}
+\input{sections/comparison}
+\input{sections/ablation}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\backmatter
+\input{sections/declarations}
+
+\bibliography{references}
+
+\begin{appendices}
+\input{sections/appendix}
+\end{appendices}
+
+\end{document}

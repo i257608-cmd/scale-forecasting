@@ -1,0 +1,38 @@
+\section{Ablation study}\label{sec:ablation}
+
+Table~\ref{tab:ablation} and Figure~\ref{fig:ablation} remove or modify one component of PI-PatchSurv at a
+time. The physics branch, the survival head and the synthetic data were run with three seeds; the other
+variants with one seed (five for the chemistry prior and the tuned model).
+
+\input{tables/ablation}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figures/ablation_bars.pdf}
+\caption{Ablations: AUPRC@24h (left axis) and events caught with the deployed threshold (right axis); bars
+show the mean and whiskers one standard deviation over $n$ seeds.}
+\label{fig:ablation}
+\end{figure}
+
+\textbf{Physics branch.} Removing it lowers AUROC from $0.794\pm0.018$ to $0.718\pm0.002$, C-index from 0.80
+to 0.73 and AUPRC from 0.644 to $0.581\pm0.036$, and worsens calibration (ECE 0.23 to 0.30). The effect is
+consistent across seeds, which shows that the engineered restriction trends carry information the patch
+encoder does not recover from 24 events alone.
+
+\textbf{Survival head.} Replacing it by independent per-horizon classifiers gives a slightly higher
+AUPRC ($0.682\pm0.030$) and a higher pooled AUPRC (0.80 versus 0.54), but fewer events caught under the
+deployed threshold ($3.0\pm1.7$ versus $5.8\pm2.9$), lower interval coverage (0.59 versus 0.87) and risk
+curves that are no longer guaranteed to increase with the horizon. Because choosing between the two on the
+test wells would be test-set selection, we keep the survival head by design and report the trade-off.
+
+\textbf{Synthetic data.} Training on real instances only raises AUROC ($0.911\pm0.001$) and deployed events
+($9.3\pm2.5$), but pooled AUPRC falls from 0.54 to 0.34 and interval coverage from 0.87 to 0.45: the
+simulated and hand-drawn instances mainly improve the comparability of scores across wells and the
+calibration of the time-to-event, not within-well ranking.
+
+\textbf{Patching, monotonicity, chemistry and tuning.} \input{sections/nopatch_text}A patch length of 8
+without overlap changes little. Removing $\mathcal{L}_{\mathrm{mono}}$ is neutral on ranking but reduces
+deployed events. The PHREEQC saturation-index prior gives small, non-significant gains (AUPRC
+$0.657\pm0.034$, pooled 0.60, PICP 0.89); the brines are a regional average rather than the wells' own
+water, so this is a lower bound on what chemistry can add. Optuna tuning on the calibration-well loss did
+not help PI-PatchSurv ($0.596\pm0.093$): with one small calibration well the tuning objective is noisy.

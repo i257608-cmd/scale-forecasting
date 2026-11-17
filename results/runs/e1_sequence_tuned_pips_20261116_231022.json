@@ -1,0 +1,28 @@
+{
+ "models": [
+  "PIPS-tuned"
+ ],
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4
+ ],
+ "quick": false,
+ "device": "mps",
+ "summary": [
+  {
+   "model": "PIPS-tuned",
+   "auprc_24h": 0.5958532456036101,
+   "auroc_24h": 0.7461457532721529,
+   "auprc_6h": 0.4340646884328718,
+   "events": 24.0,
+   "params": 128775.0,
+   "secs": 623.9,
+   "recall@fa0.0333": 0.25,
+   "recall@fa0.1": 0.2833333333333333,
+   "recall@fa1": 0.6
+  }
+ ]
+}

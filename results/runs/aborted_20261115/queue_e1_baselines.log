@@ -1,0 +1,162 @@
+ B0_threshold V2-NEW: AUPRC24=0.194 recall=0.00 lead=nanh FA/day=0.187
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['P-ANULAR' 'P-JUS-CKGL' 'T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/impute/_base.py:647: UserWarning: Skipping features without any observed values: ['P-ANULAR' 'P-JUS-CKGL' 'T-PDG' 'ESTADO-SDV-P']. At least one non-missing value is needed for imputation with strategy='median'.
+  warnings.warn(
+    B1_logreg V2-NEW: AUPRC24=0.169 recall=0.85 lead=10.9h FA/day=1.742
+joblib.externals.loky.process_executor._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/_utils.py", line 109, in __call__
+    return self.func(**kwargs)
+           ~~~~~~~~~^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 607, in __call__
+    return [func(*args, **kwargs) for func, args, kwargs in self.items]
+            ~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/utils/parallel.py", line 184, in __call__
+    return self.function(*args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/ensemble/_hist_gradient_boosting/binning.py", line 82, in _find_binning_thresholds
+    bin_thresholds = sliding_window_view(distinct_values, 2).mean(axis=1)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/numpy/lib/_stride_tricks_impl.py", line 439, in sliding_window_view
+    raise ValueError(
+        'window shape cannot be larger than input array shape')
+ValueError: window shape cannot be larger than input array shape
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/experiments/e1_baselines.py", line 130, in <module>
+    main(a.models, "quick" if a.quick else "full", split=a.split)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/experiments/e1_baselines.py", line 86, in main
+    m = build_model(name, f["test_well"]).fit(part["train"][feat_cols], y_tr, seed=seed)
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/baselines.py", line 53, in fit
+    self.models[h] = self._make(seed).fit(X[ok], y[ok].astype(int))
+                     ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/base.py", line 1403, in wrapper
+    return fit_method(estimator, *args, **kwargs)
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py", line 603, in fit
+    X_binned_train = self._bin_data(
+        X_train, sample_weight_train, is_training_data=True
+    )
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/ensemble/_hist_gradient_boosting/gradient_boosting.py", line 1122, in _bin_data
+    X_binned = self._bin_mapper.fit_transform(
+        X, sample_weight=sample_weight
+    )  # F-aligned array
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/utils/_set_output.py", line 327, in wrapped
+    data_to_wrap = f(self, X, *args, **kwargs)
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/base.py", line 969, in fit_transform
+    return self.fit(X, **fit_params).transform(X)
+           ~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/ensemble/_hist_gradient_boosting/binning.py", line 287, in fit
+    non_cat_thresholds = Parallel(n_jobs=self.n_threads, backend="threading")(
+        delayed(_find_binning_thresholds)(
+    ...<3 lines>...
+        if not self.is_categorical_[f_idx]
+    )
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/sklearn/utils/parallel.py", line 91, in __call__
+    return super().__call__(iterable_with_config_and_warning_filters)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 2098, in __call__
+    return output if self.return_generator else list(output)
+                                                ~~~~^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 1704, in _get_outputs
+    yield from self._retrieve()
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 1806, in _retrieve
+    self._raise_error_fast()
+    ~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 1885, in _raise_error_fast
+    error_job.get_result(self.timeout)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 780, in get_result
+    return self._return_or_raise()
+           ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/joblib/parallel.py", line 795, in _return_or_raise
+    raise self._result
+ValueError: window shape cannot be larger than input array shape
+Traceback (most recent call last):
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/experiments/e1_baselines.py", line 130, in <module>
+    main(a.models, "quick" if a.quick else "full", split=a.split)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/experiments/e1_baselines.py", line 73, in main
+    t = with_si(t)
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/features/si.py", line 122, in with_si
+    return tab.merge(pd.read_parquet(OUT), on=["file", "end_pos"], how="left", validate="one_to_one")
+           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/pandas/core/frame.py", line 16192, in merge
+    return merge(
+        self,
+    ...<10 lines>...
+        validate=validate,
+    )
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/pandas/core/reshape/merge.py", line 391, in merge
+    op = _MergeOperation(
+        left_df,
+    ...<10 lines>...
+        validate=validate,
+    )
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/pandas/core/reshape/merge.py", line 1033, in __init__
+    self._validate_validate_kwd(validate)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/.venv/lib/python3.14/site-packages/pandas/core/reshape/merge.py", line 2002, in _validate_validate_kwd
+    raise MergeError(
+    ...<4 lines>...
+    )
+pandas.errors.MergeError: Merge keys are not unique in either left or right dataset; not a one-to-one merge.
+Duplicates in left:
+                file  end_pos
+DRAWN_00001.parquet       60
+DRAWN_00001.parquet       70
+DRAWN_00001.parquet       80
+DRAWN_00001.parquet       90
+DRAWN_00001.parquet      100 ...
+Duplicates in right:
+                    file  end_pos
+SIMULATED_00001.parquet       60
+SIMULATED_00001.parquet       70
+SIMULATED_00001.parquet       80
+SIMULATED_00001.parquet       90
+SIMULATED_00001.parquet      100 ...

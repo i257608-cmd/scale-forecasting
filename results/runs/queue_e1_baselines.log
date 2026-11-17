@@ -1,0 +1,25 @@
+   B2_gbdt-SI WELL-00001: AUPRC24=0.994 recall=0.00 lead=nanh FA/day=0.000
+   B2_gbdt-SI WELL-00006: AUPRC24=0.924 recall=0.00 lead=nanh FA/day=0.000
+   B2_gbdt-SI WELL-00021: AUPRC24=0.078 recall=0.00 lead=nanh FA/day=0.426
+   B2_gbdt-SI WELL-00022: AUPRC24=0.441 recall=0.00 lead=nanh FA/day=2.399
+   B2_gbdt-SI WELL-00023: AUPRC24=nan recall=nan lead=nanh FA/day=0.000
+   B2_gbdt-SI WELL-00024: AUPRC24=0.987 recall=0.06 lead=4.1h FA/day=0.000
+            auprc_24h  auroc_24h  auprc_6h  hits  events  false_alarms  neg_days  lead_med_h  recall  recall@fa0.0333  recall@fa0.1  recall@fa1  fa_per_day
+model                                                                                                                                                      
+B2_gbdt-SI      0.685      0.898     0.334     1      24            70   247.722       4.133   0.042            0.625         0.625       0.833       0.283
+B1_logreg-tuned WELL-00001: AUPRC24=0.099 recall=0.00 lead=nanh FA/day=0.000
+B2_gbdt-tuned WELL-00001: AUPRC24=0.953 recall=0.00 lead=nanh FA/day=0.000
+B1_logreg-tuned WELL-00006: AUPRC24=0.785 recall=0.00 lead=nanh FA/day=0.000
+B2_gbdt-tuned WELL-00006: AUPRC24=0.839 recall=0.00 lead=nanh FA/day=0.332
+B1_logreg-tuned WELL-00021: AUPRC24=0.022 recall=0.00 lead=nanh FA/day=0.000
+B2_gbdt-tuned WELL-00021: AUPRC24=0.093 recall=0.00 lead=nanh FA/day=0.057
+B1_logreg-tuned WELL-00022: AUPRC24=0.125 recall=0.00 lead=nanh FA/day=0.000
+B2_gbdt-tuned WELL-00022: AUPRC24=0.446 recall=0.00 lead=nanh FA/day=0.000
+B1_logreg-tuned WELL-00023: AUPRC24=nan recall=nan lead=nanh FA/day=0.000
+B2_gbdt-tuned WELL-00023: AUPRC24=nan recall=nan lead=nanh FA/day=0.000
+B1_logreg-tuned WELL-00024: AUPRC24=0.372 recall=0.00 lead=nanh FA/day=0.000
+B2_gbdt-tuned WELL-00024: AUPRC24=0.978 recall=0.18 lead=9.2h FA/day=0.000
+                 auprc_24h  auroc_24h  auprc_6h  hits  events  false_alarms  neg_days  lead_med_h  recall  recall@fa0.0333  recall@fa0.1  recall@fa1  fa_per_day
+model                                                                                                                                                           
+B1_logreg-tuned      0.280      0.406     0.276     0      24             0   247.722         NaN   0.000            0.042         0.042       0.125       0.000
+B2_gbdt-tuned        0.662      0.893     0.381     3      24            18   247.722         9.2   0.125            0.708         0.750       0.750       0.073

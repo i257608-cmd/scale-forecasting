@@ -1,0 +1,13 @@
+\section{Conclusion and future work}\label{sec:conclusion}
+
+This paper formulated the forecasting of mineral-scale restriction in production chokes as a
+discrete-time survival problem on production-sensor data, introduced a self-referenced restriction proxy,
+proposed the physics-informed survival model PI-PatchSurv, and benchmarked twelve models on unseen wells of
+the 3W dataset. Learned forecasters clearly outperform a physics threshold rule and an anomaly detector;
+recurrent models rank and alarm best, catching about two thirds of the events hours ahead at 1.2--1.6
+false alarms per well-month, while PI-PatchSurv provides the best-calibrated uncertainty, the most accurate
+time-to-event and robustness to sensor loss. Future work should (i) evaluate the formulation on field data
+with long histories, cleaning logs and water analyses to reach multi-day warnings; (ii) add per-well domain
+adaptation so that thresholds transfer without self-referencing; (iii) separate hydrate from scale events
+with temperature dynamics or downstream sensors; (iv) combine survival and per-horizon objectives in one
+head selected on calibration wells; and (v) contribute a time-to-restriction benchmark to the 3W repository.

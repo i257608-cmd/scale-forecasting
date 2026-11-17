@@ -1,0 +1,4 @@
+      B2_gbdt V2-NEW: AUPRC24=0.227 recall=0.75 lead=6.5h FA/day=2.849
+         auprc_24h  auroc_24h  auprc_6h  hits  events  false_alarms  neg_days  lead_med_h  recall  recall@fa0.0333  recall@fa0.1  recall@fa1  fa_per_day
+model                                                                                                                                                   
+B2_gbdt      0.227      0.693     0.189    15      20           229    80.375        6.55    0.75              0.0           0.2         1.0       2.849

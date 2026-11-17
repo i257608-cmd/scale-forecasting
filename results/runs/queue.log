@@ -1,0 +1,57 @@
+2026-11-15 19:30:57 START python experiments/e1_sequence.py --models B3 B4 B5 B6 B7 B8 B8i --tag main
+2026-11-15 19:30:57 START python experiments/e1_sequence.py --models PIPS --seeds 0 1 2 3 4 --tag main_pips
+2026-11-15 19:30:57 START python experiments/e1_baselines.py --models B2-SI
+2026-11-15 19:52:09 END(0) python experiments/e1_baselines.py --models B2-SI
+2026-11-15 19:52:09 START python experiments/e1_tune.py --models B1 B2 B3 B4 B5 B6 B7 B8 B8i B9 PIPS --trials 20
+2026-11-15 23:24:08 END(139) python experiments/e1_sequence.py --models B3 B4 B5 B6 B7 B8 B8i --tag main
+2026-11-15 23:24:08 START python experiments/b9_lstm_ae.py
+2026-11-15 23:36:49 END(0) python experiments/b9_lstm_ae.py
+2026-11-15 23:36:49 START python experiments/e1_sequence.py --split v1v2 --models B3 B4 B5 B6 B7 B8 B8i --tag v1v2
+2026-11-16 00:43:38 END(0) python experiments/e1_sequence.py --split v1v2 --models B3 B4 B5 B6 B7 B8 B8i --tag v1v2
+2026-11-16 00:43:38 START python experiments/b9_lstm_ae.py --split v1v2
+2026-11-16 00:46:05 END(0) python experiments/b9_lstm_ae.py --split v1v2
+2026-11-16 00:47:57 START resume_main try 1
+2026-11-16 03:40:43 END(0) resume_main try 1
+2026-11-16 03:42:56 END(0) python experiments/e1_sequence.py --models PIPS --seeds 0 1 2 3 4 --tag main_pips
+2026-11-16 03:42:56 START python experiments/e1_sequence.py --models PIPS-phys PIPS-mono PIPS-surv PIPS-patch PIPS-nosyn --tag e2
+2026-11-16 09:31:15 END(0) python experiments/e1_sequence.py --models PIPS-phys PIPS-mono PIPS-surv PIPS-patch PIPS-nosyn --tag e2
+2026-11-16 09:31:15 START python experiments/e1_sequence.py --models PIPS-SI --seeds 0 1 2 3 4 --tag si
+2026-11-16 16:32:59 END(0) python experiments/e1_sequence.py --models PIPS-SI --seeds 0 1 2 3 4 --tag si
+2026-11-16 16:32:59 START python experiments/e1_sequence.py --split v1v2 --models PIPS --seeds 0 1 2 3 4 --tag v1v2_pips
+2026-11-16 17:02:09 stopped local e1_tune after B4 (B5-PIPS on Kaggle)
+2026-11-16 17:02:09 END(143) python experiments/e1_tune.py --models B1 B2 B3 B4 B5 B6 B7 B8 B8i B9 PIPS --trials 20
+2026-11-16 17:18:18 END(0) python experiments/e1_sequence.py --split v1v2 --models PIPS --seeds 0 1 2 3 4 --tag v1v2_pips
+2026-11-16 17:18:18 START python experiments/e3_robustness.py --models PIPS B3
+2026-11-16 17:30:30 END(0) python experiments/e3_robustness.py --models PIPS B3
+2026-11-16 17:30:30 START python experiments/e3_resampling.py --models PIPS B3
+2026-11-16 17:38:45 END(0) python experiments/e3_resampling.py --models PIPS B3
+2026-11-16 17:38:45 START python experiments/e1_baselines.py --models B1-tuned B2-tuned
+2026-11-16 17:43:40 END(0) python experiments/e1_baselines.py --models B1-tuned B2-tuned
+2026-11-16 17:43:40 START python experiments/b9_lstm_ae.py --tuned
+2026-11-16 17:47:51 END(0) python experiments/b9_lstm_ae.py --tuned
+2026-11-16 17:47:51 START python experiments/e1_sequence.py --models B3-tuned B4-tuned B5-tuned B6-tuned B7-tuned B8-tuned B8i-tuned --tag tuned
+2026-11-16 17:56:52 END(1) python experiments/e1_sequence.py --models B3-tuned B4-tuned B5-tuned B6-tuned B7-tuned B8-tuned B8i-tuned --tag tuned
+2026-11-16 17:56:52 START python experiments/e1_sequence.py --models PIPS-tuned --seeds 0 1 2 3 4 --tag tuned_pips
+2026-11-16 23:10:24 END(0) python experiments/e1_sequence.py --models PIPS-tuned --seeds 0 1 2 3 4 --tag tuned_pips
+2026-11-16 23:10:24 START python experiments/analyze.py
+2026-11-16 23:20:23 END(0) python experiments/analyze.py
+2026-11-16 23:20:23 START python experiments/analyze.py --split v1v2
+2026-11-16 23:21:21 END(0) python experiments/analyze.py --split v1v2
+2026-11-16 23:21:21 QUEUE DONE
+2026-11-16 23:24:33 START python experiments/e1_sequence.py --models B3-tuned B4-tuned B5-tuned B6-tuned B7-tuned B8-tuned B8i-tuned --tag tuned --resume
+2026-11-17 01:55:04 END(0) python experiments/e1_sequence.py --models B3-tuned B4-tuned B5-tuned B6-tuned B7-tuned B8-tuned B8i-tuned --tag tuned --resume
+2026-11-17 01:55:04 START python experiments/analyze.py
+2026-11-17 03:08:21 END(0) python experiments/analyze.py
+2026-11-17 03:08:21 START python experiments/analyze.py --split v1v2
+2026-11-17 03:39:29 END(0) python experiments/analyze.py --split v1v2
+2026-11-17 03:39:29 FINISH_TUNED DONE
+2026-11-17 03:55:02 START python experiments/e1_sequence.py --models PIPS-nopatch --tag e2_nopatch
+2026-11-17 03:55:45 END(1) PIPS-nopatch
+2026-11-17 03:56:33 START PIPS-nopatch (grad accumulation, micro 32)
+2026-11-17 08:48:46 STOPPED PIPS-nopatch on M4 (no fold after 4h52m) -> moved to Kaggle
+2026-11-17 08:49:01 START analyze 
+2026-11-17 09:14:34 END(0) analyze 
+2026-11-17 09:14:34 START analyze --split v1v2
+2026-11-17 09:14:35 END(0) analyze --split v1v2
+2026-11-17 09:14:51 START analyze --split v1v2
+2026-11-17 09:16:01 END(0) analyze --split v1v2

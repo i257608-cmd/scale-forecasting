@@ -1,0 +1,40 @@
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+       B8i WELL-00022 s0: AUPRC24=0.486 AUROC24=0.932 hits@1FA/mo=0/3 (118s, 155,142 params, mps)
+        B3 WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (441s, 68,230 params, mps)
+        B4 WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (1258s, 51,590 params, mps)
+        B5 WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (141s, 60,358 params, mps)
+        B6 WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (397s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (362s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (1075s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (131s, 155,142 params, mps)
+        B3 WELL-00024 s0: AUPRC24=0.910 AUROC24=0.918 hits@1FA/mo=14/17 (3559s, 68,230 params, mps)
+        B4 WELL-00024 s0: AUPRC24=0.963 AUROC24=0.983 hits@1FA/mo=14/17 (996s, 51,590 params, mps)
+        B5 WELL-00024 s0: AUPRC24=0.705 AUROC24=0.859 hits@1FA/mo=1/17 (102s, 60,358 params, mps)
+        B6 WELL-00024 s0: AUPRC24=0.965 AUROC24=0.983 hits@1FA/mo=15/17 (315s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 WELL-00024 s0: AUPRC24=0.983 AUROC24=0.993 hits@1FA/mo=9/17 (266s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00024 s0: AUPRC24=0.992 AUROC24=0.996 hits@1FA/mo=17/17 (946s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00024 s0: AUPRC24=0.711 AUROC24=0.782 hits@1FA/mo=0/17 (132s, 155,142 params, mps)
+       auprc_24h  auroc_24h  auprc_6h  events    params    secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                     
+B3         0.910      0.918     0.633    17.0   68230.0  2000.0            0.824         0.824       0.824
+B4         0.963      0.983     0.671    17.0   51590.0  1127.0            0.824         0.824       0.824
+B5         0.705      0.859     0.422    17.0   60358.0   121.5            0.059         0.059       0.059
+B6         0.965      0.983     0.689    17.0  100486.0   356.0            0.882         0.882       0.882
+B7         0.983      0.993     0.663    17.0  107654.0   314.0            0.529         0.824       0.882
+B8         0.992      0.996     0.763    17.0  113926.0  1010.5            1.000         1.000       1.000
+B8i        0.599      0.857     0.499    20.0  155142.0   127.0            0.000         0.050       0.250

@@ -1,0 +1,13 @@
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/features/si.py:50: Pandas4Warning: Starting with pandas version 4.0 all arguments of all will be keyword-only.
+  d = d[d[["Ca", "Cl", "HCO3", "PH"]].notna().all(1) & d.PH.between(5, 9) & (d.Cl > 1000)]
+brine 0/200
+brine 25/200
+brine 50/200
+brine 75/200
+brine 100/200
+brine 125/200
+brine 150/200
+brine 175/200
+Calcite SI at (20 °C, 1 bar), (60 °C, 100 bar), (100 °C, 300 bar): [0.89, 1.38, 1.65]
+Barite SI at (20 °C, 1 bar), (60 °C, 100 bar), (100 °C, 300 bar): [1.29, 0.81, 0.45]
+109,547 windows with SI features -> /Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/data/features_si/tabular_si.parquet

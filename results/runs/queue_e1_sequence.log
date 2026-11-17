@@ -1,0 +1,493 @@
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+        B3 WELL-00001 s0: AUPRC24=0.857 AUROC24=0.898 hits@1FA/mo=1/1 (387s, 68,230 params, mps)
+      PIPS WELL-00001 s0: AUPRC24=0.244 AUROC24=0.267 hits@1FA/mo=0/1 (734s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00001 s1: AUPRC24=0.361 AUROC24=0.720 hits@1FA/mo=0/1 (581s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B4 WELL-00001 s0: AUPRC24=0.307 AUROC24=0.458 hits@1FA/mo=1/1 (1256s, 51,590 params, mps)
+        B5 WELL-00001 s0: AUPRC24=0.865 AUROC24=0.989 hits@1FA/mo=1/1 (120s, 60,358 params, mps)
+      PIPS WELL-00001 s2: AUPRC24=0.228 AUROC24=0.303 hits@1FA/mo=0/1 (656s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B6 WELL-00001 s0: AUPRC24=0.562 AUROC24=0.964 hits@1FA/mo=0/1 (273s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 WELL-00001 s0: AUPRC24=0.997 AUROC24=1.000 hits@1FA/mo=1/1 (276s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00001 s3: AUPRC24=0.212 AUROC24=0.224 hits@1FA/mo=0/1 (955s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00001 s0: AUPRC24=0.059 AUROC24=0.203 hits@1FA/mo=0/1 (820s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00001 s0: AUPRC24=0.448 AUROC24=0.875 hits@1FA/mo=0/1 (102s, 155,142 params, mps)
+        B3 WELL-00006 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/2 (357s, 68,230 params, mps)
+      PIPS WELL-00001 s4: AUPRC24=0.217 AUROC24=0.525 hits@1FA/mo=0/1 (819s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00006 s0: AUPRC24=0.951 AUROC24=0.977 hits@1FA/mo=0/2 (587s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00006 s1: AUPRC24=0.949 AUROC24=0.977 hits@1FA/mo=1/2 (589s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B4 WELL-00006 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/2 (1377s, 51,590 params, mps)
+        B5 WELL-00006 s0: AUPRC24=0.999 AUROC24=0.999 hits@1FA/mo=0/2 (122s, 60,358 params, mps)
+        B6 WELL-00006 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=2/2 (300s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00006 s2: AUPRC24=0.945 AUROC24=0.975 hits@1FA/mo=0/2 (832s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 WELL-00006 s0: AUPRC24=0.955 AUROC24=0.979 hits@1FA/mo=0/2 (267s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00006 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=2/2 (722s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00006 s3: AUPRC24=0.996 AUROC24=0.998 hits@1FA/mo=0/2 (850s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00006 s0: AUPRC24=0.864 AUROC24=0.949 hits@1FA/mo=1/2 (110s, 155,142 params, mps)
+        B3 WELL-00021 s0: AUPRC24=0.779 AUROC24=0.967 hits@1FA/mo=0/1 (370s, 68,230 params, mps)
+      PIPS WELL-00006 s4: AUPRC24=0.991 AUROC24=0.994 hits@1FA/mo=0/2 (699s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00021 s0: AUPRC24=0.969 AUROC24=0.999 hits@1FA/mo=1/1 (589s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00021 s1: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/1 (552s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B4 WELL-00021 s0: AUPRC24=0.511 AUROC24=0.916 hits@1FA/mo=1/1 (1498s, 51,590 params, mps)
+        B5 WELL-00021 s0: AUPRC24=0.615 AUROC24=0.904 hits@1FA/mo=0/1 (113s, 60,358 params, mps)
+        B6 WELL-00021 s0: AUPRC24=0.967 AUROC24=0.998 hits@1FA/mo=0/1 (269s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 WELL-00021 s0: AUPRC24=0.409 AUROC24=0.914 hits@1FA/mo=0/1 (269s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00021 s2: AUPRC24=0.623 AUROC24=0.947 hits@1FA/mo=1/1 (797s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00021 s0: AUPRC24=0.647 AUROC24=0.956 hits@1FA/mo=1/1 (796s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i WELL-00021 s0: AUPRC24=0.882 AUROC24=0.996 hits@1FA/mo=1/1 (94s, 155,142 params, mps)
+      PIPS WELL-00021 s3: AUPRC24=0.848 AUROC24=0.992 hits@1FA/mo=1/1 (896s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B3 WELL-00022 s0: AUPRC24=0.510 AUROC24=0.942 hits@1FA/mo=0/3 (356s, 68,230 params, mps)
+      PIPS WELL-00021 s4: AUPRC24=0.713 AUROC24=0.973 hits@1FA/mo=1/1 (668s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00022 s0: AUPRC24=0.786 AUROC24=0.986 hits@1FA/mo=0/3 (600s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B4 WELL-00022 s0: AUPRC24=0.686 AUROC24=0.955 hits@1FA/mo=0/3 (1250s, 51,590 params, mps)
+        B5 WELL-00022 s0: AUPRC24=0.748 AUROC24=0.963 hits@1FA/mo=0/3 (143s, 60,358 params, mps)
+        B6 WELL-00022 s0: AUPRC24=0.223 AUROC24=0.809 hits@1FA/mo=0/3 (394s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00022 s1: AUPRC24=0.132 AUROC24=0.636 hits@1FA/mo=3/3 (1108s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 WELL-00022 s0: AUPRC24=0.332 AUROC24=0.894 hits@1FA/mo=0/3 (375s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 WELL-00022 s0: AUPRC24=0.369 AUROC24=0.909 hits@1FA/mo=0/3 (1134s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00022 s2: AUPRC24=0.727 AUROC24=0.970 hits@1FA/mo=0/3 (1329s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+      PIPS WELL-00022 s3: AUPRC24=0.553 AUROC24=0.960 hits@1FA/mo=0/3 (1043s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B3 V2-NEW s0: AUPRC24=0.475 AUROC24=0.834 hits@1FA/mo=4/20 (427s, 68,230 params, mps)
+      PIPS WELL-00022 s4: AUPRC24=0.431 AUROC24=0.920 hits@1FA/mo=0/3 (885s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B4 V2-NEW s0: AUPRC24=0.358 AUROC24=0.690 hits@1FA/mo=4/20 (1324s, 51,590 params, mps)
+        B5 V2-NEW s0: AUPRC24=0.339 AUROC24=0.776 hits@1FA/mo=0/20 (156s, 60,358 params, mps)
+      PIPS WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (1087s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B6 V2-NEW s0: AUPRC24=0.185 AUROC24=0.702 hits@1FA/mo=0/20 (421s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B7 V2-NEW s0: AUPRC24=0.166 AUROC24=0.683 hits@1FA/mo=0/20 (372s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (1305s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        B8 V2-NEW s0: AUPRC24=0.605 AUROC24=0.922 hits@1FA/mo=9/20 (1159s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+       B8i V2-NEW s0: AUPRC24=0.264 AUROC24=0.822 hits@1FA/mo=0/20 (119s, 155,142 params, mps)
+       auprc_24h  auroc_24h  auprc_6h  events    params    secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                     
+B3         0.475      0.834     0.286    20.0   68230.0   427.0             0.20           0.2         1.0
+B4         0.358      0.690     0.170    20.0   51590.0  1324.0             0.20           0.5         1.0
+B5         0.339      0.776     0.406    20.0   60358.0   156.0             0.00           0.0         1.0
+B6         0.185      0.702     0.061    20.0  100486.0   421.0             0.00           0.0         1.0
+B7         0.166      0.683     0.107    20.0  107654.0   372.0             0.00           0.0         1.0
+B8         0.605      0.922     0.196    20.0  113926.0  1159.0             0.45           0.7         1.0
+B8i        0.264      0.822     0.098    20.0  155142.0   119.0             0.00           0.0         1.0
+      PIPS WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (1175s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00023 s3: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (979s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00023 s4: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (1115s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00024 s0: AUPRC24=0.681 AUROC24=0.722 hits@1FA/mo=11/17 (1412s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00024 s1: AUPRC24=0.699 AUROC24=0.765 hits@1FA/mo=1/17 (3696s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00024 s2: AUPRC24=0.640 AUROC24=0.727 hits@1FA/mo=3/17 (666s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00024 s3: AUPRC24=0.683 AUROC24=0.694 hits@1FA/mo=0/17 (886s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS WELL-00024 s4: AUPRC24=0.525 AUROC24=0.590 hits@1FA/mo=4/17 (1223s, 128,775 params, mps)
+       auprc_24h  auroc_24h  auprc_6h  events    params   secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                    
+PIPS       0.644      0.794     0.411    24.0  128775.0  977.1            0.233         0.283       0.633
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+ PIPS-phys WELL-00001 s0: AUPRC24=0.057 AUROC24=0.068 hits@1FA/mo=0/1 (564s, 113,991 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-mono WELL-00001 s0: AUPRC24=0.205 AUROC24=0.231 hits@1FA/mo=0/1 (521s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00001 s0: AUPRC24=0.135 AUROC24=0.306 hits@1FA/mo=0/1 (521s, 128,710 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-patch WELL-00001 s0: AUPRC24=0.117 AUROC24=0.116 hits@1FA/mo=0/1 (842s, 127,815 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00001 s0: AUPRC24=0.497 AUROC24=0.906 hits@1FA/mo=0/1 (969s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00006 s0: AUPRC24=0.967 AUROC24=0.984 hits@1FA/mo=1/2 (790s, 113,991 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-mono WELL-00006 s0: AUPRC24=0.999 AUROC24=0.999 hits@1FA/mo=0/2 (636s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00006 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=0/2 (568s, 128,710 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-patch WELL-00006 s0: AUPRC24=0.968 AUROC24=0.986 hits@1FA/mo=0/2 (633s, 127,815 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00006 s0: AUPRC24=0.951 AUROC24=0.977 hits@1FA/mo=0/2 (683s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00021 s0: AUPRC24=0.856 AUROC24=0.996 hits@1FA/mo=1/1 (821s, 113,991 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-mono WELL-00021 s0: AUPRC24=0.990 AUROC24=1.000 hits@1FA/mo=1/1 (955s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00021 s0: AUPRC24=0.871 AUROC24=0.994 hits@1FA/mo=1/1 (1115s, 128,710 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-patch WELL-00021 s0: AUPRC24=0.842 AUROC24=0.996 hits@1FA/mo=0/1 (1331s, 127,815 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00021 s0: AUPRC24=0.649 AUROC24=0.972 hits@1FA/mo=1/1 (700s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00022 s0: AUPRC24=0.682 AUROC24=0.969 hits@1FA/mo=0/3 (757s, 113,991 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-mono WELL-00022 s0: AUPRC24=0.476 AUROC24=0.935 hits@1FA/mo=0/3 (614s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00022 s0: AUPRC24=0.523 AUROC24=0.944 hits@1FA/mo=0/3 (564s, 128,710 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-patch WELL-00022 s0: AUPRC24=0.703 AUROC24=0.975 hits@1FA/mo=0/3 (659s, 127,815 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00022 s0: AUPRC24=0.290 AUROC24=0.857 hits@1FA/mo=0/3 (723s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (649s, 113,991 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-mono WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (507s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (502s, 128,710 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-patch WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (580s, 127,815 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (641s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-phys WELL-00024 s0: AUPRC24=0.547 AUROC24=0.560 hits@1FA/mo=7/17 (576s, 113,991 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-mono WELL-00024 s0: AUPRC24=0.649 AUROC24=0.692 hits@1FA/mo=9/17 (533s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ PIPS-surv WELL-00024 s0: AUPRC24=0.989 AUROC24=0.995 hits@1FA/mo=17/17 (528s, 128,710 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-patch WELL-00024 s0: AUPRC24=0.774 AUROC24=0.829 hits@1FA/mo=7/17 (590s, 127,815 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-nosyn WELL-00024 s0: AUPRC24=0.771 AUROC24=0.840 hits@1FA/mo=8/17 (651s, 128,775 params, mps)
+            auprc_24h  auroc_24h  auprc_6h  events    params     secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                           
+PIPS-mono       0.664      0.771     0.351    24.0  128775.0  627.667            0.417         0.542       0.792
+PIPS-nosyn      0.631      0.910     0.344    24.0  128775.0  727.833            0.375         0.458       0.667
+PIPS-patch      0.681      0.780     0.332    24.0  127815.0  772.500            0.292         0.292       0.792
+PIPS-phys       0.622      0.715     0.394    24.0  113991.0  692.833            0.375         0.375       0.833
+PIPS-surv       0.703      0.848     0.401    24.0  128710.0  633.000            0.750         0.750       0.833
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00001 s0: AUPRC24=0.141 AUROC24=0.208 hits@1FA/mo=0/1 (552s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00001 s1: AUPRC24=0.176 AUROC24=0.183 hits@1FA/mo=1/1 (545s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00001 s2: AUPRC24=0.153 AUROC24=0.274 hits@1FA/mo=0/1 (1510s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00001 s3: AUPRC24=0.218 AUROC24=0.370 hits@1FA/mo=0/1 (6813s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00001 s4: AUPRC24=0.175 AUROC24=0.257 hits@1FA/mo=0/1 (688s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00006 s0: AUPRC24=0.921 AUROC24=0.973 hits@1FA/mo=0/2 (720s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00006 s1: AUPRC24=0.919 AUROC24=0.973 hits@1FA/mo=0/2 (535s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00006 s2: AUPRC24=0.970 AUROC24=0.985 hits@1FA/mo=0/2 (591s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00006 s3: AUPRC24=0.994 AUROC24=0.997 hits@1FA/mo=2/2 (560s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00006 s4: AUPRC24=0.907 AUROC24=0.968 hits@1FA/mo=0/2 (756s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00021 s0: AUPRC24=0.985 AUROC24=0.999 hits@1FA/mo=1/1 (631s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00021 s1: AUPRC24=0.957 AUROC24=0.997 hits@1FA/mo=1/1 (587s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00021 s2: AUPRC24=0.842 AUROC24=0.990 hits@1FA/mo=1/1 (565s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00021 s3: AUPRC24=0.953 AUROC24=0.999 hits@1FA/mo=0/1 (551s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00021 s4: AUPRC24=0.663 AUROC24=0.978 hits@1FA/mo=1/1 (564s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00022 s0: AUPRC24=0.782 AUROC24=0.986 hits@1FA/mo=0/3 (557s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00022 s1: AUPRC24=0.560 AUROC24=0.958 hits@1FA/mo=0/3 (552s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00022 s2: AUPRC24=0.570 AUROC24=0.955 hits@1FA/mo=0/3 (536s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00022 s3: AUPRC24=0.441 AUROC24=0.934 hits@1FA/mo=0/3 (538s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00022 s4: AUPRC24=0.533 AUROC24=0.940 hits@1FA/mo=0/3 (535s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (544s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (885s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (617s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00023 s3: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (617s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00023 s4: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (590s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00024 s0: AUPRC24=0.563 AUROC24=0.620 hits@1FA/mo=4/17 (599s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00024 s1: AUPRC24=0.872 AUROC24=0.897 hits@1FA/mo=11/17 (603s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00024 s2: AUPRC24=0.772 AUROC24=0.839 hits@1FA/mo=7/17 (612s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00024 s3: AUPRC24=0.559 AUROC24=0.709 hits@1FA/mo=0/17 (597s, 129,927 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+   PIPS-SI WELL-00024 s4: AUPRC24=0.789 AUROC24=0.815 hits@1FA/mo=13/17 (599s, 129,927 params, mps)
+         auprc_24h  auroc_24h  auprc_6h  events    params   secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                      
+PIPS-SI      0.657      0.792     0.389    24.0  129927.0  838.3             0.35         0.383       0.642
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+      PIPS V2-NEW s0: AUPRC24=0.214 AUROC24=0.779 hits@1FA/mo=0/20 (579s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS V2-NEW s1: AUPRC24=0.192 AUROC24=0.736 hits@1FA/mo=0/20 (581s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS V2-NEW s2: AUPRC24=0.418 AUROC24=0.865 hits@1FA/mo=0/20 (581s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS V2-NEW s3: AUPRC24=0.180 AUROC24=0.747 hits@1FA/mo=0/20 (481s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+      PIPS V2-NEW s4: AUPRC24=0.330 AUROC24=0.863 hits@1FA/mo=1/20 (483s, 128,775 params, mps)
+       auprc_24h  auroc_24h  auprc_6h  events    params   secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                    
+PIPS       0.267      0.798     0.118    20.0  128775.0  541.0             0.01          0.02         1.0
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+  B3-tuned WELL-00001 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/1 (123s, 68,230 params, mps)
+  B4-tuned WELL-00001 s0: AUPRC24=0.344 AUROC24=0.679 hits@1FA/mo=1/1 (402s, 51,590 params, mps)
+Traceback (most recent call last):
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/experiments/e1_sequence.py", line 110, in <module>
+    main(a.models, a.seeds, a.quick, a.tag + ("_quick" if a.quick else ""), a.lr, a.split, a.resume)
+    ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/experiments/e1_sequence.py", line 63, in main
+    hp = dict(lr=lr) | (tuned_params(arch, f["test_well"]) if name.endswith("-tuned") else {})
+                        ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/tuned.py", line 17, in tuned_params
+    raise KeyError(f"no Optuna result for {name} / {test_well} in {path} - run e1_tune.py first")
+KeyError: 'no Optuna result for B5 / WELL-00001 in /Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/results/tuning/B5.json - run e1_tune.py first'
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+PIPS-tuned WELL-00001 s0: AUPRC24=0.168 AUROC24=0.405 hits@1FA/mo=0/1 (461s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00001 s1: AUPRC24=0.055 AUROC24=0.077 hits@1FA/mo=0/1 (455s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00001 s2: AUPRC24=0.649 AUROC24=0.792 hits@1FA/mo=0/1 (477s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00001 s3: AUPRC24=0.052 AUROC24=0.024 hits@1FA/mo=0/1 (478s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00001 s4: AUPRC24=0.052 AUROC24=0.010 hits@1FA/mo=0/1 (502s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00006 s0: AUPRC24=0.999 AUROC24=1.000 hits@1FA/mo=1/2 (903s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00006 s1: AUPRC24=0.998 AUROC24=0.999 hits@1FA/mo=0/2 (853s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00006 s2: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/2 (900s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00006 s3: AUPRC24=0.989 AUROC24=0.994 hits@1FA/mo=0/2 (933s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00006 s4: AUPRC24=0.938 AUROC24=0.975 hits@1FA/mo=0/2 (970s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00021 s0: AUPRC24=0.801 AUROC24=0.988 hits@1FA/mo=1/1 (323s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00021 s1: AUPRC24=0.813 AUROC24=0.979 hits@1FA/mo=1/1 (293s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00021 s2: AUPRC24=0.722 AUROC24=0.979 hits@1FA/mo=1/1 (288s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00021 s3: AUPRC24=0.694 AUROC24=0.946 hits@1FA/mo=1/1 (288s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00021 s4: AUPRC24=0.857 AUROC24=0.992 hits@1FA/mo=1/1 (286s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00022 s0: AUPRC24=0.211 AUROC24=0.794 hits@1FA/mo=0/3 (270s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00022 s1: AUPRC24=0.330 AUROC24=0.893 hits@1FA/mo=0/3 (271s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00022 s2: AUPRC24=0.830 AUROC24=0.983 hits@1FA/mo=0/3 (269s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00022 s3: AUPRC24=0.464 AUROC24=0.935 hits@1FA/mo=0/3 (289s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00022 s4: AUPRC24=0.440 AUROC24=0.930 hits@1FA/mo=0/3 (267s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (931s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00023 s1: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (921s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00023 s2: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (933s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00023 s3: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (853s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00023 s4: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (857s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00024 s0: AUPRC24=0.553 AUROC24=0.560 hits@1FA/mo=6/17 (887s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00024 s1: AUPRC24=0.669 AUROC24=0.692 hits@1FA/mo=7/17 (889s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00024 s2: AUPRC24=0.571 AUROC24=0.601 hits@1FA/mo=0/17 (898s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00024 s3: AUPRC24=0.391 AUROC24=0.429 hits@1FA/mo=1/17 (884s, 128,775 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+PIPS-tuned WELL-00024 s4: AUPRC24=0.648 AUROC24=0.678 hits@1FA/mo=9/17 (888s, 128,775 params, mps)
+            auprc_24h  auroc_24h  auprc_6h  events    params   secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                         
+PIPS-tuned      0.596      0.746     0.434    24.0  128775.0  623.9             0.25         0.283         0.6

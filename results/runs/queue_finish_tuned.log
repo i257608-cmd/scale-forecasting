@@ -1,0 +1,240 @@
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/train/trainer.py:131: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /Users/runner/work/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:214.)
+  return x, torch.from_numpy(self.d.phi(ww)).to(DEVICE)
+  B5-tuned WELL-00001 s0: AUPRC24=0.990 AUROC24=0.999 hits@1FA/mo=1/1 (67s, 60,358 params, mps)
+  B6-tuned WELL-00001 s0: AUPRC24=0.991 AUROC24=0.999 hits@1FA/mo=0/1 (301s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B7-tuned WELL-00001 s0: AUPRC24=0.998 AUROC24=1.000 hits@1FA/mo=1/1 (234s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B8-tuned WELL-00001 s0: AUPRC24=0.124 AUROC24=0.344 hits@1FA/mo=0/1 (793s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ B8i-tuned WELL-00001 s0: AUPRC24=0.476 AUROC24=0.940 hits@1FA/mo=0/1 (69s, 155,142 params, mps)
+  B3-tuned WELL-00006 s0: AUPRC24=0.985 AUROC24=0.992 hits@1FA/mo=0/2 (152s, 68,230 params, mps)
+  B4-tuned WELL-00006 s0: AUPRC24=1.000 AUROC24=1.000 hits@1FA/mo=1/2 (313s, 51,590 params, mps)
+  B5-tuned WELL-00006 s0: AUPRC24=0.937 AUROC24=0.973 hits@1FA/mo=0/2 (74s, 60,358 params, mps)
+  B6-tuned WELL-00006 s0: AUPRC24=0.998 AUROC24=0.999 hits@1FA/mo=1/2 (332s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B7-tuned WELL-00006 s0: AUPRC24=0.992 AUROC24=0.995 hits@1FA/mo=2/2 (122s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B8-tuned WELL-00006 s0: AUPRC24=0.992 AUROC24=0.995 hits@1FA/mo=1/2 (232s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ B8i-tuned WELL-00006 s0: AUPRC24=0.999 AUROC24=1.000 hits@1FA/mo=1/2 (38s, 155,142 params, mps)
+  B3-tuned WELL-00021 s0: AUPRC24=0.451 AUROC24=0.773 hits@1FA/mo=0/1 (111s, 68,230 params, mps)
+  B4-tuned WELL-00021 s0: AUPRC24=0.714 AUROC24=0.960 hits@1FA/mo=1/1 (307s, 51,590 params, mps)
+  B5-tuned WELL-00021 s0: AUPRC24=0.508 AUROC24=0.865 hits@1FA/mo=1/1 (81s, 60,358 params, mps)
+  B6-tuned WELL-00021 s0: AUPRC24=0.753 AUROC24=0.985 hits@1FA/mo=1/1 (110s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B7-tuned WELL-00021 s0: AUPRC24=0.570 AUROC24=0.900 hits@1FA/mo=1/1 (127s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B8-tuned WELL-00021 s0: AUPRC24=0.725 AUROC24=0.987 hits@1FA/mo=1/1 (437s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ B8i-tuned WELL-00021 s0: AUPRC24=0.874 AUROC24=0.992 hits@1FA/mo=0/1 (53s, 155,142 params, mps)
+  B3-tuned WELL-00022 s0: AUPRC24=0.574 AUROC24=0.953 hits@1FA/mo=0/3 (149s, 68,230 params, mps)
+  B4-tuned WELL-00022 s0: AUPRC24=0.327 AUROC24=0.891 hits@1FA/mo=0/3 (309s, 51,590 params, mps)
+  B5-tuned WELL-00022 s0: AUPRC24=0.235 AUROC24=0.826 hits@1FA/mo=0/3 (52s, 60,358 params, mps)
+  B6-tuned WELL-00022 s0: AUPRC24=0.182 AUROC24=0.747 hits@1FA/mo=0/3 (95s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B7-tuned WELL-00022 s0: AUPRC24=0.228 AUROC24=0.766 hits@1FA/mo=0/3 (235s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B8-tuned WELL-00022 s0: AUPRC24=0.347 AUROC24=0.901 hits@1FA/mo=0/3 (415s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ B8i-tuned WELL-00022 s0: AUPRC24=0.267 AUROC24=0.851 hits@1FA/mo=0/3 (34s, 155,142 params, mps)
+  B3-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (119s, 68,230 params, mps)
+  B4-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (309s, 51,590 params, mps)
+  B5-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (48s, 60,358 params, mps)
+  B6-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (344s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B7-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (258s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B8-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (825s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ B8i-tuned WELL-00023 s0: AUPRC24=nan AUROC24=nan hits@1FA/mo=0/0 (37s, 155,142 params, mps)
+  B3-tuned WELL-00024 s0: AUPRC24=0.869 AUROC24=0.866 hits@1FA/mo=2/17 (120s, 68,230 params, mps)
+  B4-tuned WELL-00024 s0: AUPRC24=0.955 AUROC24=0.978 hits@1FA/mo=14/17 (364s, 51,590 params, mps)
+  B5-tuned WELL-00024 s0: AUPRC24=0.774 AUROC24=0.821 hits@1FA/mo=0/17 (61s, 60,358 params, mps)
+  B6-tuned WELL-00024 s0: AUPRC24=0.885 AUROC24=0.968 hits@1FA/mo=1/17 (121s, 100,486 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:98: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B7-tuned WELL-00024 s0: AUPRC24=0.972 AUROC24=0.988 hits@1FA/mo=15/17 (157s, 107,654 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:151: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+  B8-tuned WELL-00024 s0: AUPRC24=0.891 AUROC24=0.907 hits@1FA/mo=14/17 (872s, 113,926 params, mps)
+/Users/haseeb/Desktop/Masters in AI/Petroleum and gas research/scale-forecasting/src/models/seq.py:118: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  self.enc = nn.TransformerEncoder(layer, num_layers=2)
+ B8i-tuned WELL-00024 s0: AUPRC24=0.883 AUROC24=0.892 hits@1FA/mo=10/17 (54s, 155,142 params, mps)
+           auprc_24h  auroc_24h  auprc_6h  events    params     secs  recall@fa0.0333  recall@fa0.1  recall@fa1
+model                                                                                                          
+B3-tuned       0.720      0.896     0.389    23.0   68230.0  130.200            0.087         0.130       0.826
+B4-tuned       0.749      0.957     0.466    23.0   51590.0  320.400            0.696         0.696       0.913
+B5-tuned       0.689      0.897     0.437    24.0   60358.0   63.833            0.083         0.083       0.208
+B6-tuned       0.762      0.940     0.482    24.0  100486.0  217.167            0.125         0.125       0.208
+B7-tuned       0.752      0.930     0.447    24.0  107654.0  188.833            0.792         0.792       0.833
+B8-tuned       0.616      0.827     0.584    24.0  113926.0  595.667            0.667         0.708       0.792
+B8i-tuned      0.700      0.935     0.522    24.0  155142.0   47.500            0.458         0.625       0.750
+                   auprc_1h  auroc_1h  auprc_3h  auroc_3h  auprc_6h  auroc_6h  auprc_12h  auroc_12h  auprc_24h  auroc_24h  auprc_72h  auroc_72h  brier_24h  ece_24h  c_index  events  recall@fa0.0333  recall@fa0.1  recall@fa1  pooled_auprc_24h  pooled_lo  pooled_hi
+model                                                                                                                                                                                                                                                                  
+B0                    0.022     0.896     0.072     0.881     0.173     0.858      0.409      0.829      0.533      0.828      0.802      0.843      0.614    0.658    0.819      24            0.000         0.000       0.250             0.218      0.110      0.471
+B1                    0.015     0.706     0.040     0.685     0.276     0.807      0.417      0.858      0.280      0.406      0.422      0.298      0.380    0.529    0.434      24            0.042         0.042       0.125             0.107      0.062      0.179
+B1-tuned              0.015     0.706     0.040     0.685     0.276     0.807      0.417      0.858      0.280      0.406      0.422      0.300      0.380    0.529    0.434      24            0.042         0.042       0.125             0.107      0.064      0.182
+B2                    0.113     0.899     0.173     0.901     0.349     0.910      0.521      0.844      0.679      0.892      0.921      0.923      0.206    0.226    0.811      24            0.625         0.625       0.833             0.279      0.162      0.534
+B2-SI                 0.100     0.893     0.154     0.921     0.334     0.883      0.519      0.813      0.685      0.898      0.920      0.925      0.201    0.223    0.812      24            0.625         0.625       0.833             0.326      0.197      0.557
+B2-tuned              0.119     0.849     0.208     0.780     0.381     0.838      0.562      0.869      0.662      0.893      0.899      0.901      0.171    0.218    0.786      24            0.708         0.750       0.750             0.468      0.315      0.728
+B3                    0.305     0.971     0.384     0.954     0.506     0.952      0.632      0.939      0.811      0.945      0.912      0.927      0.128    0.161    0.901      24            0.667         0.708       0.875             0.454      0.226      0.666
+B3-tuned              0.251     0.961     0.384     0.933     0.474     0.938      0.637      0.898      0.776      0.917      0.939      0.931      0.139    0.197    0.866      24            0.125         0.167       0.833             0.382      0.220      0.615
+B4                    0.292     0.953     0.423     0.949     0.529     0.955      0.560      0.886      0.694      0.862      0.781      0.842      0.139    0.191    0.878      24            0.708         0.750       0.875             0.422      0.214      0.643
+B4-tuned              0.275     0.944     0.422     0.946     0.528     0.950      0.569      0.920      0.668      0.902      0.834      0.896      0.143    0.204    0.879      24            0.708         0.708       0.917             0.397      0.205      0.617
+B5                    0.415     0.939     0.495     0.915     0.586     0.945      0.628      0.907      0.786      0.943      0.923      0.962      0.182    0.251    0.851      24            0.083         0.167       0.333             0.322      0.118      0.524
+B5-tuned              0.366     0.852     0.344     0.866     0.437     0.903      0.518      0.886      0.689      0.897      0.919      0.929      0.163    0.215    0.818      24            0.083         0.083       0.208             0.213      0.095      0.416
+B6                    0.214     0.972     0.389     0.972     0.448     0.957      0.650      0.939      0.743      0.951      0.790      0.894      0.128    0.176    0.877      24            0.708         0.708       0.750             0.430      0.219      0.659
+B6-tuned              0.310     0.956     0.381     0.949     0.482     0.941      0.652      0.927      0.762      0.940      0.910      0.939      0.144    0.189    0.878      24            0.125         0.125       0.208             0.358      0.157      0.582
+B7                    0.300     0.961     0.493     0.954     0.688     0.945      0.624      0.942      0.735      0.956      0.971      0.974      0.160    0.225    0.896      24            0.417         0.708       0.917             0.346      0.177      0.550
+B7-tuned              0.464     0.920     0.461     0.906     0.447     0.914      0.630      0.916      0.752      0.930      0.913      0.927      0.088    0.126    0.869      24            0.792         0.792       0.833             0.513      0.339      0.728
+B8                    0.158     0.984     0.331     0.969     0.566     0.891      0.484      0.785      0.613      0.813      0.801      0.816      0.103    0.137    0.758      24            0.833         0.833       0.833             0.753      0.587      0.893
+B8-tuned              0.466     0.982     0.588     0.977     0.584     0.947      0.615      0.939      0.616      0.827      0.797      0.803      0.142    0.198    0.829      24            0.667         0.708       0.792             0.382      0.174      0.821
+B8i                   0.417     0.976     0.501     0.972     0.513     0.892      0.417      0.785      0.678      0.907      0.698      0.758      0.111    0.134    0.808      24            0.083         0.125       0.333             0.461      0.243      0.698
+B8i-tuned             0.375     0.975     0.485     0.967     0.522     0.932      0.562      0.888      0.700      0.935      0.733      0.808      0.135    0.157    0.814      24            0.458         0.625       0.750             0.466      0.264      0.737
+B9                    0.008     0.562     0.027     0.515     0.065     0.451      0.135      0.410      0.262      0.365      0.512      0.370      0.837    0.849    0.477      24            0.000         0.000       0.250             0.114      0.067      0.230
+B9-tuned              0.006     0.516     0.020     0.470     0.050     0.396      0.106      0.359      0.211      0.313      0.479      0.308      0.829    0.848    0.430      24            0.000         0.000       0.167             0.108      0.061      0.198
+PIPS                  0.235     0.961     0.357     0.959     0.414     0.914      0.477      0.780      0.697      0.780      0.819      0.821      0.183    0.234    0.726      24            0.250         0.292       0.833             0.538      0.362      0.797
+PIPS-SI               0.118     0.970     0.338     0.962     0.407     0.900      0.400      0.760      0.696      0.794      0.846      0.854      0.151    0.191    0.816      24            0.417         0.458       0.875             0.603      0.411      0.805
+PIPS-SI-single        0.057     0.934     0.174     0.899     0.251     0.833      0.341      0.744      0.678      0.757      0.878      0.916      0.186    0.232    0.723      24            0.208         0.208       0.542             0.452      0.264      0.696
+PIPS-mono             0.063     0.944     0.227     0.933     0.351     0.906      0.310      0.784      0.664      0.771      0.810      0.811      0.197    0.243    0.780      24            0.417         0.542       0.792             0.552      0.353      0.741
+PIPS-nosyn            0.052     0.908     0.152     0.883     0.344     0.884      0.384      0.826      0.631      0.910      0.900      0.948      0.227    0.278    0.782      24            0.375         0.458       0.667             0.353      0.156      0.583
+PIPS-patch            0.086     0.960     0.211     0.954     0.332     0.921      0.387      0.761      0.681      0.780      0.811      0.861      0.140    0.171    0.736      24            0.292         0.292       0.792             0.591      0.401      0.811
+PIPS-phys             0.091     0.888     0.346     0.898     0.394     0.819      0.450      0.706      0.622      0.715      0.763      0.760      0.204    0.287    0.725      24            0.375         0.375       0.833             0.466      0.293      0.683
+PIPS-single           0.131     0.946     0.252     0.944     0.299     0.898      0.359      0.787      0.726      0.790      0.752      0.746      0.180    0.230    0.809      24            0.500         0.583       0.708             0.555      0.356      0.770
+PIPS-surv             0.264     0.973     0.411     0.927     0.401     0.861      0.416      0.779      0.703      0.848      0.915      0.954      0.094    0.130    0.777      24            0.750         0.750       0.833             0.819      0.665      0.933
+PIPS-tuned            0.130     0.965     0.403     0.965     0.455     0.886      0.382      0.679      0.599      0.725      0.848      0.851      0.194    0.285    0.783      24            0.250         0.417       0.750             0.560      0.354      0.741
+PIPS-tuned-single     0.103     0.946     0.212     0.944     0.369     0.899      0.323      0.701      0.547      0.749      0.774      0.840      0.252    0.303    0.749      24            0.333         0.417       0.625             0.315      0.158      0.670
+                model    strategy  hits  events  false_alarms  neg_days  early  recall  fa_per_day  lead_med_h  lead_iqr_h
+0                  B0       calib     0      24            31   247.722      0   0.000       0.125         NaN         NaN
+1                  B0  calib-self     0      24            20   247.722      0   0.000       0.081         NaN         NaN
+2                  B0         oof     0      24             8   247.722      0   0.000       0.032         NaN         NaN
+3                  B1       calib     0      24             9   247.722      4   0.000       0.036         NaN         NaN
+4                  B1  calib-self     0      24             6   247.722      0   0.000       0.024         NaN         NaN
+5                  B1         oof     0      24             0   247.722      0   0.000       0.000         NaN         NaN
+6            B1-tuned       calib     0      24             9   247.722      4   0.000       0.036         NaN         NaN
+7            B1-tuned  calib-self     0      24             6   247.722      0   0.000       0.024         NaN         NaN
+8            B1-tuned         oof     0      24             0   247.722      0   0.000       0.000         NaN         NaN
+9                  B2       calib     1      24            83   247.722      0   0.042       0.335      14.183       0.000
+10                 B2  calib-self     4      24            65   247.722      2   0.167       0.262      31.475      29.204
+11                 B2         oof     6      24           107   247.722      1   0.250       0.432       3.708       3.971
+12              B2-SI       calib     1      24            93   247.722      0   0.042       0.375      14.183       0.000
+13              B2-SI  calib-self    10      24            39   247.722      0   0.417       0.157       6.708      18.992
+14              B2-SI         oof     1      24            70   247.722      0   0.042       0.283       4.133       0.000
+15           B2-tuned       calib     9      24           152   247.722      0   0.375       0.614       2.833       8.967
+16           B2-tuned  calib-self     6      24            65   247.722      4   0.250       0.262       2.833      23.204
+17           B2-tuned         oof     3      24            18   247.722      0   0.125       0.073       9.200       6.925
+18                 B3       calib    19      24            74   247.722      4   0.792       0.299       2.633       9.817
+19                 B3  calib-self     4      24            23   247.722      3   0.167       0.093      63.892      26.138
+20           B3-tuned       calib    18      24            79   247.722      5   0.750       0.319       3.642      11.067
+21           B3-tuned  calib-self     2      24            21   247.722      2   0.083       0.085       3.033       0.750
+22                 B4       calib    12      24            44   247.722      3   0.500       0.178       5.250      20.121
+23                 B4  calib-self    16      24            13   247.722      1   0.667       0.052       1.808       9.100
+24           B4-tuned       calib    17      24            64   247.722      4   0.708       0.258       3.383      15.117
+25           B4-tuned  calib-self    17      24            13   247.722      2   0.708       0.052       2.883       5.850
+26                 B5       calib     4      24            38   247.722      2   0.167       0.153      13.142       5.954
+27                 B5  calib-self     5      24            18   247.722      0   0.208       0.073      22.400      20.867
+28           B5-tuned       calib     3      24            83   247.722      3   0.125       0.335       1.717       5.700
+29           B5-tuned  calib-self     5      24             7   247.722      2   0.208       0.028      33.733      34.850
+30                 B6       calib     2      24           112   247.722      0   0.083       0.452      21.583       1.233
+31                 B6  calib-self    11      24            20   247.722      1   0.458       0.081       1.617       3.483
+32           B6-tuned       calib     2      24            76   247.722      0   0.083       0.307      18.917       0.433
+33           B6-tuned  calib-self     7      24            18   247.722      4   0.292       0.073      11.467      15.100
+34                 B7       calib     5      24            39   247.722      4   0.208       0.157      15.233       9.650
+35                 B7  calib-self    13      24            13   247.722      1   0.542       0.052       5.300      20.650
+36           B7-tuned       calib    10      24            19   247.722      2   0.417       0.077       4.083       9.788
+37           B7-tuned  calib-self    16      24            11   247.722      2   0.667       0.044       4.125       4.363
+38                 B8       calib    19      24           103   247.722      3   0.792       0.416      10.950       5.400
+39                 B8  calib-self     3      24            11   247.722      0   0.125       0.044       1.750       7.825
+40           B8-tuned       calib    15      24            82   247.722      3   0.625       0.331       4.833       6.492
+41           B8-tuned  calib-self    11      24            24   247.722      1   0.458       0.097       2.133       2.292
+42                B8i       calib    11      24            61   247.722      1   0.458       0.246       2.833       7.267
+43                B8i  calib-self    14      24            51   247.722      0   0.583       0.206       1.942       5.304
+44          B8i-tuned       calib    15      24            15   247.722      1   0.625       0.061       4.833       5.625
+45          B8i-tuned  calib-self    14      24            26   247.722      1   0.583       0.105       4.692       4.604
+46                 B9       calib     0      24             0   247.722      0   0.000       0.000         NaN         NaN
+47                 B9  calib-self     0      24            10   247.722      0   0.000       0.040         NaN         NaN
+48           B9-tuned       calib     0      24             0   247.722      0   0.000       0.000         NaN         NaN
+49           B9-tuned  calib-self     0      24             2   247.722      0   0.000       0.008         NaN         NaN
+50               PIPS       calib    15      24            65   247.722      1   0.625       0.262       4.833       8.225
+51               PIPS  calib-self     9      24            47   247.722      6   0.375       0.190       4.150      37.133
+52            PIPS-SI       calib    15      24            54   247.722      1   0.625       0.218       4.833       7.950
+53            PIPS-SI  calib-self     6      24            45   247.722      6   0.250       0.182      18.150      33.429
+54     PIPS-SI-single       calib    14      24           103   247.722      1   0.583       0.416       3.808       8.037
+55     PIPS-SI-single  calib-self     8      24            30   247.722      6   0.333       0.121       5.067      40.217
+56          PIPS-mono       calib    17      24           109   247.722      2   0.708       0.440       7.450       6.967
+57          PIPS-mono  calib-self     4      24            46   247.722      7   0.167       0.186       3.900       1.833
+58         PIPS-nosyn       calib     1      24            99   247.722      0   0.042       0.400      19.650       0.000
+59         PIPS-nosyn  calib-self     7      24             2   247.722      2   0.292       0.008       5.550       4.808
+60         PIPS-patch       calib    14      24            71   247.722      0   0.583       0.287       4.025       6.708
+61         PIPS-patch  calib-self     7      24            69   247.722      5   0.292       0.279       3.383      15.950
+62          PIPS-phys       calib    16      24            36   247.722      1   0.667       0.145       4.500       7.883
+63          PIPS-phys  calib-self     7      24            19   247.722      6   0.292       0.077       2.467      11.775
+64        PIPS-single       calib    16      24           127   247.722      2   0.667       0.513       6.225       6.958
+65        PIPS-single  calib-self     8      24            73   247.722      8   0.333       0.295       5.317      36.342
+66          PIPS-surv       calib    11      24            63   247.722      2   0.458       0.254       5.167       4.042
+67          PIPS-surv  calib-self     1      24            43   247.722      4   0.042       0.174       9.150       0.000
+68         PIPS-tuned       calib    14      24            49   247.722      1   0.583       0.198       4.575       5.658
+69         PIPS-tuned  calib-self     6      24            27   247.722      7   0.250       0.109      35.600      51.338
+70  PIPS-tuned-single       calib    11      24            29   247.722      1   0.458       0.117       4.700       4.958
+71  PIPS-tuned-single  calib-self     9      24            42   247.722      7   0.375       0.170       4.050      31.750
+             auprc_1h  auroc_1h  auprc_3h  auroc_3h  auprc_6h  auroc_6h  auprc_12h  auroc_12h  auprc_24h  auroc_24h  auprc_72h  auroc_72h  brier_24h  ece_24h  c_index  events  recall@fa0.0333  recall@fa0.1  recall@fa1  pooled_auprc_24h  pooled_lo  pooled_hi
+model                                                                                                                                                                                                                                                            
+B0              0.017     0.794     0.047     0.783     0.081     0.751      0.125      0.691      0.194      0.704      0.450      0.727      0.770    0.797    0.696      20             0.00           0.0         1.0             0.194      0.092      0.484
+B1              0.018     0.738     0.049     0.740     0.118     0.806      0.423      0.841      0.169      0.668      0.336      0.530      0.364    0.365    0.575      20             0.00           0.0         1.0             0.169      0.093      0.315
+B2              0.112     0.898     0.125     0.764     0.189     0.816      0.283      0.735      0.227      0.693      0.763      0.895      0.343    0.350    0.677      20             0.00           0.2         1.0             0.227      0.114      0.493
+B3              0.140     0.871     0.212     0.870     0.286     0.854      0.347      0.832      0.475      0.834      0.727      0.892      0.171    0.280    0.853      20             0.20           0.2         1.0             0.475      0.302      0.631
+B4              0.030     0.641     0.102     0.705     0.170     0.702      0.196      0.700      0.358      0.690      0.314      0.471      0.225    0.355    0.748      20             0.20           0.5         1.0             0.358      0.151      0.536
+B5              0.216     0.935     0.488     0.936     0.406     0.882      0.176      0.763      0.339      0.776      0.223      0.285      0.259    0.402    0.805      20             0.00           0.0         1.0             0.339      0.206      0.537
+B6              0.014     0.763     0.036     0.742     0.061     0.690      0.124      0.712      0.185      0.702      0.283      0.475      0.332    0.383    0.718      20             0.00           0.0         1.0             0.185      0.078      0.489
+B7              0.015     0.769     0.054     0.798     0.107     0.752      0.267      0.750      0.166      0.683      0.294      0.384      0.294    0.434    0.739      20             0.00           0.0         1.0             0.166      0.096      0.296
+B8              0.207     0.933     0.395     0.937     0.196     0.904      0.437      0.917      0.605      0.922      0.602      0.864      0.316    0.417    0.868      20             0.45           0.7         1.0             0.605      0.403      0.917
+B8i             0.025     0.867     0.065     0.866     0.098     0.807      0.164      0.797      0.264      0.822      0.494      0.788      0.253    0.318    0.789      20             0.00           0.0         1.0             0.264      0.115      0.643
+B9              0.005     0.421     0.016     0.424     0.034     0.432      0.065      0.442      0.097      0.446      0.250      0.369      0.610    0.677    0.351      20             0.00           0.0         1.0             0.097      0.052      0.188
+PIPS            0.056     0.904     0.082     0.878     0.127     0.839      0.219      0.863      0.278      0.841      0.570      0.828      0.312    0.410    0.777      20             0.00           0.0         1.0             0.278      0.124      0.757
+PIPS-single     0.063     0.888     0.097     0.866     0.091     0.802      0.159      0.799      0.214      0.779      0.457      0.760      0.358    0.416    0.699      20             0.00           0.0         1.0             0.214      0.104      0.641
+          model    strategy  hits  events  false_alarms  neg_days  early  recall  fa_per_day  lead_med_h  lead_iqr_h
+0            B0       calib     0      20            17    80.375      0    0.00       0.212         NaN         NaN
+1            B0  calib-self     0      20            21    80.375      0    0.00       0.261         NaN         NaN
+2            B0         oof     0      20            15    80.375      0    0.00       0.187         NaN         NaN
+3            B1       calib    17      20           140    80.375      5    0.85       1.742      10.950       4.633
+4            B1  calib-self     0      20            19    80.375      0    0.00       0.236         NaN         NaN
+5            B1         oof    17      20           140    80.375      5    0.85       1.742      10.950       4.633
+6            B2       calib     0      20             1    80.375      0    0.00       0.012         NaN         NaN
+7            B2  calib-self     2      20            14    80.375      3    0.10       0.174       3.975       2.025
+8            B2         oof    15      20           229    80.375      5    0.75       2.849       6.550       6.983
+9            B3       calib     4      20             1    80.375      0    0.20       0.012       7.625       4.558
+10           B3  calib-self     3      20             9    80.375      4    0.15       0.112      98.733      18.583
+11           B4       calib     1      20             1    80.375      0    0.05       0.012       0.033       0.000
+12           B4  calib-self     9      20             4    80.375      5    0.45       0.050       6.700      52.850
+13           B5       calib     0      20             3    80.375      0    0.00       0.037         NaN         NaN
+14           B5  calib-self     0      20             5    80.375      1    0.00       0.062         NaN         NaN
+15           B6       calib     0      20            31    80.375      0    0.00       0.386         NaN         NaN
+16           B6  calib-self     0      20             6    80.375      0    0.00       0.075         NaN         NaN
+17           B7       calib     0      20             0    80.375      0    0.00       0.000         NaN         NaN
+18           B7  calib-self     0      20             0    80.375      0    0.00       0.000         NaN         NaN
+19           B8       calib    14      20             6    80.375      0    0.70       0.075       3.917       5.158
+20           B8  calib-self     1      20            39    80.375      3    0.05       0.485      13.133       0.000
+21          B8i       calib     0      20            23    80.375      0    0.00       0.286         NaN         NaN
+22          B8i  calib-self     0      20            11    80.375      0    0.00       0.137         NaN         NaN
+23           B9       calib     0      20             0    80.375      0    0.00       0.000         NaN         NaN
+24           B9  calib-self     0      20             4    80.375      0    0.00       0.050         NaN         NaN
+25         PIPS       calib     4      20            82    80.375      0    0.20       1.020       1.775       2.021
+26         PIPS  calib-self     4      20            30    80.375      6    0.20       0.373      20.300      19.371
+27  PIPS-single       calib    11      20           121    80.375      0    0.55       1.505       4.000       4.950
+28  PIPS-single  calib-self     0      20             0    80.375      5    0.00       0.000         NaN         NaN

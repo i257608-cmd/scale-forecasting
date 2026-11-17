@@ -1,0 +1,51 @@
+\section{Discussion}\label{sec:discussion}
+
+\textbf{Why the approach works, and where it does not.} The decisive step is the formulation:
+self-referencing the restriction to each instance's own baseline turns wells of very different pressure
+into one learnable problem, and the survival objective uses the many censored windows instead of
+mislabelling them. Every learned forecaster built on this formulation outperforms the physics rule and the
+anomaly detector. Within the deep models, the recurrent architectures rank and alarm best: the informative
+signal is a slow trend in two or three channels, which a recurrent state integrates directly, whereas a
+patch Transformer splits it into 16-minute tokens and must re-assemble it through attention from only 24
+positive events. The physics branch, the mask-aware channel-independent encoder and the ensemble give
+PI-PatchSurv properties that matter in operation, namely calibrated intervals, an accurate time-to-event
+and robustness to failed sensors, but not a better ranking.
+
+\textbf{Practical implications.} With a threshold fixed on other wells, the best forecasters warn of
+roughly two thirds of the events a median of 2--4~h before the restriction reaches $+5\,\%$, at 1.2--1.6
+false alarms per well-month, and they raise no alarm on normal operation or on the quick-restriction
+look-alike. Hours of warning are enough to schedule a choke cleaning within a shift but not to plan an
+inhibitor campaign; longer warnings require longer real histories than 3W provides. Self-referencing the
+score to each well's own recent level is a simple, model-agnostic step that roughly doubles deployed recall
+for several models and should be part of any deployment.
+
+\textbf{Strengths.} The study evaluates on wells excluded from training with all thresholds and
+hyper-parameters chosen on separate calibration wells; it compares twelve models with fixed and tuned
+hyper-parameters and several seeds; it reports calibration, intervals, event-level and confounder-level
+false alarms, robustness and a dataset-version generalisation test; and every number is regenerated from
+saved predictions by published code.
+
+\textbf{Failure cases.} (i) On well 24, PI-PatchSurv's score drifts within long instances and produces
+false alarms under the self-referenced threshold. (ii) Hydrate plugs downstream of the choke (classes 8 and
+9) raise the upstream pressure slowly and are confused with scale; separating them needs the missing
+downstream sensors or temperature dynamics. (iii) Wells 6 and 21 contribute few events and are often
+missed. (iv) The autoencoder detector does not forecast at all.
+
+\textbf{Threats to validity.} \emph{Internal:} only 24 real events are available and 17 come from one well,
+so fold-level variance is large and the deep models cannot be separated statistically; ablations other than
+three components use a single seed. \emph{Construct:} $\RI$ is a proxy based on one pressure and does not
+control for changes of the choke opening, which is missing in most instances; the $+5\,\%$ level is a
+modelling choice. \emph{External:} 3W covers offshore wells of one operator with short recordings;
+results may differ for onshore gas wells or other scale chemistries. \emph{Conclusion validity:}
+early stopping and tuning rely on a single small calibration well per fold, which makes both noisy.
+
+\textbf{Were the research gap and objectives met?} The first gap, the absence of timed forecasting of
+scaling, is addressed: calibrated multi-horizon forecasts on unseen wells are shown to be feasible, but the
+lead time is hours, not the days targeted in the proposal, because of the data. The second gap, the lack of
+fusion of chemistry and sensors, is addressed only partly: physical indicators are fused with learned
+features and help, while the chemistry prior from public brines helps little. The third gap, the absence of
+unseen-well evaluation, is fully addressed. The fourth gap, rare events and missing uncertainty, is
+addressed by censor-aware training, synthetic data and conformal intervals with near-nominal coverage. The
+objective of a proposed model that outperforms all baselines was not achieved; the evidence instead
+supports the formulation and the evaluation protocol, with simple recurrent forecasters as the strongest
+rankers.

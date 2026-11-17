@@ -1,0 +1,2 @@
+model,auprc_24h,auroc_24h,auprc_6h,hits,events,false_alarms,neg_days,lead_med_h,recall,recall@fa0.0333,recall@fa0.1,recall@fa1,fa_per_day
+B2_gbdt-SI,0.6848,0.8976,0.3336,1,24,70,247.7222,4.1333,0.0417,0.625,0.625,0.8333,0.2826
