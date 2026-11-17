@@ -42,3 +42,15 @@ def test_no_well_leak_and_synthetic_train_only():
         assert {"SIMULATED_00001", "DRAWN_00001"} <= set(f["train"])
         assert not any(x.startswith(("SIMULATED", "DRAWN")) for x in f["calib"] + f["test"])
         assert len(f["train"]) + len(f["calib"]) + len(f["test"]) == len(idx)  # nothing dropped
+
+
+def test_v1v2_fold_tests_only_new_wells_and_keeps_synthetic_in_train():
+    from src.data.splits import V1_WELLS, v1v2_fold
+    idx = pd.concat([_toy(), pd.DataFrame([dict(file="WELL-00030_a", source="real", well="WELL-00030",
+                                                label=7, event=True)])])
+    (f,) = v1v2_fold(idx, calib_well="WELL-00002")
+    well = idx.set_index("file").well
+    assert not set(f["train"]) & set(f["test"]) and not set(f["calib"]) & set(f["test"])
+    assert set(well[f["test"]]) == {"WELL-00030"}                     # only wells new in v2
+    assert set(well[f["train"] + f["calib"]].dropna()) <= V1_WELLS
+    assert {"SIMULATED_00001", "DRAWN_00001"} <= set(f["train"])

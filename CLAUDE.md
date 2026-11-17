@@ -71,7 +71,7 @@ B9 LSTM-autoencoder detector (detection reference, Lopes 2025 / Aranha 2025).
 - E2 ablation: −physics branch, −L_mono, −survival head (per-horizon classifiers), −synthetic data,
   −patching, −ensemble/conformal
 - E3 robustness: Gaussian noise 1–5 %, sensor dropout 1–3, injected frozen segments, resampling 30 s–5 min
-- E4 generalisation: LOWO; train on 21 v1 wells → test on 21 new v2 wells; false alarms on class 6
+- E4 generalisation: LOWO; train on 18 v1 wells → test on 24 new v2 wells (corrected 2026-11-15; was "21 → 21"); false alarms on class 6
 - E5 horizon sensitivity
 - Stats: Friedman–Nemenyi, Wilcoxon signed-rank, Holm correction, bootstrap 95 % CI
 
@@ -194,6 +194,39 @@ G3 no unseen-well evaluation · G4 rare events, private data, no uncertainty.
   - Ablations (single seed, vs PIPS seed 0): ensemble +0.057 (sig.); −physics −0.10 AUROC;
     L_mono and survival head ≈ neutral on AUPRC; patch 8 better pooled, worse deployed.
   - Not done: B7, B9, SI prior, resampling test, −synthetic ablation, Optuna, v1→v2 test.
+
+- **Step 7 (done 2026-11-17): complete the Phase 2 methodology** (student: "complete phase 2 as
+  it is", no deadline cuts). Run order: `scripts/phase2_queue.sh`, log `results/runs/queue.log`.
+  - **Bug found + fixed (affects all Step 5/6 sequence results):** synthetic file names repeat across
+    class folders (885/2,228 instances, e.g. DRAWN_00001 = class 1 AND class 7). `FoldData` keyed
+    arrays by file name -> ~half of synthetic training windows got another class's signal (incl. the
+    10 hand-drawn scaling drawings). Now keyed `label/file` (`trainer.ikey`, regression test). Real
+    files unique -> test/calib unaffected; tabular B0-B2 unaffected. ALL sequence models re-run.
+  - New: B7 Transformer-LSTM, B8 PatchTST, B8i iTransformer (`seq.py`), B9 LSTM-AE detector
+    (`experiments/b9_lstm_ae.py`), `-nosyn` ablation, SI prior (`src/features/si.py`: USGS PWGD v3.0
+    GoM-offshore brines via USGS ArcGIS service, v2.3 blocked by ScienceBase bot check; PHREEQC Pitzer
+    SI calcite/barite on T x P grid -> `-SI` variants), E3 resampling 30 s-5 min
+    (`experiments/e3_resampling.py`), E4 v1 -> v2 (`splits.v1v2_fold`, `--split v1v2`), E1 Optuna
+    equal budget 20 trials/fold/model on calib-well loss (`experiments/e1_tune.py`, `-tuned` variants).
+  - **Correction:** 3W v1.1.1 has 18 real wells, not 21. Mapped by time: v1 wells 1-16 keep IDs,
+    v1 17 -> v2 20, v1 18 -> v2 21. v1 -> v2 split: train 4 real scaling events (wells 1, 6, 21),
+    test wells 22-24 (20 events), calib = well 6.
+  - Tuning split: B1-B4 on the M4; B5-B9 + PIPS on Kaggle 2 x T4 (`scripts/kaggle/tune.py`, logs in
+    `results/tuning/kaggle_logs/`). "-patching" = `PIPS-nopatch` (patch 1) with gradient accumulation
+    (micro-batch 32, effective 256; patch 1 OOMs on MPS at 256).
+  - Added to `analyze.py`: integrated Brier, skill vs B0, event precision, ΔT = |τ̂ − τ|, Nemenyi CD.
+  - **Final results (calib-self deployed, 24 events):** B4-tuned GRU 17/24 at 0.052 FA/well-day (≈1.6 /
+    month, lead 2.9 h); B7-tuned 16/24 at 0.044 (4.1 h); PIPS ensemble 9/24 at 0.19. Ranking: B3 LSTM
+    AUPRC@24h 0.81 (AUROC 0.95); pooled AUPRC best PIPS-surv 0.82, B8 0.75; PIPS ens. 0.70 (pooled 0.54).
+    Friedman p = 0.06; only B0/B1/B9 significantly worse after Holm. PIPS strengths: no loss with 3
+    sensors dropped (LSTM −30 %), conformal PICP 0.87, −physics costs 0.07 AUROC. SI: small, n.s. gains.
+    v1→v2: B8 best (0.61), PIPS 0.28. Tuning did not help PIPS.
+  - **Novelty (literature check 2026-11-17):** no survival / time-to-event work on 3W and no class-7
+    forecast with lead time found → framing new. Held-out-well 3W benchmark proposed in petrobras/3W
+    issue #231 (Oct 2026) → unseen-well evaluation not unique; cite and align. Architecture not claimed.
+  - Report rewritten (`docs/Phase3_Report.md`), docs + Learning_Guide updated. Mari pitch PDF
+    (`docs/Scaling_and_Liquid_Loading_Prediction.pdf`, PetroGear) and PetroGear demo (outside repo) are
+    an industry side track.
 
 ## Class feedback (from 3-minute presentation) — TODO
 that was good. 

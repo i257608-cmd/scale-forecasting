@@ -8,8 +8,8 @@ Corruptions act on the sequence input x (scaled values + masks):
   dropout n   n random sensors per window read nothing: value -> 0 (= median), mask -> 1
   frozen      one random sensor per window stuck for the last 60 min at its value 60 min ago,
               mask NOT set (a stuck transmitter the frozen-detector has not caught yet: worst case)
-Limitation (reported): the physics vector phi (rolling stats) is left clean, and the resampling
-test (30 s - 5 min) is not run because it needs the 1 Hz -> features pipeline rebuilt per rate.
+Limitation (reported): the physics vector phi (rolling stats) is left clean. The resampling test
+(30 s - 5 min) lives in experiments/e3_resampling.py (rebuilds the features per rate).
 """
 
 from __future__ import annotations

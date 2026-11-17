@@ -52,6 +52,24 @@ def make_folds(idx: pd.DataFrame, scaling_label: int = 7) -> list[dict[str, list
     return folds
 
 
+# E4 "v1 -> v2": wells already in 3W v1.1.1, in v2 well IDs. Found by locating every v1.1.1 real
+# instance (tag v1.1.1, 1,022 files) inside a v2 instance of the same label by time (1,015 located):
+# v1 wells 1-16 kept their IDs, v1 WELL-00017 -> v2 WELL-00020, v1 WELL-00018 -> v2 WELL-00021.
+# The other 24 v2 wells (17-19, 22-42) are new in v2, as the 3W v2.0.0 release notes state.
+V1_WELLS = {f"WELL-{i:05d}" for i in (*range(1, 17), 20, 21)}
+
+
+def v1v2_fold(idx: pd.DataFrame, calib_well: str = "WELL-00006") -> list[dict[str, list[str]]]:
+    """One fold: train on v1 wells, test on every real instance of the 24 wells new in v2.
+    Calibration = v1 scaling well 6 (2 events) + every 3rd v1 non-scaling well (sorted)."""
+    real = idx[idx.source == "real"]
+    v1 = sorted(set(real.well) & V1_WELLS)
+    cal = {calib_well, *[w for w in v1 if w != calib_well][::3]}
+    files = lambda wells: real[real.well.isin(wells)].file.tolist()  # noqa: E731
+    return [dict(test_well="V2-NEW", test=files(set(real.well) - V1_WELLS), calib=files(cal),
+                 train=files(set(v1) - cal) + idx[idx.source != "real"].file.tolist())]
+
+
 def quick(folds: list[dict]) -> list[dict]:
     """--quick mode (CLAUDE.md hardware note): 2 folds, the two scaling wells with most events."""
     return [f for f in folds if f["test_well"] in ("WELL-00022", "WELL-00024")]

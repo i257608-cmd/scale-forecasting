@@ -33,28 +33,33 @@ class B0Threshold:
 class PerHorizon:
     """Fit one binary classifier per horizon on windows whose label is known for that horizon."""
 
-    def __init__(self, kind: str):
+    def __init__(self, kind: str, **params):
+        # params: tuned hyper-parameters (experiments/e1_tune.py); empty = the fixed Phase 3 defaults
         self.kind, self.name, self.models = kind, {"lr": "B1_logreg", "gbdt": "B2_gbdt"}[kind], {}
+        self.params = params
 
     def _make(self, seed):
         if self.kind == "lr":
             # WHY RobustScaler: pressures are in Pa (1e6-1e7) next to 0/1 masks; median/IQR is not
             # dragged by spikes. Fitted inside the pipeline -> on training wells only.
             return make_pipeline(SimpleImputer(strategy="median"), RobustScaler(),
-                                 LogisticRegression(max_iter=2000, class_weight="balanced", C=0.1))
-        return HistGradientBoostingClassifier(max_iter=300, learning_rate=0.05, max_leaf_nodes=31,
-                                              l2_regularization=1.0, class_weight="balanced",
-                                              random_state=seed)
+                                 LogisticRegression(max_iter=2000, class_weight="balanced", C=self.params.get("C", 0.1)))
+        hp = dict(max_iter=300, learning_rate=0.05, max_leaf_nodes=31, l2_regularization=1.0) | self.params
+        return HistGradientBoostingClassifier(**hp, class_weight="balanced", random_state=seed)
 
     def fit(self, X: pd.DataFrame, y_by_h: dict, seed=0):
+        self.cols = {}
         for h, y in y_by_h.items():
             ok = y.notna().to_numpy()
-            self.models[h] = self._make(seed).fit(X[ok], y[ok].astype(int))
+            # WHY drop all-NaN columns: a sensor absent from every training well (E4 v1 -> v2: ESTADO-SDV-P,
+            # T-PDG) carries no information and crashes HistGradientBoosting's binning.
+            self.cols[h] = [c for c in X.columns if X.loc[ok, c].notna().any()]
+            self.models[h] = self._make(seed).fit(X.loc[ok, self.cols[h]], y[ok].astype(int))
         return self
 
     def predict(self, X, horizons) -> dict:
-        return {h: self.models[h].predict_proba(X)[:, 1] for h in horizons}
+        return {h: self.models[h].predict_proba(X[self.cols[h]])[:, 1] for h in horizons}
 
 
-def make(name: str):
-    return {"B0": B0Threshold, "B1": lambda: PerHorizon("lr"), "B2": lambda: PerHorizon("gbdt")}[name]()
+def make(name: str, **params):
+    return {"B0": B0Threshold, "B1": lambda: PerHorizon("lr", **params), "B2": lambda: PerHorizon("gbdt", **params)}[name]()

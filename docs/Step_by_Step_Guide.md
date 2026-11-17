@@ -13,7 +13,7 @@ python3.11 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 export PYTORCH_ENABLE_MPS_FALLBACK=1      # Apple-Silicon only: CPU fallback for missing MPS ops
-pytest -q tests                           # 12 tests, ~3 s — must pass before anything else
+pytest -q tests                           # 14 tests, ~3 s — must pass before anything else
 ```
 
 LightGBM needs the system `libomp` library on macOS. It is not required: baseline B2 uses
@@ -25,93 +25,120 @@ scikit-learn's HistGradientBoosting instead (same algorithm family).
 python src/data/download_3w.py
 ```
 
-*What it does:* sparse, shallow git checkout of only the `dataset/` folder of
-github.com/petrobras/3W at the pinned commit `826fec4` → `data/3w/dataset/<label>/*.parquet`.
-*Why pinned:* the dataset is versioned; pinning the commit makes every number in the report
-reproducible. The script checks the version (2.0.0) and the counts 1,119 real / 1,089 simulated /
-20 hand-drawn instances, and stops if they differ.
+Sparse, shallow git checkout of the `dataset/` folder of github.com/petrobras/3W at the pinned commit
+`826fec4` → `data/3w/dataset/<label>/*.parquet`. The script checks the version (2.0.0) and the counts
+1,119 real / 1,089 simulated / 20 hand-drawn, and stops if they differ.
 
 ## 2. Exploratory data analysis (optional, ≈5 min)
 
-Open `notebooks/01_EDA.ipynb` and run all cells. It lists every class-7 ("Scaling in PCK")
-instance with its well, duration and pre-onset normal time, shows sensor missingness, and
-justifies the target revision (see `docs/Approach_and_Best_Practices.md` §2). Outputs go to
-`results/tables/class7_*.csv` and `results/figures/eda_*.png`.
+Open `notebooks/01_EDA.ipynb` and run all cells (class-7 instances, wells, durations, pre-onset time,
+missingness; justifies the target revision). Outputs: `results/tables/class7_*.csv`,
+`results/figures/eda_*.png`.
 
 ## 3. Preprocessing and labels (≈15 min)
 
 ```bash
 python src/data/preprocess.py
+python src/data/splits.py                 # prints the 6 leave-one-well-out folds and the v1 -> v2 fold
 ```
 
-For each of the 2,228 instances: 1 Hz → 1-minute means; frozen (>30 min constant) and missing
-values → mask channels; gaps ≤10 min forward-filled; |x| > 1e9 treated as missing; hand-drawn
-pressures converted bar → Pa; RI* computed; onset t0 and event time t_E (RI* ≥ 1.05) found.
-Output: `data/processed/<label>/*.parquet` and `data/processed/instances.csv`.
+1 Hz → 1-minute means; frozen / missing → mask channels; gaps ≤ 10 min forward-filled; |x| > 1e9 →
+missing; hand-drawn pressures bar → Pa; RI*, onset t0 and event time t_E. Output:
+`data/processed/<label>/*.parquet`, `data/processed/instances.csv`.
 
-Check the folds: `python src/data/splits.py` prints 6 leave-one-well-out folds (one per scaling well).
-
-## 4. Features and survival windows (≈10 min)
+## 4. Features, survival windows and the chemistry prior (≈20 min)
 
 ```bash
-python src/features/build.py
+python src/features/build.py              # rolling features + 109,547 windows (data/features/)
+python src/features/si.py                 # ~10 min: PHREEQC SI grid (USGS PWGD v3.0 brines) + SI per window
 ```
-
-Rolling mean / std / slope over 10, 60 and 360 minutes for RI*, P-MON-CKP, T-JUS-CKP and P-TPT,
-plus one row per 10-minute window with its time-to-event τ, censoring time and horizon bin.
-Output: `data/features/<label>/*.parquet`, `data/features/windows.parquet` (109,547 windows).
 
 ## 5. E1 — tabular baselines B0–B2 (≈40 min)
 
 ```bash
-python experiments/e1_baselines.py            # all 6 folds
-python experiments/e1_baselines.py --quick    # 2 folds (wells 22 and 24), smoke test
+python experiments/e1_baselines.py                     # B0 B1 B2, all 6 folds
+python experiments/e1_baselines.py --models B2-SI      # + chemistry prior
+python experiments/e1_baselines.py --quick             # 2-fold smoke test
 ```
 
-## 6. E1/E2 — sequence models and PI-PatchSurv (≈1.5 h per seed for all 5 models)
+## 6. E1/E2 — sequence models and PI-PatchSurv (≈1.5 h per model-seed over 6 folds)
 
 ```bash
-python experiments/e1_sequence.py --models B3 B4 B5 B6 --tag main            # sequence baselines
-python experiments/e1_sequence.py --models PIPS --seeds 0 1 2 3 4 --tag main # 5-seed deep ensemble
-python experiments/e1_sequence.py --models PIPS-phys PIPS-mono PIPS-surv PIPS-patch --tag e2  # ablations
-python experiments/e1_sequence.py --quick --models PIPS                      # 2-fold smoke test
+python experiments/e1_sequence.py --models B3 B4 B5 B6 B7 B8 B8i --tag main      # sequence baselines
+python experiments/b9_lstm_ae.py                                                  # B9 detector
+python experiments/e1_sequence.py --models PIPS --seeds 0 1 2 3 4 --tag main_pips # 5-seed ensemble
+python experiments/e1_sequence.py --models PIPS-phys PIPS-mono PIPS-surv PIPS-patch PIPS-nosyn --tag e2
+python experiments/e1_sequence.py --models PIPS-nopatch --tag e2_nopatch          # "-patching" (slow)
+python experiments/e1_sequence.py --models PIPS-SI --seeds 0 1 2 3 4 --tag si     # + chemistry prior
+python experiments/e1_sequence.py --quick --models PIPS                           # 2-fold smoke test
 ```
 
-Each run writes a checkpoint (`results/checkpoints/`), its predictions (`results/preds/`), the
-per-epoch training log (`results/runs/*_log.json`) and the fold tables (`results/tables/`).
+Each run writes a checkpoint (`results/checkpoints/`), predictions (`results/preds/`), the per-epoch
+training log (`results/runs/*_log.json`) and fold tables (`results/tables/`). `--resume` skips folds
+whose predictions already exist.
 
-## 7. E3 — robustness (≈20 min, inference only)
+## 7. E1 — Optuna tuning with an equal budget (≈30 h in total)
 
 ```bash
-python experiments/e3_robustness.py --models PIPS B3
+python experiments/e1_tune.py --models B1 B2 B3 B4 --trials 20          # locally (M4)
+# B5-B9 and PIPS were tuned on Kaggle (2 x T4): scripts/kaggle/tune.py + kernel-metadata.json
+python experiments/e1_baselines.py --models B1-tuned B2-tuned
+python experiments/b9_lstm_ae.py --tuned
+python experiments/e1_sequence.py --models B3-tuned B4-tuned B5-tuned B6-tuned B7-tuned B8-tuned B8i-tuned --tag tuned
+python experiments/e1_sequence.py --models PIPS-tuned --seeds 0 1 2 3 4 --tag tuned_pips
 ```
 
-## 8. Final analysis: deployed alarms, calibration, conformal, statistics, figures (≈10 min)
+Tuning is nested per fold and scored only on calibration wells (`results/tuning/<model>.json`; Kaggle
+logs in `results/tuning/kaggle_logs/`).
+
+## 8. E3 — robustness and resampling (≈1 h, inference only)
 
 ```bash
-python experiments/analyze.py
+python experiments/e3_robustness.py --models PIPS B3     # noise, sensor dropout, frozen sensor
+python experiments/e3_resampling.py --models PIPS B3     # 30 s / 1 / 2 / 5 min (features rebuilt per rate)
 ```
 
-Reads every saved prediction (no training) and writes `results/tables/final_*.csv` and
-`results/figures/*.png`. This one command regenerates every number and figure in
-`docs/Phase3_Report.md`.
+## 9. E4 — v1 → v2 generalisation (≈2 h)
 
-## 9. Where to find what
+```bash
+python experiments/e1_sequence.py --split v1v2 --models B3 B4 B5 B6 B7 B8 B8i --tag v1v2
+python experiments/e1_sequence.py --split v1v2 --models PIPS --seeds 0 1 2 3 4 --tag v1v2_pips
+python experiments/b9_lstm_ae.py --split v1v2
+```
+
+## 10. Final analysis (≈1.5 h, no training)
+
+```bash
+python experiments/analyze.py              # LOWO: final_*.csv + all figures
+python experiments/analyze.py --split v1v2 # E4: e4_v1v2_*.csv
+```
+
+Reads every saved prediction and writes `results/tables/final_*.csv`, `e4_v1v2_*.csv` and
+`results/figures/*.png`. These two commands regenerate every number and figure in
+`docs/Phase3_Report.md`. The whole chain of steps 5–10 is scripted in `scripts/phase2_queue.sh`
+(and `scripts/finish_tuned.sh` for the part that waited on Kaggle).
+
+## 11. Where to find what
 
 | Question | File |
 |---|---|
-| Main comparison table | `results/tables/final_main.csv` |
-| Deployed alarm performance (recall, FA/day, lead time) | `results/tables/final_alarm.csv` |
+| Main comparison (AUPRC/AUROC per horizon, C-index, Brier, IBS, ECE, skill vs B0, recall at budgets) | `results/tables/final_main.csv` |
+| Deployed alarms (recall, FA/day, event precision, lead time) | `results/tables/final_alarm.csv` |
 | False alarms by confounder class (E4) | `results/tables/final_fa_by_class.csv` |
-| Uncertainty intervals (PICP, width) | `results/tables/final_conformal.csv` |
-| Significance tests | `results/tables/final_stats.csv`, `final_mean_ranks.csv` |
-| Robustness (E3) | `results/tables/e3_robustness.csv` |
+| Uncertainty intervals (PICP, width, ΔT) | `results/tables/final_conformal.csv` |
+| Significance tests (bootstrap, Wilcoxon, Holm, Friedman, Nemenyi) | `results/tables/final_stats.csv`, `final_mean_ranks.csv` |
+| Robustness / resampling (E3) | `results/tables/e3_robustness.csv`, `e3_resampling.csv` |
+| v1 → v2 (E4) | `results/tables/e4_v1v2_*.csv` |
+| Tuned hyper-parameters | `results/tuning/*.json` |
 | Figures | `results/figures/` |
 | Full report | `docs/Phase3_Report.md` |
 
 ## Rules that the code enforces (do not break them when extending)
 
 1. Splits are grouped by well. A window of a test well never enters training.
-2. Thresholds are chosen on training (out-of-fold) or calibration wells — never on test wells.
+2. Thresholds and hyper-parameters are chosen on training (out-of-fold) or calibration wells — never on
+   test wells.
 3. Simulated and hand-drawn instances are used for training only.
-4. Seeds are fixed; every run is logged under `results/`.
+4. Instances are identified by `label/file`, never by file name alone (3W repeats synthetic names
+   across class folders).
+5. Seeds are fixed; every run is logged under `results/`.

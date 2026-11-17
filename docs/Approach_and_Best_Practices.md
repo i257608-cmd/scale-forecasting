@@ -62,7 +62,7 @@ gives the model features an engineer would look at, computed causally:
 - P-TPT → a rise in the whole system (not a choke restriction) moves P-TPT too.
 
 A learned gate g = σ(W_g[z_s; z_p]) decides per window how much to trust the sequence branch vs
-the physics branch; its average value is reported (≈0.5 → both are used).
+the physics branch. Removing the physics branch costs about 0.07 AUROC (E2), so it is used.
 
 The monotonicity loss L_mono adds a second piece of physics: on a scaling well, without an
 intervention, the restriction does not shrink, so the forecast probability should not drop
@@ -93,7 +93,7 @@ between consecutive windows.
 | Threshold-free *and* deployed-threshold metrics both reported | ranking quality and alarm usefulness are different things (see §7) |
 | Instance-level bootstrap, Holm correction | windows of one instance are not independent; many comparisons inflate false discoveries |
 | Fixed seeds, every run logged with config, checkpoint and predictions | anyone can regenerate every figure with `experiments/analyze.py` |
-| Negative results reported | e.g. no model forecasts slow well 22 well; GBDT beats deep models on several metrics |
+| Negative results reported | e.g. our proposed PI-PatchSurv is not the best model; plain GRU/LSTM rank and deploy better; tuning did not help it |
 
 ## 7. The main lesson: ranking ≠ deployable alarm
 
@@ -102,7 +102,8 @@ wells, so a threshold chosen on one set of wells over- or under-fires on another
 report always shows two numbers: recall at a false-alarm budget (threshold-free, best case) and
 recall/false alarms with a threshold fixed before seeing the test well (what an operator would get).
 Self-referencing the score to the instance's own first hour (`calib-self`) is the cheap analogue
-of RI* = P / own baseline and is evaluated as a remedy.
+of RI* = P / own baseline and is evaluated as a remedy. In the final results it roughly doubles deployed
+recall for several models (GRU 12 → 16 hits, Transformer-LSTM 5 → 13) at fewer false alarms.
 
 ## 8. Engineering practices
 
@@ -113,3 +114,21 @@ of RI* = P / own baseline and is evaluated as a remedy.
 - Every block of code carries a "WHY" comment explaining the decision, not just the operation.
 - Bugs found are documented where they were fixed (e.g. hand-drawn pressures in bar → ×1e5,
   sentinel values 1e42 → missing), so a reader can see what went wrong and why the fix is correct.
+
+## 9. Lessons from the final runs
+
+- **Key data by its full identity.** 3W repeats synthetic file names across class folders. Keying
+  arrays by file name silently mixed classes for half of the synthetic training windows; every sequence
+  result changed after the fix (`trainer.ikey`, regression test). Always key by `label/file`, and add a
+  test that fails if two instances share a key.
+- **Simple models can win with few events.** With 24 events, GRU/LSTM states integrate the slow
+  restriction trend more directly than a patch Transformer. Benchmark simple models under the same
+  protocol before claiming a complex one.
+- **Tune on the same evidence you stop on.** Optuna was scored on calibration-well loss (AUPRC there
+  is flat with 1–3 events). With one small calibration well, tuning mostly adds variance: it helped two
+  models and hurt four.
+- **Choose variants on calibration data, not test results.** The per-horizon-head variant looked best
+  on the test wells; adopting it after seeing them would be test-set selection, so it is reported as a
+  finding instead.
+- **Keep experiments equal when compute forces a change.** The no-patching ablation did not fit in
+  memory; gradient accumulation (micro-batches of 32, effective batch 256) kept it comparable.

@@ -1,0 +1,4 @@
+{"id": "muhammadhaseebrao/scale-forecasting-tune", "title": "scale-forecasting-tune", "code_file": "tune.py",
+ "language": "python", "kernel_type": "script", "is_private": true, "enable_gpu": true, "enable_internet": true,
+ "machine_shape": "NvidiaTeslaT4",
+ "dataset_sources": ["muhammadhaseebrao/scale-forecasting-tuning"], "competition_sources": [], "kernel_sources": []}

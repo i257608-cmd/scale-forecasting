@@ -84,6 +84,48 @@ class TCN(nn.Module):
         return h[:, :, -1]
 
 
+class TransLSTM(nn.Module):
+    """B7 (Lai 2026 style): Transformer encoder for global context, then LSTM for temporal order.
+    WHY avg-pool 4 first: full attention over 360 steps is slow on the M4; 4-min steps keep the trend."""
+
+    def __init__(self, c_in):
+        super().__init__()
+        self.pool = nn.AvgPool1d(4)
+        self.proj = nn.Linear(c_in, D)
+        self.pos = nn.Parameter(torch.zeros(1, 90, D))
+        layer = nn.TransformerEncoderLayer(D, nhead=4, dim_feedforward=128, dropout=0.1,
+                                           batch_first=True, norm_first=True)
+        self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        self.lstm = nn.LSTM(D, D, batch_first=True)
+
+    def forward(self, x, phi):
+        h = self.proj(self.pool(x.transpose(1, 2)).transpose(1, 2))
+        out, _ = self.lstm(self.enc(h + self.pos[:, :h.shape[1]]))
+        return out[:, -1]
+
+
+class ITransformer(nn.Module):
+    """B8i iTransformer (Liu et al. 2024): one token per VARIATE (its whole 360-min series + its mask
+    embedded linearly), attention across variates -> learns cross-sensor relations, not time steps."""
+
+    def __init__(self, c_in, L=360):
+        super().__init__()
+        self.n_val = (c_in + 1) // 2           # same value/mask layout as PIPatchSurv
+        self.embed = nn.Linear(2 * L, D)
+        self.chan = nn.Parameter(torch.zeros(1, self.n_val, D))
+        layer = nn.TransformerEncoderLayer(D, nhead=4, dim_feedforward=128, dropout=0.1,
+                                           batch_first=True, norm_first=True)
+        self.enc = nn.TransformerEncoder(layer, num_layers=2)
+        self.out = nn.Linear(self.n_val * D, D)
+
+    def forward(self, x, phi):
+        C = self.n_val
+        m = x[..., C:]
+        tok = torch.cat([x[..., :C], torch.cat([m, m[..., :1]], -1)], 1).transpose(1, 2)   # (B, C, 2L)
+        h = self.enc(self.embed(tok) + self.chan)
+        return self.out(h.flatten(1))
+
+
 class PIPatchSurv(nn.Module):
     """Physics-informed patch Transformer.
     Sequence branch: channel-independent patches (P=16, stride 8) -> shared Transformer encoder
@@ -144,11 +186,15 @@ class Model(nn.Module):
 def build(name: str, c_in: int, f_phys: int, n_bins: int, L: int = 360) -> Model:
     bodies = {
         "B3": lambda: RNN(c_in, "lstm"), "B4": lambda: RNN(c_in, "gru"),
-        "B5": lambda: CNNLSTM(c_in), "B6": lambda: TCN(c_in),
+        "B5": lambda: CNNLSTM(c_in), "B6": lambda: TCN(c_in), "B7": lambda: TransLSTM(c_in),
+        # B8 PatchTST = the same channel-independent patch encoder as PI-PatchSurv, no physics, BCE head
+        "B8": lambda: PIPatchSurv(c_in, f_phys, L, use_physics=False), "B8i": lambda: ITransformer(c_in, L),
         "PIPS": lambda: PIPatchSurv(c_in, f_phys, L),
         # E2 ablations of PI-PatchSurv
         "PIPS-phys": lambda: PIPatchSurv(c_in, f_phys, L, use_physics=False),
         "PIPS-patch": lambda: PIPatchSurv(c_in, f_phys, L, patch=8, stride=8),
+        # E2 "-patching": every minute is its own token (patch 1), everything else as PIPS
+        "PIPS-nopatch": lambda: PIPatchSurv(c_in, f_phys, L, patch=1, stride=1),
     }
     head = "surv" if name.startswith("PIPS") and name != "PIPS-surv" else "bce"
     body = bodies.get(name, bodies["PIPS"])()   # "PIPS-surv", "PIPS-mono" reuse the full body

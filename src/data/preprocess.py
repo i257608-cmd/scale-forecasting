@@ -51,10 +51,15 @@ def frozen_mask(x: pd.Series, min_len: int = FROZEN_MIN) -> pd.Series:
     return (same & (run_len >= min_len - 1)) & x.notna()
 
 
-def to_minutes(raw: pd.DataFrame, source: str = "real") -> pd.DataFrame:
+def to_minutes(raw: pd.DataFrame, source: str = "real", sample_s: int = 1) -> pd.DataFrame:
     """1 Hz -> 1-min mean + mask channels + short-gap forward fill.
-    WHY 1 min: scaling evolves over hours-days; 1 Hz only adds noise and 60x compute."""
+    WHY 1 min: scaling evolves over hours-days; 1 Hz only adds noise and 60x compute.
+    sample_s > 1 (E3 resampling test only): simulate a historian that logs one point every sample_s
+    seconds; minutes without a point are linearly interpolated between logged points (what a 1-min
+    pipeline fed by a 2-5 min historian would see), so they are NOT flagged as missing."""
     vals = raw.reindex(columns=CHANNELS).astype("float64")
+    if sample_s > 1:
+        vals = vals.iloc[::sample_s]
     if source == "drawn":
         # WHY: hand-drawn pressures are in bar (P-MON-CKP median 45 vs 3.8e6 Pa real; P-PDG 253 vs
         # 2.3e7). Unconverted, models learned "low pressure = scaling" and inverted on real wells
@@ -65,6 +70,8 @@ def to_minutes(raw: pd.DataFrame, source: str = "real") -> pd.DataFrame:
     # these channels exceeds 1e9 (Pa: 10,000 bar; °C; 0/0.5/1 states), so mark as missing
     # BEFORE averaging -> one bad second cannot poison a whole minute.
     vals = vals.where(vals.abs() < 1e9).resample("1min").mean()
+    if sample_s > 60:
+        vals = vals.interpolate("time", limit=sample_s // 60, limit_area="inside")
     out = pd.DataFrame(index=vals.index)
     for c in CHANNELS:
         x = vals[c]
