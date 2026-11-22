@@ -5,8 +5,8 @@ Everything below was decided in Phases 0–2. Do not redesign without checking w
 
 ## Who / what
 - Course: Advanced Artificial Intelligence (MS AI), FAST-NUCES Islamabad. Instructor: Sir Atif Saeed.
-- Group: Muhammad Haseeb (25I-7608), Muavia Shakeel (25I-76021).
-- GitHub: https://github.com/i257608-cmd — repo `scale-forecasting` (private).
+- Group: Muhammad Haseeb (25I-7608, i257608@isb.nu.edu.pk), Muavia Shakeel (25I-76021, i257621@isb.nu.edu.pk).
+- GitHub: https://github.com/i257608-cmd — repo `scale-forecasting` (public).
 - Current task: **Phase 3 — Research Implementation and Experimental Evaluation** (scaling only).
 - Liquid loading and water breakthrough are OUT of the MS scope (separate Mari/PetroGear industry track).
 

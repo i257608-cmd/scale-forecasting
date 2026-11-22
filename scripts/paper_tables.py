@@ -19,7 +19,7 @@ sd = pd.read_csv(T / "final_seeds.csv").set_index("model") if (T / "final_seeds.
 NAME = {"B0": "B0 $\\widetilde{\\mathrm{RI}}^*$ rule", "B1": "B1 Logistic regression", "B2": "B2 GBDT", "B3": "B3 LSTM",
         "B4": "B4 GRU", "B5": "B5 CNN-LSTM", "B6": "B6 TCN", "B7": "B7 Transformer-LSTM$^\\dagger$",
         "B8": "B8 PatchTST$^\\dagger$", "B8i": "B8i iTransformer", "B9": "B9 LSTM-AE detector$^\\dagger$",
-        "PIPS": "PI-PatchSurv (ours)"}
+        "PIPS": "PI-PatchSurv (proposed)"}
 cs = al[al.strategy == "calib-self"].set_index("model")
 
 
@@ -70,8 +70,8 @@ Model & Seeds & AUPRC@24h & AUROC@24h & C-index & IBS & ECE & BSS & Rec.@1/mo & 
 
 
 FIXED = ["B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B8i", "B9", "PIPS"]
-main_table(FIXED, "main", "Forecast quality on unseen wells (six leave-one-well-out folds, 24 events), fixed hyper-parameters.")
-main_table([f"{x}-tuned" for x in FIXED[1:]], "tuned", "As Table~\\ref{tab:main}, with Optuna-tuned hyper-parameters (equal budget, tuned on calibration wells).")
+main_table(FIXED, "main", "Forecast quality on unseen wells (six leave-one-well-out folds, 24 events), fixed hyper-parameters")
+main_table([f"{x}-tuned" for x in FIXED[1:]], "tuned", "As Table~\\ref{tab:main}, with Optuna-tuned hyper-parameters (equal budget, tuned on calibration wells)")
 
 # deployed alarms: one row per model, both threshold strategies side by side
 rows = []
@@ -82,10 +82,10 @@ for k in ["B2", "B3", "B4", "B4-tuned", "B6", "B7", "B7-tuned", "B8", "B8i-tuned
         continue
     r1, r2 = r1.iloc[0], r2.iloc[0]
     lead = "--" if np.isnan(r2.lead_med_h) else f"{r2.lead_med_h:.1f} ({r2.lead_iqr_h:.1f})"
-    nm = NAME.get(k.removesuffix("-tuned"), k).replace("$^\\dagger$", "").replace(" (ours)", "") + (" (tuned)" if k.endswith("-tuned") else "")
+    nm = NAME.get(k.removesuffix("-tuned"), k).replace("$^\\dagger$", "").replace(" (proposed)", "") + (" (tuned)" if k.endswith("-tuned") else "")
     rows.append(f"{nm} & {int(r1.hits)} & {r1.fa_per_day:.3f} & {int(r2.hits)} & {r2.fa_per_day:.3f} & {f(r2.get('event_precision'), 2)} & {lead} \\\\")
 write("alarms", f"""\\begin{{table*}}[t]
-\\caption{{Deployed alarms with thresholds fixed on the calibration wells (ensemble of the available seeds; 24 events, about 248 negative well-days). FA: false alarms per negative well-day.}}\\label{{tab:alarms}}
+\\caption{{Deployed alarms with thresholds fixed on the calibration wells (ensemble of the available seeds; 24 events, about 248 negative well-days). FA: false alarms per negative well-day}}\\label{{tab:alarms}}
 \\footnotesize
 \\resizebox{{\\textwidth}}{{!}}{{\\begin{{tabular}}{{lcccccc}}
 \\toprule
@@ -118,7 +118,7 @@ for k, lab in ABL:
     d = "--" if not len(s) else f"{s.delta_auprc.iloc[0]:+.3f} [{s.lo.iloc[0]:+.2f}, {s.hi.iloc[0]:+.2f}], {s.p_boot_holm.iloc[0]:.2f}"
     rows.append(f"{lab} & {n} & {a} & {b} & {f(r.c_index)} & {f(r.ece_24h)} & {hits} & {d} \\\\")
 write("ablation", f"""\\begin{{table*}}[t]
-\\caption{{Ablation of PI-PatchSurv. $\\Delta$: reference minus variant on pooled AUPRC@24h (paired instance bootstrap, 95\\,\\% CI, Holm-corrected $p$).}}\\label{{tab:ablation}}
+\\caption{{Ablation of PI-PatchSurv. $\\Delta$: reference minus variant on pooled AUPRC@24h (paired instance bootstrap, 95\\,\\% CI, Holm-corrected $p$)}}\\label{{tab:ablation}}
 \\scriptsize\\setlength{{\\tabcolsep}}{{3pt}}
 \\resizebox{{\\textwidth}}{{!}}{{\\begin{{tabular}}{{lccccccc}}
 \\toprule
@@ -139,7 +139,7 @@ order = [("clean 0", "clean"), ("noise 0.01", "Gaussian noise 1\\,\\%"), ("noise
 rows = [f"{lab} & {rb.loc[c, 'PIPS']:.3f} & {rb.loc[c, 'B3']:.3f} \\\\" for c, lab in order if c in rb.index]
 rows += [f"resampled to {int(r)} s & {rs.loc[r, 'PIPS']:.3f} & {rs.loc[r, 'B3']:.3f} \\\\" for r in rs.index]
 write("robustness", f"""\\begin{{table}}[t]
-\\caption{{Robustness (E3): AUPRC@24h under corruptions of the test inputs.}}\\label{{tab:robust}}
+\\caption{{Robustness: AUPRC@24h under corruptions of the test inputs}}\\label{{tab:robust}}
 \\scriptsize
 \\begin{{tabular*}}{{\\columnwidth}}{{@{{\\extracolsep\\fill}}lcc}}
 \\toprule
@@ -164,7 +164,7 @@ for c, lab in cls.items():
 other = fa[fa.label.isin([1, 2, 4, 5])].groupby("model").agg(instances=("instances", "sum"), episodes=("episodes", "sum"))
 rows.append(f"1, 2, 4, 5 & {int(other.instances.iloc[0])} & " + " & ".join(str(int(other.loc[mm, 'episodes'])) if mm in other.index else "--" for mm in models) + " \\\\")
 write("fa_class", f"""\\begin{{table}}[t]
-\\caption{{False-alarm episodes per confounder class (calib-self; all real non-scaling instances tested once). $^\\ddagger$Tuned.}}\\label{{tab:faclass}}
+\\caption{{False-alarm episodes per confounder class (calib-self; all real non-scaling instances tested once); $^\\ddagger$tuned}}\\label{{tab:faclass}}
 \\scriptsize
 \\begin{{tabular*}}{{\\columnwidth}}{{@{{\\extracolsep\\fill}}lccccc}}
 \\toprule
@@ -186,7 +186,7 @@ for k in ["B0", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B8i", "B9", "PIPS"]:
         h = f"{int(va.loc[k].hits)} / {va.loc[k].fa_per_day:.3f}" if k in va.index else "--"
         rows.append(f"{k if k != 'PIPS' else 'PI-PatchSurv'} & {v.loc[k].auprc_24h:.3f} & {v.loc[k].auroc_24h:.3f} & {h} \\\\")
 write("v1v2", f"""\\begin{{table}}[t]
-\\caption{{Generalisation (E4): trained on wells of 3W v1.1.1, tested on wells added in v2.0.0 (20 events).}}\\label{{tab:v1v2}}
+\\caption{{Generalisation: trained on wells of 3W v1.1.1, tested on wells added in v2.0.0 (20 events)}}\\label{{tab:v1v2}}
 \\scriptsize
 \\begin{{tabular}}{{lccc}}
 \\toprule

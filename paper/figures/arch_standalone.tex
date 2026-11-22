@@ -1,0 +1,11 @@
+% Builds figures/arch.pdf from arch.tex:  tectonic -X compile arch_standalone.tex && mv arch_standalone.pdf arch.pdf
+\documentclass[border=4pt]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,fit,backgrounds,shapes.geometric,patterns,decorations.pathreplacing}
+\definecolor{sensorblue}{HTML}{2F6EA8}\definecolor{patchgreen}{HTML}{7CB342}\definecolor{encorange}{HTML}{F5B041}
+\definecolor{latentpurple}{HTML}{8E7CC3}\definecolor{physred}{HTML}{D6455F}\definecolor{gateyellow}{HTML}{F7DC6F}
+\definecolor{headteal}{HTML}{22997A}\definecolor{arrowblue}{HTML}{3D6FB6}
+\begin{document}
+\input{arch}
+\end{document}

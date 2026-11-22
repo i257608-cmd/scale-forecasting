@@ -1,34 +1,32 @@
+\bmhead{Acknowledgements}
+The authors thank Petrobras and the 3W community for releasing the dataset, and the course instructor for
+feedback on the research proposal.
+
 \section*{Declarations}\label{sec:declarations}
-
-\bmhead{Data availability}
-The 3W dataset v2.0.0 is publicly available under the CC BY 4.0 licence from the Petrobras repository
-\cite{petrobras3w} (commit \texttt{826fec4} was used). The produced-water analyses used for the chemistry
-prior are available from the U.S. Geological Survey~\cite{blondes2023}.
-
-\bmhead{Code availability}
-The complete code (preprocessing, models, training, evaluation, figures and tables), the run logs, the
-tuned hyper-parameters and all result tables are available at
-\url{https://github.com/i257608-cmd/scale-forecasting}. The saved model predictions (143~MB) are available
-from the corresponding author on request; from them, two commands (\texttt{python experiments/analyze.py} and
-\texttt{python scripts/paper\_tables.py}) regenerate every number, table and figure of this paper, and the
-full pipeline in the repository regenerates the predictions themselves.
 
 \bmhead{Funding}
 This research received no external funding.
 
-\bmhead{Conflict of interest}
+\bmhead{Competing interests}
 The authors declare no competing interests.
 
 \bmhead{Author contributions}
-M.H.: conceptualisation, methodology, software, experiments, writing. M.S.: methodology, validation,
-writing -- review and editing.
+M.H.: conceptualisation, methodology, software, investigation, writing -- original draft. M.S.: methodology,
+validation, writing -- review and editing.
+
+\bmhead{Data availability}
+The 3W dataset version 2.0.0 is publicly available under the CC BY 4.0 licence from the Petrobras repository
+\citep{petrobras3w} (commit \texttt{826fec4}). The produced-water analyses used for the chemistry prior are
+available from the U.S. Geological Survey \citep{blondes2023}.
+
+\bmhead{Code availability}
+The code for preprocessing, models, training, evaluation, figures and tables, together with the run logs, the
+tuned hyper-parameters and all result tables, is available at
+\url{https://github.com/i257608-cmd/scale-forecasting}. The saved model predictions (143~MB) are available
+from the corresponding author on request; from them, \texttt{experiments/analyze.py} and
+\texttt{scripts/paper\_tables.py} regenerate every number, table and figure of this paper.
 
 \bmhead{Use of AI-assisted tools}
-An AI assistant (Anthropic Claude) was used to help write and debug code, run and monitor experiments,
-search and check literature metadata, and draft and edit the text of this paper. All experiments were run
-on the authors' machines and accounts, every reported number is produced by the published code from the
-saved predictions, and the authors reviewed and take full responsibility for the content.
-
-\bmhead{Acknowledgements}
-The authors thank Petrobras and the 3W community for releasing the dataset, and the course instructor for
-feedback on the research proposal.
+An AI assistant (Anthropic Claude) was used to help write and debug code, run and monitor experiments, check
+literature metadata and edit the text. The authors ran all experiments, verified every reported number
+against the published code and take full responsibility for the content.

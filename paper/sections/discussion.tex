@@ -1,51 +1,54 @@
 \section{Discussion}\label{sec:discussion}
 
-\textbf{Why the approach works, and where it does not.} The decisive step is the formulation:
-self-referencing the restriction to each instance's own baseline turns wells of very different pressure
-into one learnable problem, and the survival objective uses the many censored windows instead of
-mislabelling them. Every learned forecaster built on this formulation outperforms the physics rule and the
-anomaly detector. Within the deep models, the recurrent architectures rank and alarm best: the informative
-signal is a slow trend in two or three channels, which a recurrent state integrates directly, whereas a
-patch Transformer splits it into 16-minute tokens and must re-assemble it through attention from only 24
-positive events. The physics branch, the mask-aware channel-independent encoder and the ensemble give
-PI-PatchSurv properties that matter in operation, namely calibrated intervals, an accurate time-to-event
-and robustness to failed sensors, but not a better ranking.
+\subsection{Why the approach works and where it does not}
 
-\textbf{Practical implications.} With a threshold fixed on other wells, the best forecasters warn of
-roughly two thirds of the events a median of 2--4~h before the restriction reaches $+5\,\%$, at 1.2--1.6
-false alarms per well-month, and they raise no alarm on normal operation or on the quick-restriction
-look-alike. Hours of warning are enough to schedule a choke cleaning within a shift but not to plan an
-inhibitor campaign; longer warnings require longer real histories than 3W provides. Self-referencing the
-score to each well's own recent level is a simple, model-agnostic step that roughly doubles deployed recall
-for several models and should be part of any deployment.
+The decisive step is the formulation. Self-referencing the restriction to each instance's own baseline
+turns wells of very different pressure into one learnable problem, and the survival objective uses the many
+censored windows instead of mislabelling them. Every learned forecaster built on this formulation
+outperforms the physics rule and the anomaly detector. Among the deep models, the recurrent architectures
+rank and alarm best: the informative signal is a slow trend in two or three channels, which a recurrent
+state integrates directly, whereas a patch Transformer splits it into 16-min tokens and must reassemble it
+through attention from only 24 positive events. The physics branch, the mask-aware channel-independent
+encoder and the ensemble give PI-PatchSurv properties that matter in operation, namely calibrated
+intervals, an accurate time-to-event estimate and robustness to failed sensors, but not a better ranking.
 
-\textbf{Strengths.} The study evaluates on wells excluded from training with all thresholds and
-hyper-parameters chosen on separate calibration wells; it compares twelve models with fixed and tuned
-hyper-parameters and several seeds; it reports calibration, intervals, event-level and confounder-level
-false alarms, robustness and a dataset-version generalisation test; and every number is regenerated from
-saved predictions by published code.
+The failure cases are informative. On well 24 the score of PI-PatchSurv drifts within long instances, which
+the self-referenced threshold converts into false alarms. Hydrate plugs downstream of the choke raise the
+upstream pressure slowly and are confused with scale; separating them requires the missing downstream
+sensors or temperature dynamics. Wells 6 and 21 contribute few events and are often missed, and the
+autoencoder detector does not forecast at all.
 
-\textbf{Failure cases.} (i) On well 24, PI-PatchSurv's score drifts within long instances and produces
-false alarms under the self-referenced threshold. (ii) Hydrate plugs downstream of the choke (classes 8 and
-9) raise the upstream pressure slowly and are confused with scale; separating them needs the missing
-downstream sensors or temperature dynamics. (iii) Wells 6 and 21 contribute few events and are often
-missed. (iv) The autoencoder detector does not forecast at all.
+\subsection{Implications for operation}
 
-\textbf{Threats to validity.} \emph{Internal:} only 24 real events are available and 17 come from one well,
-so fold-level variance is large and the deep models cannot be separated statistically; ablations other than
-three components use a single seed. \emph{Construct:} $\RI$ is a proxy based on one pressure and does not
-control for changes of the choke opening, which is missing in most instances; the $+5\,\%$ level is a
-modelling choice. \emph{External:} 3W covers offshore wells of one operator with short recordings;
-results may differ for onshore gas wells or other scale chemistries. \emph{Conclusion validity:}
-early stopping and tuning rely on a single small calibration well per fold, which makes both noisy.
+With a threshold fixed on other wells, the best forecasters warn of roughly two thirds of the events a median
+of 2--4~h before the restriction reaches $+5\,\%$, at 1.2--1.6 false alarms per well-month, and they raise no
+alarm during normal operation or on the quick-restriction look-alike. Hours of warning suffice to schedule a
+choke cleaning within a shift but not to plan an inhibitor campaign; longer warnings require longer real
+histories than 3W provides. Self-referencing the score to each well's own recent level is a simple,
+model-agnostic step that roughly doubles deployed recall for several models and should be part of any
+deployment. Because every threshold and hyper-parameter in this study was chosen on wells other than the
+test well, the reported alarm rates are a realistic estimate of what an operator would observe on a new
+well.
 
-\textbf{Were the research gap and objectives met?} The first gap, the absence of timed forecasting of
-scaling, is addressed: calibrated multi-horizon forecasts on unseen wells are shown to be feasible, but the
-lead time is hours, not the days targeted in the proposal, because of the data. The second gap, the lack of
-fusion of chemistry and sensors, is addressed only partly: physical indicators are fused with learned
-features and help, while the chemistry prior from public brines helps little. The third gap, the absence of
-unseen-well evaluation, is fully addressed. The fourth gap, rare events and missing uncertainty, is
-addressed by censor-aware training, synthetic data and conformal intervals with near-nominal coverage. The
-objective of a proposed model that outperforms all baselines was not achieved; the evidence instead
-supports the formulation and the evaluation protocol, with simple recurrent forecasters as the strongest
-rankers.
+\subsection{Relation to the research gaps}
+
+The study set out to close four gaps. The absence of timed forecasting of scaling is addressed: calibrated
+multi-horizon forecasts on unseen wells are feasible, although the lead time is hours rather than days
+because of the data. The lack of fusion between chemistry and sensors is addressed only in part: physical
+indicators fused with learned features clearly help, whereas the chemistry prior derived from public brines
+helps little. The absence of unseen-well evaluation is fully addressed. The rarity of events and the lack of
+uncertainty are addressed by censoring-aware training, synthetic data and conformal intervals with
+near-nominal coverage. The aim of a proposed model that outperforms all baselines was not achieved; the
+evidence instead supports the formulation and the evaluation protocol, with simple recurrent forecasters as
+the strongest rankers.
+
+\subsection{Limitations and threats to validity}
+
+Internal validity is limited by the small number of events: only 24 real events are available and 17 of
+them come from one well, so the variance between folds is large and the deep models cannot be separated
+statistically, and the ablations other than three components use a single seed. Construct validity is
+limited because $\RI$ is a proxy based on one pressure that does not control for changes of the choke
+opening, which is missing in most instances, and because the $+5\,\%$ level is a modelling choice. External
+validity is limited because 3W covers offshore wells of one operator with short recordings, so results may
+differ for onshore gas wells or other scale chemistries. Finally, early stopping and tuning rely on a single
+small calibration well per fold, which makes both noisy.

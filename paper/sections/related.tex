@@ -1,59 +1,68 @@
 \section{Related work}\label{sec:related}
 
-\textbf{Event detection on 3W.} The 3W dataset was introduced with benchmarks for detecting eight
-types of undesirable events~\cite{vargas2019}; version 2.0.0 extends it to nine event types and 2,228
-instances~\cite{vargas2026}. Detection approaches range from autoencoders combined with rule-based
-decision diagrams, which report true-positive rates above 90\,\% in the early stages of an
-anomaly~\cite{aranha2024}, to Transformer detectors for intelligent completions~\cite{aranha2025} and
-open-world pipelines that combine reconstruction, binary classifiers and clustering~\cite{lopes2025}. A
-recent LLM-agent layer on top of such a pipeline reports novelty detection of 94.9\,\% for class 7 on
-3W segments~\cite{lopes2026}. These studies are strong at recognising an event that has begun, but none
-outputs a lead time, and most do not separate wells between training and test. A held-out-well benchmark
-for 3W has only recently been proposed~\cite{issue231}.
+\subsection{Event detection on the 3W dataset}
 
-\textbf{Data-driven scale prediction.} Outside 3W, deep networks detect scale build-up and estimate its
-magnitude from simulated well histories with more than 95\,\% detection accuracy~\cite{cheng2022}; artificial
-neural networks predict sulphide-scale deposition from water analyses and operating data~\cite{askar2025};
-back-propagation networks estimate wellbore-blockage risk from water chemistry in tight gas
-fields~\cite{su2024}; and machine-learning surrogates reproduce PHREEQC~\cite{parkhurst2013} saturation
-indices from a few water properties~\cite{molina2025}. These works establish that scale is predictable from
-chemistry or simulated histories, but they do not use real production-sensor streams, do not forecast
-time to a critical state, and are not evaluated on unseen wells.
+The 3W dataset was introduced with benchmarks for detecting eight types of undesirable events
+\citep{vargas2019}, and version 2.0.0 extends it to nine event types and 2,228 instances \citep{vargas2026}.
+Detection approaches range from autoencoders combined with rule-based decision diagrams, which report
+true-positive rates above 90\,\% in the early stages of an anomaly \citep{aranha2024}, to Transformer
+detectors for intelligent completions \citep{aranha2025} and open-world pipelines that combine
+reconstruction, binary classifiers and clustering \citep{lopes2025}. A recent layer of large-language-model
+agents on top of such a pipeline reports a novelty-detection rate of 94.9\,\% for choke scaling on 3W
+segments \citep{lopes2026}. These studies recognise an event that has begun, but none outputs a lead time,
+and most do not separate wells between training and test sets; a held-out-well benchmark for 3W has only
+recently been proposed \citep{issue231}.
 
-\textbf{Sequence models and time-to-event learning.} Recurrent networks (LSTM~\cite{hochreiter1997},
-GRU~\cite{cho2014}), temporal convolutions~\cite{bai2018}, attention~\cite{vaswani2017}, patch-based
-Transformers~\cite{nie2023} and inverted Transformers~\cite{liu2024itrans} are standard for multivariate
-sensor series; a hybrid Transformer--LSTM forecasts water breakthrough in gas wells two to six days ahead
-and transfers between similar wells~\cite{lai2026}. Discrete-time survival heads~\cite{gensheimer2019,
-kvamme2021} and their deep variants~\cite{lee2018deephit} handle censoring and give monotone risk curves,
-but have not been applied to well-event forecasting. Physics-informed learning~\cite{karniadakis2021,
-willard2022} injects domain knowledge through features, architecture or loss terms; deep
-ensembles~\cite{lakshminarayanan2017} and conformal prediction~\cite{angelopoulos2023} provide uncertainty.
+\subsection{Data-driven prediction of mineral scale}
 
-Table~\ref{tab:related} summarises the closest studies. The present work differs in four respects: it
-forecasts a time to a critical level rather than detecting an event, uses real production-sensor data of
-the choke, evaluates on wells excluded from training with thresholds fixed in advance, and reports
-calibrated, interval-valued uncertainty.
+Outside 3W, deep networks detect scale build-up and estimate its magnitude from simulated well histories with
+more than 95\,\% detection accuracy \citep{cheng2022}, artificial neural networks predict sulphide-scale
+deposition from water analyses and operating data \citep{askar2025}, back-propagation networks estimate the
+risk of wellbore blockage from water chemistry in tight gas fields \citep{su2024}, and machine-learning
+surrogates reproduce the saturation indices of PHREEQC \citep{parkhurst2013} from a few water properties
+\citep{molina2025}. These works establish that scale is predictable from chemistry or from simulated
+histories, but they do not use real production-sensor streams, do not forecast the time to a critical
+state and are not evaluated on unseen wells.
 
-\begin{table*}[t]
-\caption{Summary of the closest related studies. TTE: time-to-event forecast; HO: whole wells held out of training; Unc.: uncertainty quantification.}
+\subsection{Sequence models and time-to-event learning}
+
+Recurrent networks such as the long short-term memory (LSTM) network \citep{hochreiter1997} and the gated
+recurrent unit (GRU) \citep{cho2014}, temporal convolutional networks \citep{bai2018}, attention models
+\citep{vaswani2017}, patch-based Transformers \citep{nie2023} and inverted Transformers \citep{liu2024itrans}
+are standard tools for multivariate sensor series. A hybrid Transformer--LSTM forecasts water breakthrough in
+gas wells two to six days ahead and transfers between similar wells \citep{lai2026}, which makes it the
+closest forecasting study of a well event with a lead time. Discrete-time survival heads
+\citep{gensheimer2019,kvamme2021} and their deep variants \citep{lee2018deephit} handle censoring and give
+monotone risk curves, but they have not been applied to the forecasting of well events. Physics-informed
+learning injects domain knowledge through features, architecture or loss terms
+\citep{karniadakis2021,willard2022}, while deep ensembles \citep{lakshminarayanan2017} and conformal
+prediction \citep{angelopoulos2023} provide uncertainty estimates.
+
+Table~\ref{tab:related} summarises the closest studies. The present work differs from them in four
+respects: it forecasts the time to a critical level rather than detecting an event, it uses real
+production-sensor data of the choke, it evaluates on wells excluded from training with thresholds fixed in
+advance, and it reports calibrated, interval-valued uncertainty.
+
+\begin{table}[t]
+\caption{Summary of the closest related studies}
 \label{tab:related}
-\scriptsize
-\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{2.6cm}p{2.5cm}p{1.9cm}cccc}
+\footnotesize\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep\fill}p{2.5cm}p{2.6cm}p{1.9cm}cccp{1.5cm}}
 \toprule
 Study & Task & Data & Sens. & TTE & HO & Unc. \\
 \midrule
-Vargas et al.~\cite{vargas2019,vargas2026} & Event-detection benchmark & 3W & yes & no & no & no \\
-Aranha et al.~\cite{aranha2024} & Anomaly detection & field wells & yes & no & n/s & no \\
-Lopes et al.~\cite{lopes2025} & Open-world detection & well completions & yes & no & n/s & no \\
-Lopes et al.~\cite{lopes2026} & Detection, explanation & 3W & yes & no & no & Wilson CI \\
-3W PR \#231~\cite{issue231} & Classification benchmark & 3W & yes & no & yes & bootstrap \\
-Cheng et al.~\cite{cheng2022} & Scale magnitude & simulated wells & yes & no & no & no \\
-Askar et al.~\cite{askar2025} & Sulphide-scale risk & field chemistry & no & no & n/s & no \\
-Molina et al.~\cite{molina2025} & SI surrogate & produced water & no & no & n/s & no \\
-Lai et al.~\cite{lai2026} & Breakthrough forecast & 9 gas wells & yes & days & partly & no \\
-\textbf{This work} & \textbf{Time to +5\,\% restriction} & \textbf{3W} & \textbf{yes} & \textbf{yes} & \textbf{yes} & \textbf{ens.+conf.} \\
+\citet{vargas2019,vargas2026} & Event-detection benchmark & 3W & yes & no & no & no \\
+\citet{aranha2024} & Anomaly detection & Field wells & yes & no & n/s & no \\
+\citet{lopes2025} & Open-world detection & Well completions & yes & no & n/s & no \\
+\citet{lopes2026} & Detection, explanation & 3W & yes & no & no & Wilson CI \\
+3W proposal \citep{issue231} & Classification benchmark & 3W & yes & no & yes & Bootstrap \\
+\citet{cheng2022} & Scale magnitude & Simulated wells & yes & no & no & no \\
+\citet{askar2025} & Sulphide-scale risk & Field chemistry & no & no & n/s & no \\
+\citet{molina2025} & Saturation-index surrogate & Produced water & no & no & n/s & no \\
+\citet{lai2026} & Breakthrough forecast & 9 gas wells & yes & days & partly & no \\
+This work & Time to $+5\,\%$ restriction & 3W & yes & yes & yes & Ensemble, conformal \\
 \botrule
 \end{tabular*}
-\footnotetext{n/s: not stated in the accessible abstract.}
-\end{table*}
+\footnotetext{Sens.: production-sensor data; TTE: time-to-event forecast; HO: whole wells held out of training; n/s: not stated in the
+accessible abstract; Unc.: uncertainty quantification.}
+\end{table}

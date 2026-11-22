@@ -2,7 +2,7 @@
 
 \subsection{Dataset}\label{sec:data}
 
-We use 3W v2.0.0~\cite{vargas2026} pinned to repository commit \texttt{826fec4}~\cite{petrobras3w}: 2,228
+We use 3W v2.0.0 \citep{vargas2026} pinned to repository commit \texttt{826fec4} \citep{petrobras3w}: 2,228
 instances sampled at 1~Hz, of which 1,119 are real (40 wells), 1,089 simulated and 20 hand-drawn. Class~7
 (\emph{scaling in the production choke}) has 36 real instances from six wells (well~24: 19, 22: 8,
 23: 4, 21: 2, 6: 2, 1: 1) and 10 hand-drawn ones; there are no simulated class-7 instances. In 31 of the
@@ -34,48 +34,50 @@ so every real instance is tested exactly once (24 events, about 248 negative wel
 the 24 events) plus another group of non-scaling wells; it is used for early stopping, hyper-parameter
 tuning, alarm thresholds and conformal calibration. The \emph{training} set contains the remaining real
 wells and all simulated and hand-drawn instances; synthetic data never enters calibration or test. For the
-generalisation test (E4) we train on the wells present in 3W v1.1.1 (18 real wells; 4 training events)
+generalisation test we train on the wells present in 3W v1.1.1 (18 real wells; 4 training events)
 and test on wells added in v2.0.0 (wells 22--24, 20 events).
 
 \subsection{Baselines}
 
 All baselines receive the same windows. B0 is a physics rule that thresholds the 60-minute mean of
-$\widetilde{\RI}$. B1 (logistic regression) and B2 (gradient-boosted trees~\cite{friedman2001}, scikit-learn
-\cite{pedregosa2011}) use 63 tabular features at the window end. The deep baselines use per-horizon
+$\widetilde{\RI}$. B1 (logistic regression) and B2 (gradient-boosted trees \citep{friedman2001}, scikit-learn
+\citep{pedregosa2011}) use 63 tabular features at the window end. The deep baselines use per-horizon
 binary cross-entropy heads and the same training budget and early stopping as PI-PatchSurv: B3 LSTM
-\cite{hochreiter1997}, B4 GRU~\cite{cho2014}, B5 CNN-LSTM, B6 TCN~\cite{bai2018}, B7 the hybrid
-Transformer--LSTM of~\cite{lai2026}, B8 PatchTST~\cite{nie2023} (our patch encoder without the physics
-branch), B8i iTransformer~\cite{liu2024itrans}, and B9 an LSTM-autoencoder anomaly detector in the style
-of~\cite{aranha2024,malhotra2016}, trained on normal windows and scored by reconstruction error. B7, B8 and
+\citep{hochreiter1997}, B4 GRU \citep{cho2014}, B5 CNN-LSTM, B6 TCN \citep{bai2018}, B7 the hybrid
+Transformer--LSTM of \citet{lai2026}, B8 PatchTST \citep{nie2023} (our patch encoder without the physics
+branch), B8i iTransformer \citep{liu2024itrans}, and B9 an LSTM-autoencoder anomaly detector in the style
+of \citet{aranha2024} and \citet{malhotra2016}, trained on normal windows and scored by reconstruction error. B7, B8 and
 B9 are our re-implementations of the base-paper architectures under the present protocol.
 
 \subsection{Evaluation metrics}
 
 Positives are rare (about 14\,\% of labelled 24-h windows), so accuracy is not reported. Window-level
-metrics per horizon are the area under the precision--recall curve (AUPRC)~\cite{saito2015} and under the
-ROC curve (AUROC); survival quality is measured by Harrell's C-index~\cite{harrell1982}, the Brier score at
-24~h and the integrated Brier score over all horizons (IBS)~\cite{graf1999}, and calibration by the expected
-calibration error (ECE)~\cite{guo2017}. Event-level metrics follow deployment: with a threshold fixed on the
+metrics per horizon are the area under the precision--recall curve (AUPRC) \citep{saito2015} and under the
+ROC curve (AUROC); survival quality is measured by Harrell's C-index \citep{harrell1982}, the Brier score at
+24~h and the integrated Brier score over all horizons (IBS) \citep{graf1999}, and calibration by the expected
+calibration error (ECE) \citep{guo2017}. Event-level metrics follow deployment: with a threshold fixed on the
 calibration wells, an event is \emph{caught} if an alarm fires before $\RI$ reaches $+5\,\%$; we report events
 caught out of 24, false alarms per negative well-day, event precision (true over all alarm episodes) and
 the lead time. We also report threshold-free recall at budgets of 1 false alarm per well-month and per
 well-day. Uncertainty intervals are scored by coverage (PICP) at the 90\,\% target, and $\Delta T$ is the
 median absolute error of the predicted time-to-event. Window metrics are averaged over the five folds with
 events; pooled AUPRC carries an instance-level bootstrap 95\,\% confidence interval. Significance is assessed
-with a Friedman test over folds with the Nemenyi critical difference~\cite{demsar2006}, and with a paired
-instance-level bootstrap and Wilcoxon signed-rank tests with Holm correction~\cite{holm1979}.
+with a Friedman test over folds with the Nemenyi critical difference \citep{demsar2006}, and with a paired
+instance-level bootstrap and Wilcoxon signed-rank tests with Holm correction \citep{holm1979}.
 
 \subsection{Implementation details}
 
-All models are implemented in PyTorch~\cite{paszke2019} 2.15 (Python 3.14, scikit-learn 1.9, Optuna 5.0,
+All models are implemented in PyTorch \citep{paszke2019} 2.15 (Python 3.14, scikit-learn 1.9, Optuna 5.0,
 PHREEQC via phreeqpython). Deep models use $d=64$, AdamW with learning rate $10^{-3}$ and weight decay
 $10^{-4}$, batch size 256, 12 epochs of 150 steps and early stopping on the calibration loss; Transformer
 layers use four heads, feed-forward width 128 and dropout 0.1. PI-PatchSurv has 128,775 parameters (all
 models have fewer than 0.2~M). Every model is run with fixed hyper-parameters and with hyper-parameters
-tuned by Optuna~\cite{akiba2019} (TPE sampler, seed 0, median pruning, 20 trials per fold) under an equal
+tuned by Optuna \citep{akiba2019} (TPE sampler, seed 0, median pruning, 20 trials per fold) under an equal
 budget; tuning is nested in each fold and scored on the calibration-well loss, never on the test well.
 Seeds are fixed: PI-PatchSurv and its tuned and \emph{-SI} variants use seeds 0--4, the deep baselines and
 the main ablations seeds 0--2, the remaining ablations seed 0. Training ran on a MacBook Air M4 (PyTorch MPS,
 float32); seeds 1--2 of the baselines and part of the tuning ran on Kaggle (two NVIDIA T4 GPUs). The
 no-patching ablation uses gradient accumulation (micro-batches of 32, effective batch 256) to fit in memory.
-Code, configuration and all predictions are available (Section~\ref{sec:declarations}).
+An AI assistant (Anthropic Claude) was used to help write and debug the code and to edit the text; all
+experiments, results and conclusions were checked by the authors. Code and configuration are publicly
+available (see Declarations).

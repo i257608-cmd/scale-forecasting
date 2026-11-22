@@ -1,5 +1,5 @@
 \begin{table*}[t]
-\caption{As Table~\ref{tab:main}, with Optuna-tuned hyper-parameters (equal budget, tuned on calibration wells).}\label{tab:tuned}
+\caption{As Table~\ref{tab:main}, with Optuna-tuned hyper-parameters (equal budget, tuned on calibration wells)}\label{tab:tuned}
 \scriptsize\setlength{\tabcolsep}{3pt}
 \resizebox{\textwidth}{!}{\begin{tabular}{lcccccccccc}
 \toprule
@@ -15,7 +15,7 @@ Model & Seeds & AUPRC@24h & AUROC@24h & C-index & IBS & ECE & BSS & Rec.@1/mo & 
 {B8 PatchTST$^\dagger$} & 1 & 0.616 & 0.827 & 0.849 & 0.149 & 0.198 & 0.75 & 0.67 & 11 & 0.53 \\
 {B8i iTransformer} & 1 & 0.700 & 0.935 & 0.820 & 0.091 & 0.157 & 0.78 & 0.46 & 14 & 0.60 \\
 {B9 LSTM-AE detector$^\dagger$} & 1 & 0.211 & 0.312 & 0.431 & 0.765 & 0.848 & -0.93 & 0.00 & 0 & 0.85 \\
-{PI-PatchSurv (ours)} & 5 & 0.596$\pm$0.093 & 0.746$\pm$0.076 & 0.765 & 0.105 & 0.285 & 0.64 & 0.25 & 5.6$\pm$2.9 & 0.86 \\
+{PI-PatchSurv (proposed)} & 5 & 0.596$\pm$0.093 & 0.746$\pm$0.076 & 0.779 & 0.105 & 0.285 & 0.64 & 0.25 & 5.6$\pm$2.9 & 0.86 \\
 \bottomrule
 \end{tabular}}
 \footnotetext{AUPRC/AUROC and hits: mean$\pm$SD over single-seed runs where several seeds exist; other columns: ensemble of the available seeds. BSS: Brier skill score at 24~h relative to B0. Rec.@1/mo: threshold-free recall at one false alarm per well-month. Hits: events caught out of 24 with the deployed calib-self threshold. PICP: coverage of the 90\,\% conformal interval. $^\dagger$Re-implementation of a base-paper architecture.}
