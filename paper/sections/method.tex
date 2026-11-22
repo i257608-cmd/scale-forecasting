@@ -1,7 +1,5 @@
 \section{Proposed methodology}\label{sec:method}
 
-\subsection{Problem formulation}\label{sec:formulation}
-
 Let $\mathbf{x}_{1:T}\in\mathbb{R}^{T\times C}$ be the 1-minute sensor series of one instance with $C$
 channels and $\mathbf{m}_{1:T}\in\{0,1\}^{T\times C}$ the corresponding mask, where $m_{t,c}=1$ marks a
 missing or frozen value. Let $p_t$ denote the pressure upstream of the production choke (P-MON-CKP) and
@@ -81,9 +79,7 @@ F(k)=1-\prod_{j=1}^{k}(1-h_j),\qquad k=1,\dots,K,
 \end{equation}
 which is non-decreasing in $k$ by construction.
 
-\subsection{Training objective}
-
-For window $i$ with bin index $k_i$ (the event bin if an event is observed, $\delta_i=1$, otherwise the bin
+The model is trained with a censor-aware likelihood. For window $i$ with bin index $k_i$ (the event bin if an event is observed, $\delta_i=1$, otherwise the bin
 in which observation ends, $\delta_i=0$), the censor-aware log-likelihood is
 \begin{align}
 \ell_i&=\sum_{j<k_i}\log(1-h_{ij})+\delta_i\log h_{ik_i},\nonumber\\
